@@ -2723,3 +2723,16 @@ nav.scrolled {
         height: 40px;
     }
 }
+
+/* ========== FEATURED PROJECTS SECTION ========== */
+.projects {
+    padding: 8rem 0;
+    background: var(--white);
+}
+
+a.showcase-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
