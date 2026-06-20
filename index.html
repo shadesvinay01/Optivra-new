@@ -76,12 +76,50 @@
                 <a href="#home" class="active">Home</a>
                 <a href="#about">About</a>
                 <a href="#team">Team</a>
-                <a href="#services">Services</a>
+                <div class="nav-dropdown">
+                    <a href="#services" class="dropdown-toggle">Services <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-col">
+                            <h4>Strategy & Consulting</h4>
+                            <a href="#">Product Management</a>
+                            <a href="#">Interim/Fractional CTO</a>
+                            <a href="#">Technical Due Diligence</a>
+                            <a href="#">Cost Optimization</a>
+                            <h4>Application Development</h4>
+                            <a href="#">Mobile App Dev</a>
+                            <a href="#">Web App Dev</a>
+                            <a href="#">UI/UX Design</a>
+                        </div>
+                        <div class="dropdown-col">
+                            <h4>DevOps & Performance</h4>
+                            <a href="#">DevOps Implementation</a>
+                            <a href="#">Performance Optimization</a>
+                            <a href="#">Monitoring & Alerting</a>
+                            <a href="#">QA & Testing</a>
+                            <h4>Data & Analytics</h4>
+                            <a href="#">Data Management</a>
+                            <a href="#">Analytics Implementation</a>
+                            <a href="#">Data Science</a>
+                        </div>
+                        <div class="dropdown-col">
+                            <h4>Artificial Intelligence</h4>
+                            <a href="#">AI Strategy & Impl.</a>
+                            <a href="#">ChatBot Development</a>
+                            <a href="#">Generative AI</a>
+                            <a href="#">Machine Learning</a>
+                            <h4>Cloud & Modernization</h4>
+                            <a href="#">Cloud Infrastructure</a>
+                            <a href="#">Cloud Migration</a>
+                            <a href="#">Microservices Arch.</a>
+                            <a href="#">Integration Solutions</a>
+                        </div>
+                    </div>
+                </div>
                 <a href="#showcase">Products</a>
                 <a href="#faq">FAQ</a>
                 <a href="#projects">Projects</a>
                 <a href="https://workshop.optivra.in" target="_blank" class="academy-btn"><i class="fas fa-graduation-cap"></i> AI Academy</a>
-                <a href="#contact" class="contact-btn">Contact</a>
+                <a href="#contact" class="contact-btn btn-glow">Book Consultation</a>
             </div>
         </nav>
     </div>
@@ -100,7 +138,7 @@
                 </h1>
                 <p class="hero-description">We help businesses unlock the power of AI, machine learning, and modern software solutions.</p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Explore Our Work</a>
+                    <a href="#services" class="btn btn-primary btn-glow">Explore Our Work</a>
                     <a href="#contact" class="btn btn-outline">Let's Talk</a>
                 </div>
                 </div>
@@ -134,6 +172,23 @@
                 <div class="stat-plus">+</div>
                 <div class="stat-lbl">Global Specialists</div>
             </div>
+        </div>
+    </section>
+
+    <!-- ========== CLIENT LOGOS ========== -->
+    <section class="client-logos">
+        <div class="logo-track">
+            <!-- Duplicated for continuous scroll effect -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cisco">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cisco">
         </div>
     </section>
 
@@ -258,8 +313,8 @@
                     <div class="member-image">
                         <img src="assets/img/sarveshwar.png" alt="Sarveshwar Mandal" loading="lazy">
                         <div class="member-social">
-                            <a href="https://www.linkedin.com/in/sarveshwarm/"><i class="fab fa-linkedin-in"></i></a>
-                            
+                            <a href="https://www.linkedin.com/in/sarveshwarm/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://sarveshwarmandal.com" target="_blank"><i class="fas fa-globe"></i></a>
                         </div>
                     </div>
                     <div class="member-info">
@@ -605,6 +660,42 @@
         </div>
     </div>
 
+    <!-- ========== CASE STUDIES SECTION ========== -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <div class="section-header reveal reveal-top">
+                <div class="section-subtitle">Proven Results</div>
+                <h2>Success <span class="highlight">Stories</span></h2>
+            </div>
+            <div class="case-grid">
+                <div class="case-card reveal reveal-bottom" data-delay="0">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Data Analytics" loading="lazy">
+                    <div class="case-content">
+                        <h3>Global Logistics Co.</h3>
+                        <p style="color:#ddd; font-size:0.9rem; margin-bottom:0;">AI-Driven Route Optimization</p>
+                        <div class="case-stat">35% Cost Reduction</div>
+                    </div>
+                </div>
+                <div class="case-card reveal reveal-bottom" data-delay="0.2">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&fit=crop" alt="Cloud Migration" loading="lazy">
+                    <div class="case-content">
+                        <h3>FinServe Bank</h3>
+                        <p style="color:#ddd; font-size:0.9rem; margin-bottom:0;">Legacy to Cloud Migration</p>
+                        <div class="case-stat">Zero Downtime</div>
+                    </div>
+                </div>
+                <div class="case-card reveal reveal-bottom" data-delay="0.4">
+                    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=600&h=400&fit=crop" alt="Automation" loading="lazy">
+                    <div class="case-content">
+                        <h3>RetailX Ecommerce</h3>
+                        <p style="color:#ddd; font-size:0.9rem; margin-bottom:0;">Intelligent Support Bot</p>
+                        <div class="case-stat">80% Deflection Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== PRODUCT SHOWCASE SECTION ========== -->
     <section class="showcase" id="showcase">
         <div class="container">
@@ -789,6 +880,66 @@
         </div>
     </div>
 
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal reveal-top">
+                <div class="section-subtitle">Client Success</div>
+                <h2>What Our <span class="highlight">Partners Say</span></h2>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card glass-card reveal reveal-bottom" data-delay="0">
+                    <p class="testi-text">"Optivra transformed our data infrastructure, leading to a 40% reduction in reporting time. Their team is exceptional."</p>
+                    <div class="testi-author">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Client" loading="lazy">
+                        <div>
+                            <h4 style="margin:0;">John Doe</h4>
+                            <span style="color:var(--gold); font-size:0.85rem;">CTO, FinTech Corp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card glass-card reveal reveal-bottom" data-delay="0.2">
+                    <p class="testi-text">"The AI automation tools implemented by Optivra completely revolutionized how we handle customer support."</p>
+                    <div class="testi-author">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Smith&background=random" alt="Client" loading="lazy">
+                        <div>
+                            <h4 style="margin:0;">Sarah Smith</h4>
+                            <span style="color:var(--gold); font-size:0.85rem;">VP Operations, RetailX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INSIGHTS & BLOG ========== -->
+    <section class="insights" id="insights">
+        <div class="container">
+            <div class="section-header reveal reveal-top">
+                <div class="section-subtitle">Thought Leadership</div>
+                <h2>Latest <span class="highlight">Insights</span></h2>
+            </div>
+            <div class="case-grid">
+                <div class="insight-card reveal reveal-bottom" data-delay="0">
+                    <div class="glass-card">
+                        <div class="insight-date">Oct 12, 2026</div>
+                        <h3>The Future of Generative AI in Enterprise</h3>
+                        <p style="margin:1rem 0; color:#ccc;">Discover how leading companies are leveraging LLMs to optimize internal workflows.</p>
+                        <a href="#" style="color:var(--gold); text-decoration:none; font-weight:600; margin-top:auto;">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="insight-card reveal reveal-bottom" data-delay="0.2">
+                    <div class="glass-card">
+                        <div class="insight-date">Sep 28, 2026</div>
+                        <h3>Migrating to Cloud: A CTO's Playbook</h3>
+                        <p style="margin:1rem 0; color:#ccc;">A step-by-step guide to modernizing your application stack without downtime.</p>
+                        <a href="#" style="color:var(--gold); text-decoration:none; font-weight:600; margin-top:auto;">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== COMMUNITY SECTION ========== -->
     <section class="community" id="community">
         <div class="community-bg">
@@ -900,11 +1051,12 @@
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="technology-consulting.html">Technology Consulting</a></li>
-                    <li><a href="ai-machine-learning.html">AI & Machine Learning</a></li>
-                    <li><a href="data-science.html">Data Science & Analytics</a></li>
-                    <li><a href="full-stack-development.html">Full-Stack Development</a></li>
-                    <li><a href="cloud-automation.html">Cloud & Automation</a></li>
+                    <li><a href="#">Strategy & Consulting</a></li>
+                    <li><a href="#">Application Development</a></li>
+                    <li><a href="#">DevOps & Performance</a></li>
+                    <li><a href="#">Data & Analytics</a></li>
+                    <li><a href="#">Artificial Intelligence</a></li>
+                    <li><a href="#">Cloud & Modernization</a></li>
                 </ul>
             </div>
             <div class="footer-col">

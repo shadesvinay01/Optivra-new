@@ -180,6 +180,73 @@ nav.scrolled {
     width: 100%;
 }
 
+/* ========== DROPDOWN MENU ========== */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    gap: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    width: max-content;
+    pointer-events: none;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-col h4 {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.dropdown-col h4:first-child {
+    margin-top: 0;
+}
+
+.dropdown-col a {
+    display: block !important;
+    color: var(--dark-light) !important;
+    font-size: 0.85rem !important;
+    padding: 6px 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+.dropdown-col a::after {
+    display: none !important;
+}
+
+.dropdown-col a:hover {
+    color: var(--gold) !important;
+    padding-left: 8px !important;
+}
+
 .contact-btn {
     background: var(--gradient);
     padding: 0.6rem 2rem !important;
@@ -2856,4 +2923,157 @@ a.showcase-card {
         justify-content: center;
     }
 }
+}
 
+/* ========== CONSULTANCY ENHANCEMENTS ========== */
+
+/* Dark Glassmorphism */
+.glass-card {
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 161, 101, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(200, 161, 101, 0.1);
+    border-color: rgba(200, 161, 101, 0.3);
+}
+
+/* Metallic Glow */
+.btn-glow {
+    position: relative;
+    z-index: 1;
+}
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: var(--gradient);
+    z-index: -1;
+    border-radius: inherit;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.btn-glow:hover::before {
+    opacity: 0.6;
+}
+
+/* Logos Section */
+.client-logos {
+    padding: 4rem 0;
+    background: var(--dark-light);
+    overflow: hidden;
+}
+.logo-track {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    animation: scrollLogos 20s linear infinite;
+    width: max-content;
+}
+.logo-track img {
+    height: 40px;
+    filter: grayscale(100%) opacity(0.6);
+    transition: filter 0.3s;
+}
+.logo-track img:hover {
+    filter: grayscale(0%) opacity(1);
+}
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Case Studies */
+.case-studies {
+    padding: 6rem 0;
+    background: var(--light);
+}
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.case-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.case-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.case-card:hover img {
+    transform: scale(1.05);
+}
+.case-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.8) 50%, transparent 100%);
+}
+.case-content h3 {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+.case-stat {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 6rem 0;
+    background: var(--dark);
+    text-align: center;
+}
+.testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+.testi-card {
+    padding: 2.5rem;
+    border-left: 3px solid var(--gold);
+}
+.testi-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.8);
+}
+.testi-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.testi-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Insights */
+.insights {
+    padding: 6rem 0;
+    background: var(--light);
+}
+.insight-date {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
