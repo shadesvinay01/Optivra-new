@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #000000;
+  --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;
-  --color-primary: #D4AF37; /* Metallic Gold */
+  --color-primary: #00E5FF; /* Cyan Accent */
+  --color-secondary: #7C3AED; /* Purple Accent */
   --color-accent: #FFFFFF;
   --color-text: #FFFFFF;
 
@@ -16,7 +17,7 @@
 }
 
 :root {
-  --background: #000000;
+  --background: #0A0A0A;
   --foreground: #FFFFFF;
 }
 
@@ -41,6 +42,6 @@ body {
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00E5FF] to-[#7C3AED];
   }
 }

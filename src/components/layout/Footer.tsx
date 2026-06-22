@@ -6,10 +6,10 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-3xl font-serif tracking-widest text-white mb-6 block uppercase">
+            <Link href="/" className="text-3xl font-sans tracking-widest text-white mb-6 block uppercase">
               Optivra<span className="text-primary">.</span>
             </Link>
-            <p className="text-gray-400 max-w-sm mb-6 font-serif italic">
+            <p className="text-gray-400 max-w-sm mb-6 font-sans italic">
               Executive-tier AI consulting. We engineer intelligent systems that automate operations and accelerate growth for industry leaders.
             </p>
           </div>

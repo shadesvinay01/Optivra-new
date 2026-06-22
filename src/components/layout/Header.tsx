@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
       <div className="container mx-auto px-6 h-24 flex items-center justify-between">
-        <Link href="#home" className="text-2xl font-serif font-bold tracking-widest text-white uppercase relative z-[60]">
+        <Link href="#home" className="text-2xl font-sans font-bold tracking-widest text-white uppercase relative z-[60]">
           Optivra<span className="text-primary">.</span>
         </Link>
         
@@ -60,7 +60,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 bg-black z-50 flex flex-col pt-32 px-6 h-screen overflow-y-auto">
-          <nav className="flex flex-col gap-8 text-lg font-serif font-bold text-white uppercase tracking-widest">
+          <nav className="flex flex-col gap-8 text-lg font-sans font-bold text-white uppercase tracking-widest">
             <Link href="#home" onClick={toggleMenu} className="hover:text-primary transition-colors">Home</Link>
             <Link href="#about" onClick={toggleMenu} className="hover:text-primary transition-colors">About</Link>
             <Link href="#team" onClick={toggleMenu} className="hover:text-primary transition-colors">Team</Link>

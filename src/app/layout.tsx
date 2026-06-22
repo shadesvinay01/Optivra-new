@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://optivra.in'),
@@ -36,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col antialiased selection:bg-primary/30 selection:text-white bg-[#000000] text-white`}>
+      <body className={`${inter.variable} font-sans min-h-screen flex flex-col antialiased selection:bg-primary/30 selection:text-white bg-[#0A0A0A] text-white`}>
         <Header />
         <main className="flex-1 mt-24">
           {children}

@@ -12,6 +12,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -36,17 +37,47 @@ export default function Home() {
         {/* Pitch Black Void Background */}
         <div className="absolute inset-0 bg-[#020202] -z-20" />
         
-        {/* Massive Central Optical Flare / Black Hole Effect */}
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] opacity-40 -z-10 pointer-events-none"
-          style={{
-            background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212,175,55,0.1) 60deg, transparent 120deg, rgba(212,175,55,0.05) 180deg, transparent 240deg, rgba(212,175,55,0.1) 300deg, transparent 360deg)'
-          }}
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -z-10 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-black rounded-full blur-[20px] -z-10 pointer-events-none" />
+        {/* AI Ecosystem Node Network Background */}
+        <div className="absolute inset-0 z-0 opacity-40">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.1" />
+                <stop offset="50%" stopColor="#7C3AED" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#00E5FF" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+            {/* Neural Lines */}
+            <motion.path d="M 100 200 Q 300 100 500 400 T 900 300" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+            <motion.path d="M 800 100 Q 600 300 700 600 T 200 700" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+            <motion.path d="M 300 800 Q 500 500 800 500 T 1200 400" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+          </svg>
+          
+          {/* Floating Nodes */}
+          {[
+            { top: "20%", left: "15%", label: "AI Core" },
+            { top: "60%", left: "10%", label: "LLMs" },
+            { top: "30%", left: "80%", label: "Data Pipelines" },
+            { top: "70%", left: "85%", label: "Computer Vision" },
+            { top: "15%", left: "50%", label: "Cloud Infra" },
+            { top: "85%", left: "40%", label: "Automation Flows" },
+          ].map((node, i) => (
+            <motion.div 
+              key={i}
+              className="absolute hidden md:flex items-center gap-2"
+              style={{ top: node.top, left: node.left }}
+              animate={{ y: [0, -15, 0], opacity: [0.3, 0.7, 0.3] }}
+              transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_var(--color-primary)]" />
+              <span className="text-[10px] uppercase tracking-widest text-primary font-bold bg-black/50 px-2 py-1 border border-primary/20 backdrop-blur-sm rounded-sm">{node.label}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Central Core Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center mt-20">
           
@@ -64,16 +95,15 @@ export default function Home() {
             Elite AI & Technology Consulting
           </motion.div>
 
-          {/* Massive Outline Typography */}
+          {/* Massive Typography */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-            className="text-center w-full group cursor-default"
+            className="text-center w-full max-w-5xl z-10"
           >
-            <h1 className="text-[12vw] md:text-[8vw] font-serif font-black tracking-tighter leading-[0.8] mb-6 uppercase">
-              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:0px] group-hover:text-white transition-all duration-700">Architecting</span>
-              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(212,175,55,0.3)] group-hover:[-webkit-text-stroke:0px] group-hover:text-primary transition-all duration-700 delay-75">The Future</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tight leading-[1.1] mb-6 text-white text-balance">
+              Building Intelligent Systems That Drive <span className="text-gradient">Real Business Outcomes.</span>
             </h1>
           </motion.div>
 
@@ -81,37 +111,33 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="text-lg md:text-2xl text-gray-400 mb-16 max-w-3xl text-center font-light leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl text-center font-light leading-relaxed z-10 text-balance"
           >
-            We engineer intelligent systems and absolute market dominance for the world's most ambitious organizations.
+            We help startups and enterprises build AI products, automate operations, and scale technology faster.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto z-10"
           >
             <a 
               href="https://calendly.com/hello-optivra" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="relative overflow-hidden bg-primary text-black px-6 py-4 md:px-10 md:py-5 flex items-center justify-center gap-4 hover:bg-white hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all duration-500 font-bold tracking-widest uppercase text-xs md:text-sm group w-full sm:w-auto text-center"
+              className="relative overflow-hidden bg-primary text-black px-8 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 font-bold tracking-widest uppercase text-xs sm:text-sm group w-full sm:w-auto text-center rounded-sm"
             >
-              Initiate Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              Book Free Strategy Call
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
-            <div className="flex items-center gap-4 text-left bg-black/50 border border-white/5 px-6 py-4 md:px-8 md:py-4 backdrop-blur-sm w-full sm:w-auto justify-center sm:justify-start">
-              <div className="relative flex items-center justify-center w-3 h-3">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-50 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-              </div>
-              <div>
-                <p className="text-[10px] tracking-widest uppercase text-gray-400 font-bold mb-1">System Status</p>
-                <p className="text-xs md:text-sm text-white font-serif italic">Accepting New Clients</p>
-              </div>
-            </div>
+            <a 
+              href="#portfolio" 
+              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto text-center rounded-sm"
+            >
+              View Case Studies
+            </a>
           </motion.div>
 
         </div>
@@ -131,7 +157,7 @@ export default function Home() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-24 px-12">
               {["GOOGLE", "IBM", "MICROSOFT", "NVIDIA", "META", "AMAZON", "SALESFORCE", "ORACLE"].map((company, idx) => (
-                <div key={idx} className="text-2xl md:text-4xl font-serif font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
+                <div key={idx} className="text-2xl md:text-4xl font-sans font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
                   {company}
                 </div>
               ))}
@@ -140,7 +166,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Stats Section */}
+      {/* Trust Bar Section */}
       <motion.section 
         variants={staggerContainer}
         initial="hidden"
@@ -148,16 +174,19 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         className="container mx-auto px-6 border-b border-white/10 pb-16"
       >
-        <div className="flex flex-wrap justify-center gap-x-24 gap-y-12">
+        <div className="flex flex-wrap justify-center gap-x-16 gap-y-12">
           {[
-            { num: "10+", label: "Years of Experience" },
-            { num: "200+", label: "Projects Delivered" },
-            { num: "50+", label: "Happy Clients" },
-            { num: "20+", label: "Global Specialists" }
+            { value: 200, suffix: "+", label: "Projects Delivered" },
+            { value: 15, suffix: "+", label: "Industries Served" },
+            { value: 50, suffix: "+", label: "AI Models Deployed" },
+            { value: 12, suffix: "", label: "Countries Served" },
+            { value: 10, suffix: "+", label: "Years Experience" }
           ].map((stat, i) => (
-            <motion.div variants={fadeInUp} key={i} className="text-center group">
-              <div className="text-5xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-500">{stat.num}</div>
-              <div className="text-sm tracking-widest uppercase text-gray-500">{stat.label}</div>
+            <motion.div variants={fadeInUp} key={i} className="text-center group min-w-[120px]">
+              <div className="text-4xl md:text-5xl font-sans font-black text-primary mb-2 group-hover:text-white transition-colors duration-500">
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="text-xs tracking-widest uppercase text-gray-500 font-bold">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -173,7 +202,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">We're on a mission to redefine what's <span className="text-primary italic relative inline-block">possible.<div className="absolute bottom-1 left-0 w-full h-0.5 bg-primary/50" /></span></h2>
+            <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">We're on a mission to redefine what's <span className="text-primary italic relative inline-block">possible.<div className="absolute bottom-1 left-0 w-full h-0.5 bg-primary/50" /></span></h2>
             <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
               Optivra is a technology consultancy dedicated to helping businesses unlock the power of AI, machine learning, and modern software solutions. We focus on building intelligent, scalable systems that solve real business problems and create measurable impact.
             </p>
@@ -204,7 +233,7 @@ export default function Home() {
               >
                 <Globe className="w-10 h-10 text-primary mb-4" />
               </motion.div>
-              <h3 className="text-4xl font-serif font-bold text-white mb-1 relative z-10">20+</h3>
+              <h3 className="text-4xl font-sans font-bold text-white mb-1 relative z-10">20+</h3>
               <p className="text-gray-400 text-[10px] tracking-widest uppercase font-bold text-center relative z-10">Global<br/>Specialists</p>
             </div>
 
@@ -258,7 +287,7 @@ export default function Home() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">What We Do</p>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-white">Our <span className="text-gradient italic">Expertise.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-sans font-bold mb-6 text-white">Our <span className="text-gradient italic">Expertise.</span></h2>
         </motion.div>
 
         <motion.div 
@@ -279,7 +308,7 @@ export default function Home() {
             <motion.div variants={fadeInUp} key={i} className="p-10 bg-black hover:bg-primary/5 transition-colors duration-500 group flex flex-col min-h-[250px] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/10 transition-colors" />
               <div className="w-10 h-10 text-primary mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-300 relative z-10">{service.icon}</div>
-              <h3 className="font-serif text-2xl font-bold text-white mb-4 relative z-10">{service.title}</h3>
+              <h3 className="font-sans text-2xl font-bold text-white mb-4 relative z-10">{service.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1 relative z-10">{service.desc}</p>
               <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-4 group-hover:translate-x-0 relative z-10">
                 Learn More <ArrowRight className="w-4 h-4" />
@@ -298,7 +327,7 @@ export default function Home() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Our Process</p>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">How We Deliver <span className="text-primary italic">Excellence.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">How We Deliver <span className="text-primary italic">Excellence.</span></h2>
         </motion.div>
         
         <motion.div 
@@ -316,7 +345,7 @@ export default function Home() {
           ].map((step, i) => (
             <motion.div variants={fadeInUp} key={i} className="border-t border-primary/50 pt-8 relative group">
               <div className="absolute top-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-700" />
-              <span className="text-5xl font-serif text-white/10 mb-4 block group-hover:text-primary/30 transition-colors duration-500">{step.num}</span>
+              <span className="text-5xl font-sans text-white/10 mb-4 block group-hover:text-primary/30 transition-colors duration-500">{step.num}</span>
               <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
             </motion.div>
@@ -333,7 +362,7 @@ export default function Home() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Our Innovations</p>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Funded AI <span className="text-primary italic">Product Room.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Funded AI <span className="text-primary italic">Product Room.</span></h2>
           <p className="text-gray-400 text-lg font-light">Explore our internally funded AI products and projects. Click to learn more or express your interest.</p>
         </motion.div>
         
@@ -353,7 +382,7 @@ export default function Home() {
               <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-[40px] group-hover:bg-primary/20 transition-colors duration-500" />
               <div className="relative z-10">
                 <p className="text-primary text-xs font-bold mb-4 uppercase tracking-[0.2em]">{product.tag}</p>
-                <h3 className="text-2xl font-serif font-bold text-white mb-4 group-hover:text-primary transition-colors">{product.title}</h3>
+                <h3 className="text-2xl font-sans font-bold text-white mb-4 group-hover:text-primary transition-colors">{product.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed font-light">{product.desc}</p>
               </div>
               <div className="mt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-4 group-hover:translate-x-0 cursor-pointer relative z-10">
@@ -375,7 +404,7 @@ export default function Home() {
             className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
           >
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Featured <span className="text-gradient italic">Projects.</span></h2>
+              <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Featured <span className="text-gradient italic">Projects.</span></h2>
               <p className="text-gray-400 text-lg font-light">Explore our diverse portfolio of successfully published websites and state-of-the-art digital applications.</p>
             </div>
           </motion.div>
@@ -402,7 +431,7 @@ export default function Home() {
               >
                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] border-t-transparent border-r-transparent group-hover:border-r-primary/20 transition-all duration-300" />
                 <p className="text-primary text-xs font-bold mb-6 uppercase tracking-[0.2em]">{study.tag}</p>
-                <h3 className="text-2xl font-serif font-bold mb-4 text-white group-hover:text-primary transition-colors">{study.name}</h3>
+                <h3 className="text-2xl font-sans font-bold mb-4 text-white group-hover:text-primary transition-colors">{study.name}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-8 font-light min-h-[5rem]">{study.desc}</p>
                 
                 <div className="pt-8 border-t border-white/10 flex items-center justify-between">
@@ -426,7 +455,7 @@ export default function Home() {
           className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8"
         >
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Minds Behind <span className="text-gradient italic">The Magic.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Minds Behind <span className="text-gradient italic">The Magic.</span></h2>
             <p className="text-gray-400 text-lg font-light">Visionary leaders driving innovation, backed by a global network of 20+ remote specialists.</p>
           </div>
         </motion.div>
@@ -455,7 +484,7 @@ export default function Home() {
                  <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
               
-              <h3 className="text-3xl font-serif font-bold text-white mb-2 relative z-10">{member.name}</h3>
+              <h3 className="text-3xl font-sans font-bold text-white mb-2 relative z-10">{member.name}</h3>
               <p className="text-primary text-xs tracking-widest uppercase font-bold mb-6 relative z-10">{member.role}</p>
               <p className="text-gray-500 text-sm font-light mb-8 relative z-10 flex-1">{member.desc}</p>
               
@@ -495,7 +524,7 @@ export default function Home() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Got Questions?</p>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Frequently Asked <span className="text-primary italic">Questions.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Frequently Asked <span className="text-primary italic">Questions.</span></h2>
           <p className="text-gray-400 text-lg font-light">Everything you need to know about working with Optivra.</p>
         </motion.div>
 
@@ -518,7 +547,7 @@ export default function Home() {
               key={i} 
               className="group border border-white/10 bg-black [&_summary::-webkit-details-marker]:hidden hover:border-primary/50 transition-colors duration-300"
             >
-              <summary className="flex items-center justify-between cursor-pointer p-6 font-serif text-xl text-white font-bold list-none">
+              <summary className="flex items-center justify-between cursor-pointer p-6 font-sans text-xl text-white font-bold list-none">
                 {faq.q}
                 <span className="text-primary transition-transform duration-300 group-open:rotate-180">
                   <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
@@ -546,7 +575,7 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
             
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-white leading-tight">
+              <h2 className="text-4xl md:text-6xl font-sans font-bold mb-6 text-white leading-tight">
                 Ready to <span className="text-gradient italic">Scale?</span>
               </h2>
               <p className="text-lg text-gray-400 mb-10 font-light leading-relaxed">
@@ -580,7 +609,7 @@ export default function Home() {
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
             
-            <h3 className="text-2xl font-serif font-bold text-white mb-2">Direct Inquiry</h3>
+            <h3 className="text-2xl font-sans font-bold text-white mb-2">Direct Inquiry</h3>
             <p className="text-gray-500 text-sm font-light mb-8">Prefer to write to us? Send a direct message to our executive team.</p>
             
             <form className="flex flex-col gap-6">

@@ -12,11 +12,11 @@ export default function PrivacyPolicy() {
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="mb-16 border-b border-white/10 pb-8">
           <p className="text-primary text-xs font-bold uppercase tracking-widest mb-4">Legal</p>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Privacy Policy</h1>
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Privacy Policy</h1>
           <p className="text-gray-500 text-sm">Last Updated: February, 2026</p>
         </div>
 
-        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:font-bold prose-a:text-primary hover:prose-a:text-white prose-a:transition-colors">
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-sans prose-headings:font-bold prose-a:text-primary hover:prose-a:text-white prose-a:transition-colors">
           <h2 className="text-2xl text-white mt-12 mb-4">1. Introduction</h2>
           <p className="text-gray-400 font-light leading-relaxed mb-6">
             Optivra respects the privacy of our users ("user" or "you"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website https://optivra.in or engage with our services.
