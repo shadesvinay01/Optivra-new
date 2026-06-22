@@ -6,6 +6,13 @@
   --color-primary: #D4AF37; /* Metallic Gold */
   --color-accent: #FFFFFF;
   --color-text: #FFFFFF;
+
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 :root {

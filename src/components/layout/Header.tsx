@@ -1,11 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   return (
     <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
       <div className="container mx-auto px-6 h-24 flex items-center justify-between">
-        <Link href="#home" className="text-2xl font-serif font-bold tracking-widest text-white uppercase">
+        <Link href="#home" className="text-2xl font-serif font-bold tracking-widest text-white uppercase relative z-[60]">
           Optivra<span className="text-primary">.</span>
         </Link>
         
@@ -34,7 +41,7 @@ export default function Header() {
           <Link href="#portfolio" className="hover:text-primary transition-colors">Projects</Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <a 
             href="https://calendly.com/hello-optivra" 
             target="_blank" 
@@ -45,10 +52,47 @@ export default function Header() {
           </a>
         </div>
 
-        <button className="lg:hidden text-white">
-          <Menu />
+        <button className="lg:hidden text-white relative z-[60]" onClick={toggleMenu} aria-label="Toggle Menu">
+          {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 bg-black z-50 flex flex-col pt-32 px-6 h-screen overflow-y-auto">
+          <nav className="flex flex-col gap-8 text-lg font-serif font-bold text-white uppercase tracking-widest">
+            <Link href="#home" onClick={toggleMenu} className="hover:text-primary transition-colors">Home</Link>
+            <Link href="#about" onClick={toggleMenu} className="hover:text-primary transition-colors">About</Link>
+            <Link href="#team" onClick={toggleMenu} className="hover:text-primary transition-colors">Team</Link>
+            <div className="flex flex-col gap-4">
+              <span className="text-gray-500">Services</span>
+              <div className="flex flex-col gap-4 pl-4 text-sm font-sans text-gray-300 font-light tracking-normal">
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">Strategy & Consulting</Link>
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">App Development</Link>
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">DevOps & Performance</Link>
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">Data & Analytics</Link>
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">Artificial Intelligence</Link>
+                <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">Cloud & Modernization</Link>
+              </div>
+            </div>
+            <Link href="#products" onClick={toggleMenu} className="hover:text-primary transition-colors">Products</Link>
+            <Link href="#faq" onClick={toggleMenu} className="hover:text-primary transition-colors">FAQ</Link>
+            <Link href="#portfolio" onClick={toggleMenu} className="hover:text-primary transition-colors">Projects</Link>
+          </nav>
+          
+          <div className="mt-12 mb-8">
+            <a 
+              href="https://calendly.com/hello-optivra" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={toggleMenu}
+              className="w-full block text-center px-6 py-4 bg-primary text-black font-bold text-xs tracking-widest uppercase hover:bg-white transition-colors"
+            >
+              Book Consultation
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
