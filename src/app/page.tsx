@@ -38,61 +38,17 @@ export default function Home() {
         {/* Ultra-Cinematic Hero Section */}
         <section className="relative pt-48 pb-24 overflow-hidden flex flex-col items-center justify-center border-b border-white/10" id="home">
           
-          {/* Pitch Black Void Background */}
-          <div className="absolute inset-0 bg-[#020202] -z-20" />
-          
-          {/* AI Ecosystem Node Network Background */}
-          <div className="absolute inset-0 z-0 opacity-40">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.1" />
-                  <stop offset="50%" stopColor="#F3E5AB" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.1" />
-                </linearGradient>
-              </defs>
-              {/* Neural Lines */}
-              <motion.path d="M 100 200 Q 300 100 500 400 T 900 300" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
-              <motion.path d="M 800 100 Q 600 300 700 600 T 200 700" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
-              <motion.path d="M 300 800 Q 500 500 800 500 T 1200 400" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
-            </svg>
-            
-            {/* Floating Nodes */}
-            {[
-              { top: "20%", left: "15%", label: "AI Core" },
-              { top: "60%", left: "10%", label: "LLMs" },
-              { top: "30%", left: "80%", label: "Data Pipelines" },
-              { top: "70%", left: "85%", label: "Computer Vision" },
-              { top: "15%", left: "50%", label: "Cloud Infra" },
-              { top: "85%", left: "40%", label: "Automation Flows" },
-            ].map((node, i) => (
-              <motion.div 
-                key={i}
-                className="absolute hidden md:flex items-center gap-2"
-                style={{ top: node.top, left: node.left }}
-                animate={{ y: [0, -15, 0], opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_var(--color-primary)]" />
-                <span className="text-[10px] uppercase tracking-widest text-primary font-bold bg-black/50 px-2 py-1 border border-primary/20 backdrop-blur-sm rounded-sm">{node.label}</span>
-              </motion.div>
-            ))}
+          {/* High-Resolution Golden Neural Core Background */}
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="/hero-bg.png" 
+              alt="Golden Neural Core AI Structure"
+              fill
+              className="object-cover opacity-60 mix-blend-screen"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#020202] z-10" />
           </div>
-
-          {/* Central Core Glow & Rings */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
-          
-          <motion.div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/20 rounded-full border-dashed pointer-events-none -z-10"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-secondary/10 rounded-full pointer-events-none -z-10"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-          />
 
           {/* Floating Gold Orbs (Neural Dust) */}
           {[
