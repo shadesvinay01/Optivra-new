@@ -10,56 +10,58 @@ export default function Header() {
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
-      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
-        <Link href="#home" className="text-2xl font-sans font-bold tracking-widest text-white uppercase relative z-[60]">
-          Optivra<span className="text-primary">.</span>
-        </Link>
-        
-        <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.2em] font-medium text-gray-400 uppercase">
-          <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
-          <Link href="#about" className="hover:text-primary transition-colors">About</Link>
-          <Link href="#team" className="hover:text-primary transition-colors">Team</Link>
+    <>
+      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
+        <div className="container mx-auto px-6 h-24 flex items-center justify-between">
+          <Link href="#home" className="text-2xl font-sans font-bold tracking-widest text-white uppercase relative z-[60]">
+            Optivra<span className="text-primary">.</span>
+          </Link>
           
-          {/* Dropdown for Services */}
-          <div className="relative group cursor-pointer h-24 flex items-center">
-            <span className="flex items-center gap-1 hover:text-primary transition-colors">
-              Services <ChevronDown className="w-3 h-3" />
-            </span>
-            <div className="absolute top-24 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Strategy & Consulting</Link>
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">App Development</Link>
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">DevOps & Performance</Link>
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Data & Analytics</Link>
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Artificial Intelligence</Link>
-              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Cloud & Modernization</Link>
+          <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.2em] font-medium text-gray-400 uppercase">
+            <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
+            <Link href="#about" className="hover:text-primary transition-colors">About</Link>
+            <Link href="#team" className="hover:text-primary transition-colors">Team</Link>
+            
+            {/* Dropdown for Services */}
+            <div className="relative group cursor-pointer h-24 flex items-center">
+              <span className="flex items-center gap-1 hover:text-primary transition-colors">
+                Services <ChevronDown className="w-3 h-3" />
+              </span>
+              <div className="absolute top-24 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Strategy & Consulting</Link>
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">App Development</Link>
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">DevOps & Performance</Link>
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Data & Analytics</Link>
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Artificial Intelligence</Link>
+                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Cloud & Modernization</Link>
+              </div>
             </div>
+
+            <Link href="#products" className="hover:text-primary transition-colors">Products</Link>
+            <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
+            <Link href="#portfolio" className="hover:text-primary transition-colors">Projects</Link>
+          </nav>
+
+          <div className="hidden lg:flex items-center gap-4">
+            <a 
+              href="https://calendly.com/hello-optivra" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-transparent text-primary border border-primary hover:bg-primary hover:text-black transition-all font-semibold text-xs tracking-widest uppercase"
+            >
+              Book Consultation
+            </a>
           </div>
 
-          <Link href="#products" className="hover:text-primary transition-colors">Products</Link>
-          <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
-          <Link href="#portfolio" className="hover:text-primary transition-colors">Projects</Link>
-        </nav>
-
-        <div className="hidden lg:flex items-center gap-4">
-          <a 
-            href="https://calendly.com/hello-optivra" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-transparent text-primary border border-primary hover:bg-primary hover:text-black transition-all font-semibold text-xs tracking-widest uppercase"
-          >
-            Book Consultation
-          </a>
+          <button className="lg:hidden text-white relative z-[60] p-2" onClick={toggleMenu} aria-label="Toggle Menu">
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-
-        <button className="lg:hidden text-white relative z-[60]" onClick={toggleMenu} aria-label="Toggle Menu">
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black z-50 flex flex-col pt-32 px-6 h-screen overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 bg-black z-40 flex flex-col pt-32 px-6 h-screen overflow-y-auto">
           <nav className="flex flex-col gap-8 text-lg font-sans font-bold text-white uppercase tracking-widest">
             <Link href="#home" onClick={toggleMenu} className="hover:text-primary transition-colors">Home</Link>
             <Link href="#about" onClick={toggleMenu} className="hover:text-primary transition-colors">About</Link>
@@ -93,6 +95,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

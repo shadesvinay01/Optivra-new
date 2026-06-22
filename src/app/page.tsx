@@ -149,17 +149,17 @@ export default function Home() {
       </section>
 
       {/* Trusted By Marquee */}
-      <div className="w-full border-b border-white/10 bg-[#020202] py-12 overflow-hidden relative">
-        <div className="absolute left-0 top-0 w-32 md:w-64 h-full bg-gradient-to-r from-[#020202] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-32 md:w-64 h-full bg-gradient-to-l from-[#020202] to-transparent z-10 pointer-events-none" />
+      <div className="w-full border-b border-white/10 bg-[#020202] py-6 overflow-hidden relative">
+        <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#020202] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#020202] to-transparent z-10 pointer-events-none" />
         
-        <p className="text-center text-[10px] tracking-widest uppercase text-gray-500 font-bold mb-8">Trusted By Industry Leaders</p>
+        <p className="text-center text-[10px] tracking-widest uppercase text-gray-500 font-bold mb-4">Trusted By Industry Leaders</p>
         
         <div className="flex w-max animate-marquee">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-24 px-12">
+            <div key={i} className="flex items-center gap-16 px-8">
               {["GOOGLE", "IBM", "MICROSOFT", "NVIDIA", "META", "AMAZON", "SALESFORCE", "ORACLE"].map((company, idx) => (
-                <div key={idx} className="text-2xl md:text-4xl font-sans font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
+                <div key={idx} className="text-xl md:text-2xl font-sans font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
                   {company}
                 </div>
               ))}
