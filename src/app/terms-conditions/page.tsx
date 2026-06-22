@@ -1,0 +1,78 @@
+import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | Optivra",
+  description: "Terms and Conditions for Optivra - AI & Technology Consulting services. Read our legal terms, service agreements, and policies.",
+};
+
+export default function TermsConditions() {
+  return (
+    <div className="min-h-screen bg-black pt-32 pb-20">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <div className="mb-16 border-b border-white/10 pb-8">
+          <p className="text-primary text-xs font-bold uppercase tracking-widest mb-4">Legal</p>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Terms & Conditions</h1>
+          <p className="text-gray-500 text-sm">Last Updated: February, 2026</p>
+        </div>
+
+        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:font-bold prose-a:text-primary hover:prose-a:text-white prose-a:transition-colors">
+          <h2 className="text-2xl text-white mt-12 mb-4">1. Introduction</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-6">
+            Welcome to Optivra ("Company", "we", "our", "us"). These Terms and Conditions ("Terms") govern your use of our website located at https://optivra.in and our software, consultancy, and AI development services. By accessing or using our Services, you agree to be bound by these Terms.
+          </p>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">2. Services</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-4">Optivra provides technology consultancy services, including but not limited to:</p>
+          <ul className="list-disc list-outside ml-6 text-gray-400 font-light leading-relaxed mb-6 space-y-2">
+            <li>AI & Machine Learning Solutions</li>
+            <li>Full-Stack Engineering & Web Development</li>
+            <li>Startup Advisory (MVP/GTM Strategy)</li>
+            <li>Cloud Architecture & DevOps</li>
+            <li>Agentic AI R&D</li>
+          </ul>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">3. Intellectual Property Rights</h2>
+          <ul className="list-disc list-outside ml-6 text-gray-400 font-light leading-relaxed mb-6 space-y-2">
+            <li><strong className="text-white">Our IP:</strong> Unless otherwise indicated, the Site and all source code, databases, functionality, software, website designs, audio, video, text, and graphics on the Site are owned or controlled by us and are protected by copyright and trademark laws.</li>
+            <li><strong className="text-white">Client Work:</strong> Intellectual property rights for custom software developed specifically for a Client will be transferred to the Client upon full payment of agreed fees, subject to the specific terms of the Service Agreement signed with that Client. We retain the right to reuse standard code libraries and generic tools developed during the process.</li>
+          </ul>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">4. User Obligations</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-6">
+            You agree not to use the Site or Services for any unlawful purpose or any purpose prohibited under this clause. You agree not to use the Site in any way that could damage the Site, the Services, or the general business of Optivra.
+          </p>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">5. Payment Terms</h2>
+          <ul className="list-disc list-outside ml-6 text-gray-400 font-light leading-relaxed mb-6 space-y-2">
+            <li>For paid services, terms of payment (milestones, hourly rates, or retainers) will be specified in a separate Statement of Work (SoW) or Service Agreement.</li>
+            <li>Invoices are due within 10 days of receipt. Late payments may incur interest at a rate of 2% per month.</li>
+          </ul>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">6. Limitation of Liability</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-6">
+            To the fullest extent permitted by applicable law, Optivra shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including strictly loss of profits, data, use, or goodwill, arising out of or in connection with your use of the Services. Our total liability for any claim arising out of these Terms shall not exceed the amount paid by you to us for the Service in the six (6) months preceding the event giving rise to the claim.
+          </p>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">7. AI & Experimental Technology Disclaimer</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-6">
+            Some of our Services involve experimental technologies (Artificial Intelligence, Agentic AI). While we strive for accuracy, Optivra does not guarantee that the outputs generated by AI models will be error-free, unbiased, or completely accurate. You accept the inherent risks associated with using AI technologies.
+          </p>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">8. Governing Law</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-6">
+            These Terms shall be governed by and defined following the laws of India. Optivra and yourself irrevocably consent that the courts of Bangalore, Karnataka shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.
+          </p>
+
+          <h2 className="text-2xl text-white mt-12 mb-4">9. Contact Us</h2>
+          <p className="text-gray-400 font-light leading-relaxed mb-4">To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:</p>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-xl">
+            <p className="text-gray-300 font-light leading-relaxed mb-2"><strong className="text-white">Email:</strong> <a href="mailto:hello@optivra.in" className="text-primary hover:text-white transition-colors">hello@optivra.in</a></p>
+            <p className="text-gray-300 font-light leading-relaxed mb-2"><strong className="text-white">Phone:</strong> +91-7439071619, +91-6280179738</p>
+            <p className="text-gray-300 font-light leading-relaxed"><strong className="text-white">Address:</strong> Prestige M.G Road, Bangalore, 560001, India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

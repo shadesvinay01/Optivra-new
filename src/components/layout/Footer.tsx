@@ -38,8 +38,8 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-xs tracking-widest text-gray-600 uppercase">
           <p>&copy; {new Date().getFullYear()} Optivra. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms-conditions" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
