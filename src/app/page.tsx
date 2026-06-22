@@ -33,138 +33,141 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-32 pb-32 bg-black selection:bg-primary/30 selection:text-white overflow-hidden">
       
-      {/* Ultra-Cinematic Hero Section */}
-      <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center border-b border-white/10" id="home">
-        
-        {/* Pitch Black Void Background */}
-        <div className="absolute inset-0 bg-[#020202] -z-20" />
-        
-        {/* AI Ecosystem Node Network Background */}
-        <div className="absolute inset-0 z-0 opacity-40">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#7C3AED" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#00E5FF" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-            {/* Neural Lines */}
-            <motion.path d="M 100 200 Q 300 100 500 400 T 900 300" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
-            <motion.path d="M 800 100 Q 600 300 700 600 T 200 700" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
-            <motion.path d="M 300 800 Q 500 500 800 500 T 1200 400" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
-          </svg>
+      {/* Hero & Marquee Wrapper */}
+      <div className="flex flex-col">
+        {/* Ultra-Cinematic Hero Section */}
+        <section className="relative pt-48 pb-24 overflow-hidden flex flex-col items-center justify-center border-b border-white/10" id="home">
           
-          {/* Floating Nodes */}
-          {[
-            { top: "20%", left: "15%", label: "AI Core" },
-            { top: "60%", left: "10%", label: "LLMs" },
-            { top: "30%", left: "80%", label: "Data Pipelines" },
-            { top: "70%", left: "85%", label: "Computer Vision" },
-            { top: "15%", left: "50%", label: "Cloud Infra" },
-            { top: "85%", left: "40%", label: "Automation Flows" },
-          ].map((node, i) => (
-            <motion.div 
-              key={i}
-              className="absolute hidden md:flex items-center gap-2"
-              style={{ top: node.top, left: node.left }}
-              animate={{ y: [0, -15, 0], opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+          {/* Pitch Black Void Background */}
+          <div className="absolute inset-0 bg-[#020202] -z-20" />
+          
+          {/* AI Ecosystem Node Network Background */}
+          <div className="absolute inset-0 z-0 opacity-40">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.1" />
+                  <stop offset="50%" stopColor="#F3E5AB" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
+              {/* Neural Lines */}
+              <motion.path d="M 100 200 Q 300 100 500 400 T 900 300" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+              <motion.path d="M 800 100 Q 600 300 700 600 T 200 700" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+              <motion.path d="M 300 800 Q 500 500 800 500 T 1200 400" stroke="url(#lineGrad1)" strokeWidth="1" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+            </svg>
+            
+            {/* Floating Nodes */}
+            {[
+              { top: "20%", left: "15%", label: "AI Core" },
+              { top: "60%", left: "10%", label: "LLMs" },
+              { top: "30%", left: "80%", label: "Data Pipelines" },
+              { top: "70%", left: "85%", label: "Computer Vision" },
+              { top: "15%", left: "50%", label: "Cloud Infra" },
+              { top: "85%", left: "40%", label: "Automation Flows" },
+            ].map((node, i) => (
+              <motion.div 
+                key={i}
+                className="absolute hidden md:flex items-center gap-2"
+                style={{ top: node.top, left: node.left }}
+                animate={{ y: [0, -15, 0], opacity: [0.3, 0.7, 0.3] }}
+                transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_var(--color-primary)]" />
+                <span className="text-[10px] uppercase tracking-widest text-primary font-bold bg-black/50 px-2 py-1 border border-primary/20 backdrop-blur-sm rounded-sm">{node.label}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Central Core Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
+          <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center mt-20">
+            
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="inline-flex items-center gap-3 px-6 py-2 border border-primary/20 bg-black/50 backdrop-blur-md text-[10px] tracking-[0.4em] font-medium text-primary uppercase mb-8 shadow-[0_0_30px_rgba(212,175,55,0.15)] rounded-full"
             >
-              <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_var(--color-primary)]" />
-              <span className="text-[10px] uppercase tracking-widest text-primary font-bold bg-black/50 px-2 py-1 border border-primary/20 backdrop-blur-sm rounded-sm">{node.label}</span>
+              <motion.span 
+                animate={{ opacity: [1, 0.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-primary shadow-[0_0_10px_var(--color-primary)] rounded-full"
+              />
+              Elite AI & Technology Consulting
             </motion.div>
-          ))}
-        </div>
 
-        {/* Central Core Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
-
-        <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center mt-20">
-          
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 px-6 py-2 border border-primary/20 bg-black/50 backdrop-blur-md text-[10px] tracking-[0.4em] font-medium text-primary uppercase mb-8 shadow-[0_0_30px_rgba(212,175,55,0.15)] rounded-full"
-          >
-            <motion.span 
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 bg-primary shadow-[0_0_10px_var(--color-primary)] rounded-full"
-            />
-            Elite AI & Technology Consulting
-          </motion.div>
-
-          {/* Massive Typography */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-            className="text-center w-full max-w-5xl z-10"
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tight leading-[1.1] mb-6 text-white text-balance">
-              Building Intelligent Systems That Drive <span className="text-gradient">Real Business Outcomes.</span>
-            </h1>
-          </motion.div>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl text-center font-light leading-relaxed z-10 text-balance"
-          >
-            We help startups and enterprises build AI products, automate operations, and scale technology faster.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto z-10"
-          >
-            <a 
-              href="https://calendly.com/hello-optivra" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="relative overflow-hidden bg-primary text-black px-8 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 font-bold tracking-widest uppercase text-xs sm:text-sm group w-full sm:w-auto text-center rounded-sm"
+            {/* Massive Typography */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+              className="text-center w-full max-w-5xl z-10"
             >
-              Book Free Strategy Call
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tight leading-[1.1] mb-6 text-white text-balance">
+                Building Intelligent Systems That Drive <span className="text-gradient">Real Business Outcomes.</span>
+              </h1>
+            </motion.div>
 
-            <a 
-              href="#portfolio" 
-              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto text-center rounded-sm"
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+              className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl text-center font-light leading-relaxed z-10 text-balance"
             >
-              View Case Studies
-            </a>
-          </motion.div>
+              We help startups and enterprises build AI products, automate operations, and scale technology faster.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto z-10"
+            >
+              <a 
+                href="https://calendly.com/hello-optivra" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative overflow-hidden bg-primary text-black px-8 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 font-bold tracking-widest uppercase text-xs sm:text-sm group w-full sm:w-auto text-center rounded-sm"
+              >
+                Book Free Strategy Call
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
 
-        </div>
-        
-        {/* Bottom Fade */}
-        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
-      </section>
+              <a 
+                href="#portfolio" 
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto text-center rounded-sm"
+              >
+                View Case Studies
+              </a>
+            </motion.div>
 
-      {/* Trusted By Marquee */}
-      <div className="w-full border-b border-white/10 bg-[#020202] py-3 overflow-hidden relative">
-        <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#020202] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#020202] to-transparent z-10 pointer-events-none" />
-        
-        <p className="text-center text-[10px] tracking-widest uppercase text-gray-500 font-bold mb-2">Trusted By Industry Leaders</p>
-        
-        <div className="flex w-max animate-marquee">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-16 px-8">
-              {["GOOGLE", "IBM", "MICROSOFT", "NVIDIA", "META", "AMAZON", "SALESFORCE", "ORACLE"].map((company, idx) => (
-                <div key={idx} className="text-lg md:text-xl font-sans font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
-                  {company}
-                </div>
-              ))}
-            </div>
-          ))}
+          </div>
+          
+          {/* Bottom Fade */}
+          <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
+        </section>
+
+        {/* Trusted By Marquee */}
+        <div className="w-full border-b border-white/10 bg-[#020202] py-3 overflow-hidden relative">
+          <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#020202] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#020202] to-transparent z-10 pointer-events-none" />
+          
+          <p className="text-center text-[10px] tracking-widest uppercase text-gray-500 font-bold mb-2">Trusted By Industry Leaders</p>
+          
+          <div className="flex w-max animate-marquee">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-16 px-8">
+                {["GOOGLE", "IBM", "MICROSOFT", "NVIDIA", "META", "AMAZON", "SALESFORCE", "ORACLE"].map((company, idx) => (
+                  <div key={idx} className="text-lg md:text-xl font-sans font-bold text-white/20 tracking-widest hover:text-white/50 transition-colors duration-500 cursor-default">
+                    {company}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
