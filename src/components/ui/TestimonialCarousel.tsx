@@ -64,11 +64,6 @@ export default function TestimonialCarousel() {
                 "{testimonials[currentIndex].quote}"
               </p>
               <div className="flex flex-col items-center gap-4">
-                <img 
-                  src={testimonials[currentIndex].image} 
-                  alt={testimonials[currentIndex].author} 
-                  className="w-16 h-16 rounded-full border-2 border-primary/50 object-cover"
-                />
                 <div>
                   <h4 className="text-white font-bold tracking-wider">{testimonials[currentIndex].author}</h4>
                   <p className="text-primary text-xs uppercase tracking-[0.2em]">{testimonials[currentIndex].role}</p>
