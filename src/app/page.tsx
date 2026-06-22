@@ -13,6 +13,8 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import FAQSection from "@/components/ui/FAQSection";
+import TestimonialCarousel from "@/components/ui/TestimonialCarousel";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -298,22 +300,69 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10"
         >
           {[
-            { title: "Technology Consulting", desc: "Strategic guidance to align technology with your business goals and maximize ROI.", icon: <Workflow /> },
-            { title: "AI & Machine Learning", desc: "Custom AI solutions that automate processes, generate insights, and drive innovation.", icon: <BrainCircuit /> },
-            { title: "Data Science & Analytics", desc: "Turn raw data into actionable intelligence with advanced analytics.", icon: <BarChart3 /> },
-            { title: "Full-Stack Development", desc: "End-to-end product development from concept to deployment.", icon: <Database /> },
-            { title: "Cloud & Automation", desc: "Scalable cloud infrastructure and intelligent automation.", icon: <Zap /> },
-            { title: "CTO Advisory", desc: "Interim/Fractional CTO services and technical due diligence.", icon: <ShieldCheck /> }
+            { title: "AI Consulting", href: "/ai-consulting", desc: "Strategic enterprise AI adoption roadmaps and feasibility analysis.", icon: <BrainCircuit /> },
+            { title: "AI Agents", href: "/ai-agent-development", desc: "Autonomous agentic workflows for customer support, sales, and internal ops.", icon: <Workflow /> },
+            { title: "Machine Learning", href: "/machine-learning-services", desc: "Predictive modeling, regression, and custom ML architectures.", icon: <Database /> },
+            { title: "Data Science", href: "/data-science-services", desc: "Advanced statistical analysis, Big Data pipelines, and visualization.", icon: <BarChart3 /> },
+            { title: "Computer Vision", href: "/computer-vision-solutions", desc: "Object detection, facial recognition, and automated visual inspection.", icon: <Globe /> },
+            { title: "Generative AI", href: "/generative-ai-development", desc: "Custom LLM fine-tuning, RAG pipelines, and enterprise generative models.", icon: <BrainCircuit /> },
+            { title: "MVP Development", href: "/mvp-development", desc: "Rapid prototyping and minimum viable product engineering for startups.", icon: <Zap /> },
+            { title: "CTO as a Service", href: "/cto-as-a-service", desc: "Fractional technical leadership and architectural due diligence.", icon: <ShieldCheck /> },
+            { title: "Cloud Engineering", href: "/cloud-engineering", desc: "AWS/GCP/Azure infrastructure deployment, scaling, and Kubernetes management.", icon: <Database /> },
+            { title: "Automation Systems", href: "/automation-systems", desc: "RPA and deep API integrations to eliminate manual business workflows.", icon: <Workflow /> }
           ].map((service, i) => (
-            <motion.div variants={fadeInUp} key={i} className="p-10 bg-black hover:bg-primary/5 transition-colors duration-500 group flex flex-col min-h-[250px] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/10 transition-colors" />
-              <div className="w-10 h-10 text-primary mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-300 relative z-10">{service.icon}</div>
-              <h3 className="font-sans text-2xl font-bold text-white mb-4 relative z-10">{service.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1 relative z-10">{service.desc}</p>
-              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-4 group-hover:translate-x-0 relative z-10">
-                Learn More <ArrowRight className="w-4 h-4" />
+            <Link href={service.href} key={i}>
+              <motion.div variants={fadeInUp} className="p-10 bg-black hover:bg-primary/5 transition-colors duration-500 group flex flex-col min-h-[250px] relative overflow-hidden h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/10 transition-colors" />
+                <div className="w-10 h-10 text-primary mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-300 relative z-10">{service.icon}</div>
+                <h3 className="font-sans text-xl font-bold text-white mb-4 relative z-10">{service.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1 relative z-10">{service.desc}</p>
+                <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-4 group-hover:translate-x-0 relative z-10">
+                  Explore Service <ArrowRight className="w-4 h-4" />
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Why Optivra Comparison */}
+      <section className="container mx-auto px-6 py-16" id="why-us">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">The Optivra Advantage</p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-6 text-white">Optivra vs <span className="text-gray-500">Traditional Agencies.</span></h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto bg-[#050505] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <div className="grid grid-cols-3 bg-white/5 border-b border-white/10 p-6 text-sm md:text-base font-bold uppercase tracking-widest text-center">
+            <div className="text-gray-400 text-left">Feature</div>
+            <div className="text-white">Optivra</div>
+            <div className="text-gray-600">Traditional Agencies</div>
+          </div>
+          {[
+            { feature: "Delivery Speed", optivra: "Days / Weeks (AI Accelerated)", agency: "Months / Years" },
+            { feature: "AI Expertise", optivra: "Native AI/ML Engineers", agency: "Generalist Developers" },
+            { feature: "Architecture", optivra: "Modern Serverless & Edge", agency: "Legacy Monoliths" },
+            { feature: "Cost Structure", optivra: "Value-Based & Transparent", agency: "Bloated Billable Hours" },
+            { feature: "Support Model", optivra: "CTO-Level Partnership", agency: "Ticket-Based Support" }
+          ].map((row, i) => (
+            <div key={i} className="grid grid-cols-3 p-6 border-b border-white/5 last:border-0 items-center text-center text-sm md:text-base hover:bg-white/5 transition-colors">
+              <div className="font-bold text-gray-300 text-left">{row.feature}</div>
+              <div className="text-primary font-bold flex items-center justify-center gap-2">
+                <ShieldCheck className="w-4 h-4 hidden sm:block" /> {row.optivra}
               </div>
-            </motion.div>
+              <div className="text-gray-600 font-light">{row.agency}</div>
+            </div>
           ))}
         </motion.div>
       </section>
@@ -326,31 +375,47 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Our Process</p>
-          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">How We Deliver <span className="text-primary italic">Excellence.</span></h2>
+          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Engineering Pipeline</p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">How We Build <span className="text-primary italic">Intelligence.</span></h2>
         </motion.div>
         
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-8"
-        >
-          {[
-            { num: "01", title: "Consult", desc: "We assess current systems, identify inefficiencies, and build a clear digital roadmap." },
-            { num: "02", title: "Build", desc: "We design and develop scalable technology solutions tailored to business goals." },
-            { num: "03", title: "Automate", desc: "We integrate AI and automation to reduce manual processes and increase accuracy." },
-            { num: "04", title: "Scale", desc: "We provide continuous optimization, analytics, and support to sustain growth." }
-          ].map((step, i) => (
-            <motion.div variants={fadeInUp} key={i} className="border-t border-primary/50 pt-8 relative group">
-              <div className="absolute top-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-700" />
-              <span className="text-5xl font-sans text-white/10 mb-4 block group-hover:text-primary/30 transition-colors duration-500">{step.num}</span>
-              <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Central Line */}
+          <div className="absolute top-0 bottom-0 left-[28px] md:left-1/2 w-px bg-white/10 md:-translate-x-1/2 hidden sm:block" />
+          
+          <div className="space-y-12">
+            {[
+              { title: "Discovery", desc: "Deep-dive into your business operations, data availability, and pain points." },
+              { title: "Strategy", desc: "Develop a high-ROI roadmap mapping AI use cases to business outcomes." },
+              { title: "Architecture", desc: "Design a scalable, secure, and future-proof cloud & data infrastructure." },
+              { title: "Development", desc: "Agile engineering of ML models, LLM pipelines, and automation scripts." },
+              { title: "Deployment", desc: "Seamless integration into your existing systems with zero downtime." },
+              { title: "Scale", desc: "Continuous monitoring, model retraining, and feature expansion." }
+            ].map((step, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.1 }}
+                className={`relative flex flex-col sm:flex-row items-center gap-8 ${i % 2 === 0 ? "sm:flex-row-reverse" : ""}`}
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-[28px] md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black border-2 border-primary z-10 hidden sm:block shadow-[0_0_15px_var(--color-primary)]" />
+                
+                {/* Content Box */}
+                <div className={`w-full sm:w-1/2 flex ${i % 2 === 0 ? "justify-start" : "justify-end"}`}>
+                  <div className={`bg-[#050505] border border-white/10 p-6 rounded-xl shadow-xl w-full sm:w-[90%] md:w-[80%] hover:border-primary/50 transition-colors group relative overflow-hidden text-left ${i % 2 === 0 ? "sm:text-left" : "sm:text-right"}`}>
+                    <div className={`absolute top-0 w-32 h-32 bg-primary/5 rounded-full blur-[40px] group-hover:bg-primary/10 transition-colors ${i % 2 === 0 ? "right-0" : "left-0"}`} />
+                    <span className="text-primary text-xs font-bold uppercase tracking-widest block mb-2">Phase 0{i + 1}</span>
+                    <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed font-light">{step.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Product Showcase Section */}
@@ -394,7 +459,7 @@ export default function Home() {
       </section>
 
       {/* Case Studies / Projects */}
-      <section id="portfolio" className="bg-[#050505] py-32 border-y border-white/10 relative">
+      <section id="case-studies" className="bg-[#050505] py-32 border-y border-white/10 relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="container mx-auto px-6">
           <motion.div 
@@ -403,10 +468,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
           >
-            <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Featured <span className="text-gradient italic">Projects.</span></h2>
-              <p className="text-gray-400 text-lg font-light">Explore our diverse portfolio of successfully published websites and state-of-the-art digital applications.</p>
+            <div className="max-w-3xl">
+              <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Proven Results</p>
+              <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">Enterprise <span className="text-gray-500">Case Studies.</span></h2>
+              <p className="text-gray-400 text-lg font-light">Real-world AI implementations that drove measurable ROI, efficiency, and market dominance for our clients.</p>
             </div>
+            <a href="/case-studies" className="hidden md:flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold hover:text-white transition-colors group">
+              View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </motion.div>
 
           <motion.div 
@@ -414,33 +483,89 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
             {[
-              { name: "The Shadow Agent", link: "https://theshadowagent.com", tag: "AI Assistant", desc: "Secure, offline AI desktop assistant running entirely on-device (via Ollama). Automates daily workflows with zero cloud exposure." },
-              { name: "UnicornXMedia", link: "https://unicornxmedia.com", tag: "Founder Branding", desc: "Premium credibility platform helping founders gain authority through features across 500+ top media sites." },
-              { name: "Rosebuddy", link: "https://rosebuddy.in", tag: "Emotional Support", desc: "Confidential, real-time voice and video session platform connecting users with professional listeners." },
-              { name: "Vindex Protocol", link: "https://vindexprotocol.com", tag: "Web3 / Fintech", desc: "Decentralized open-source anti-fraud and income protection protocol safeguarding individuals." },
-              { name: "BhaloGo", link: "https://bhalogo.com", tag: "On-Demand Logistics", desc: "Hyperlocal 60-minute delivery service operating in Agartala, providing ultra-fast logistics." },
-              { name: "Brutally Honest", link: "https://brutallyhonest.xyz", tag: "AI Startup Roaster", desc: "Raw, AI-driven critique engine analyzing business ideas for logical fallacies and structural weaknesses." }
+              {
+                client: "Global Logistics Firm",
+                tag: "Computer Vision",
+                problem: "Manual package sorting caused 12% error rate and delayed shipping.",
+                solution: "Deployed a custom Edge AI vision system to scan and route packages in real-time.",
+                tech: "PyTorch, CUDA, AWS IoT, React",
+                metric1: "+40%", metric1Label: "Processing Speed",
+                metric2: "99.9%", metric2Label: "Accuracy Rate"
+              },
+              {
+                client: "Healthcare Provider",
+                tag: "Generative AI",
+                problem: "Doctors spent 3+ hours daily on medical transcription and EHR data entry.",
+                solution: "Built a HIPAA-compliant medical LLM agent for automated clinical note generation.",
+                tech: "Llama 3, LangChain, Azure Health",
+                metric1: "3.5 hrs", metric1Label: "Saved Per Day",
+                metric2: "-60%", metric2Label: "Admin Costs"
+              },
+              {
+                client: "Fintech Startup",
+                tag: "Machine Learning",
+                problem: "Legacy fraud detection rules were blocking 15% of legitimate transactions.",
+                solution: "Engineered an anomaly detection ML model using behavioral biometrics.",
+                tech: "XGBoost, Python, GCP Vertex AI",
+                metric1: "85%", metric1Label: "Fraud Prevented",
+                metric2: "+12%", metric2Label: "Revenue Lift"
+              },
+              {
+                client: "E-Commerce Brand",
+                tag: "AI Agents",
+                problem: "High customer support volume leading to 24-hour response times.",
+                solution: "Deployed autonomous RAG agents capable of resolving 70% of tickets instantly.",
+                tech: "OpenAI, Pinecone, Next.js",
+                metric1: "< 2 mins", metric1Label: "Response Time",
+                metric2: "70%", metric2Label: "Deflection Rate"
+              }
             ].map((study, i) => (
-              <motion.a 
+              <motion.div 
                 variants={fadeInUp}
-                href={study.link} target="_blank" rel="noopener noreferrer" key={i} 
-                className="group cursor-pointer border border-white/10 bg-black p-8 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] transition-all duration-500 block relative overflow-hidden"
+                key={i} 
+                className="group border border-white/10 bg-black p-8 md:p-10 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.05)] transition-all duration-500 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] border-t-transparent border-r-transparent group-hover:border-r-primary/20 transition-all duration-300" />
-                <p className="text-primary text-xs font-bold mb-6 uppercase tracking-[0.2em]">{study.tag}</p>
-                <h3 className="text-2xl font-sans font-bold mb-4 text-white group-hover:text-primary transition-colors">{study.name}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-8 font-light min-h-[5rem]">{study.desc}</p>
                 
-                <div className="pt-8 border-t border-white/10 flex items-center justify-between">
-                   <div className="text-white text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-                    Visit Website
+                <div className="flex justify-between items-start mb-8">
+                  <div>
+                    <p className="text-primary text-xs font-bold mb-2 uppercase tracking-[0.2em]">{study.tag}</p>
+                    <h3 className="text-2xl font-sans font-bold text-white">{study.client}</h3>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
-              </motion.a>
+
+                <div className="space-y-6 mb-8">
+                  <div>
+                    <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2">The Problem</h4>
+                    <p className="text-gray-300 text-sm font-light leading-relaxed">{study.problem}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2">Our Solution</h4>
+                    <p className="text-gray-300 text-sm font-light leading-relaxed">{study.solution}</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/10 mb-8">
+                  <div>
+                    <div className="text-3xl font-black text-primary mb-1">{study.metric1}</div>
+                    <div className="text-[10px] tracking-widest uppercase text-gray-500 font-bold">{study.metric1Label}</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-black text-primary mb-1">{study.metric2}</div>
+                    <div className="text-[10px] tracking-widest uppercase text-gray-500 font-bold">{study.metric2Label}</div>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <p className="text-[10px] text-gray-500 font-mono">{study.tech}</p>
+                  <Link href={`/case-studies/`} className="text-white text-xs font-bold tracking-widest uppercase flex items-center gap-2 hover:text-primary transition-colors">
+                    Read Case Study <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -515,51 +640,11 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="container mx-auto px-6 py-16 border-t border-white/10 mt-16">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
-          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Got Questions?</p>
-          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Frequently Asked <span className="text-primary italic">Questions.</span></h2>
-          <p className="text-gray-400 text-lg font-light">Everything you need to know about working with Optivra.</p>
-        </motion.div>
+      {/* Testimonials Section */}
+      <TestimonialCarousel />
 
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto space-y-4"
-        >
-          {[
-            { q: "What services does Optivra offer?", a: "We offer AI & Machine Learning consulting, Data Science & Analytics, Full-Stack Development, Cloud Automation, and Technology Strategy. Each solution is tailored to your specific business needs." },
-            { q: "How do you ensure data security?", a: "We follow industry best practices including GDPR compliance, end-to-end encryption, regular security audits, and strict access controls. Your data never leaves secure environments without your explicit consent." },
-            { q: "What industries do you work with?", a: "We work across FinTech, Healthcare, E-commerce, Manufacturing, and Education. Our team has deep domain expertise in each industry, ensuring solutions that are contextually relevant." },
-            { q: "How long does a typical project take?", a: "Project timelines vary based on scope. A simple AI integration might take 4-6 weeks, while enterprise-scale transformations can span 3-6 months. We provide detailed timelines during consultation." },
-            { q: "Do you offer ongoing support after project completion?", a: "Absolutely! We offer flexible maintenance and support packages including bug fixes, performance monitoring, security updates, and feature enhancements as your business grows." }
-          ].map((faq, i) => (
-            <motion.details 
-              variants={fadeInUp}
-              key={i} 
-              className="group border border-white/10 bg-black [&_summary::-webkit-details-marker]:hidden hover:border-primary/50 transition-colors duration-300"
-            >
-              <summary className="flex items-center justify-between cursor-pointer p-6 font-sans text-xl text-white font-bold list-none">
-                {faq.q}
-                <span className="text-primary transition-transform duration-300 group-open:rotate-180">
-                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                </span>
-              </summary>
-              <div className="p-6 pt-0 text-gray-400 font-light text-sm leading-relaxed border-t border-white/5 mt-2">
-                {faq.a}
-              </div>
-            </motion.details>
-          ))}
-        </motion.div>
-      </section>
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Lead Generation CTA & Contact Form */}
       <section id="contact" className="container mx-auto px-6 pt-16">
