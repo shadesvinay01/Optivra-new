@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #F9FAFB;
-  --color-foreground: #111827;
-  --color-primary: #3B82F6;
-  --color-accent: #EC4899;
-  --color-text: #111827;
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+  --color-primary: #D4AF37; /* Metallic Gold */
+  --color-accent: #FFFFFF;
+  --color-text: #FFFFFF;
 }
 
 :root {
-  --background: #F9FAFB;
-  --foreground: #111827;
+  --background: #000000;
+  --foreground: #FFFFFF;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
@@ -25,11 +25,15 @@ body {
     text-wrap: balance;
   }
   
+  .font-serif {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+
   .glass-card {
-    @apply bg-white/70 border border-white/40 backdrop-blur-xl shadow-lg shadow-black/5;
+    @apply bg-[#050505] border border-white/10 shadow-2xl;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC];
   }
 }

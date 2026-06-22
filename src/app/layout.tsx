@@ -1,20 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Optivra | Premium AI Consulting & Product Engineering",
-  description: "Transform your business with AI-powered solutions. Optivra designs, develops and deploys intelligent systems that automate operations and accelerate growth.",
-  keywords: ["AI Consulting India", "Machine Learning Company", "AI Development Services", "AI Automation Solutions", "Data Science Consulting", "Generative AI Development"],
+  metadataBase: new URL('https://optivra.in'),
+  title: "Optivra | Elite AI Consulting & Strategy",
+  description: "Executive-tier AI consulting. We design and deploy intelligent systems that automate operations and accelerate growth for industry leaders.",
+  keywords: ["Enterprise AI Consulting", "Executive Tech Strategy", "AI Board Advisory", "Machine Learning Systems"],
   openGraph: {
     title: "Optivra | Elite AI Consulting",
-    description: "Building Intelligent Systems That Drive Business Growth",
+    description: "Executive-tier AI consulting and intelligent systems.",
     type: "website",
+    url: "https://optivra.in",
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Optivra | Elite AI Consulting",
+    description: "Executive-tier AI consulting and intelligent systems.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({
@@ -24,9 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen flex flex-col antialiased selection:bg-primary/20 text-gray-900 bg-[#F9FAFB]`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col antialiased selection:bg-primary/30 selection:text-white bg-[#000000] text-white`}>
         <Header />
-        <main className="flex-1 mt-20">
+        <main className="flex-1 mt-24">
           {children}
         </main>
         <Footer />

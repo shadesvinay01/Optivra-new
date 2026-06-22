@@ -1,28 +1,51 @@
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 w-full z-50 glass-card border-b border-white/40">
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold tracking-tighter text-gray-900">
-          OPTIVRA<span className="text-primary">.</span>
+    <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
+      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
+        <Link href="#home" className="text-2xl font-serif font-bold tracking-widest text-white uppercase">
+          Optivra<span className="text-primary">.</span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <Link href="#services" className="hover:text-primary transition-colors">Services</Link>
-          <Link href="#portfolio" className="hover:text-primary transition-colors">Case Studies</Link>
-          <Link href="#insights" className="hover:text-primary transition-colors">Insights</Link>
+        <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.2em] font-medium text-gray-400 uppercase">
+          <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
           <Link href="#about" className="hover:text-primary transition-colors">About</Link>
+          <Link href="#team" className="hover:text-primary transition-colors">Team</Link>
+          
+          {/* Dropdown for Services */}
+          <div className="relative group cursor-pointer h-24 flex items-center">
+            <span className="flex items-center gap-1 hover:text-primary transition-colors">
+              Services <ChevronDown className="w-3 h-3" />
+            </span>
+            <div className="absolute top-24 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Strategy & Consulting</Link>
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">App Development</Link>
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">DevOps & Performance</Link>
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Data & Analytics</Link>
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Artificial Intelligence</Link>
+              <Link href="#services" className="px-6 hover:text-primary transition-colors block">Cloud & Modernization</Link>
+            </div>
+          </div>
+
+          <Link href="#products" className="hover:text-primary transition-colors">Products</Link>
+          <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
+          <Link href="#portfolio" className="hover:text-primary transition-colors">Projects</Link>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link href="#contact" className="px-5 py-2.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-white transition-all font-semibold text-sm shadow-sm">
-            Book Strategy Call
-          </Link>
+          <a 
+            href="https://calendly.com/hello-optivra" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-transparent text-primary border border-primary hover:bg-primary hover:text-black transition-all font-semibold text-xs tracking-widest uppercase"
+          >
+            Book Consultation
+          </a>
         </div>
 
-        <button className="md:hidden text-gray-900">
+        <button className="lg:hidden text-white">
           <Menu />
         </button>
       </div>
