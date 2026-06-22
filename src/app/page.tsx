@@ -175,15 +175,15 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="relative overflow-hidden bg-primary text-black px-8 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 font-bold tracking-widest uppercase text-xs sm:text-sm group w-full sm:w-auto text-center rounded-sm"
               >
-                Book Free Strategy Call
+                Book Free AI Strategy Call
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
               <a 
-                href="#portfolio" 
+                href="#contact" 
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto text-center rounded-sm"
               >
-                View Case Studies
+                Get Technical Audit
               </a>
             </motion.div>
 
@@ -713,15 +713,26 @@ export default function Home() {
                 Schedule a confidential strategy session with our partners to discuss your organization's AI readiness, engineering challenges, and integration roadmap.
               </p>
               
-              <a 
-                href="https://calendly.com/hello-optivra" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 px-8 py-5 bg-primary text-black font-bold hover:bg-white hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500 tracking-widest uppercase text-xs group/btn mb-10"
-              >
-                Book via Calendly
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <a 
+                  href="https://calendly.com/hello-optivra" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-8 py-5 bg-primary text-black font-bold hover:bg-white hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500 tracking-widest uppercase text-xs group/btn"
+                >
+                  Book Free AI Strategy Call
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+                </a>
+                <a 
+                  href="https://calendly.com/hello-optivra" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-8 py-5 bg-transparent border border-primary/40 text-primary font-bold hover:bg-primary hover:text-black transition-all duration-500 tracking-widest uppercase text-xs group/btn2"
+                >
+                  Schedule Discovery Session
+                  <ArrowRight className="w-4 h-4 group-hover/btn2:translate-x-2 transition-transform" />
+                </a>
+              </div>
               
               <div className="flex flex-wrap items-center gap-6 text-gray-500 text-xs tracking-widest uppercase">
                 <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary" /> Strict NDA</span>

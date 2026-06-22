@@ -18,38 +18,45 @@ export default function Header() {
           </Link>
           
           <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.2em] font-medium text-gray-400 uppercase">
-            <Link href="#home" className="hover:text-primary transition-colors">Home</Link>
-            <Link href="#about" className="hover:text-primary transition-colors">About</Link>
-            <Link href="#team" className="hover:text-primary transition-colors">Team</Link>
+            <Link href="/#home" className="hover:text-primary transition-colors">Home</Link>
+            <Link href="/#about" className="hover:text-primary transition-colors">About</Link>
             
             {/* Dropdown for Services */}
             <div className="relative group cursor-pointer h-20 flex items-center">
               <span className="flex items-center gap-1 hover:text-primary transition-colors">
                 Services <ChevronDown className="w-3 h-3" />
               </span>
-              <div className="absolute top-20 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Strategy & Consulting</Link>
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">App Development</Link>
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">DevOps & Performance</Link>
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Data & Analytics</Link>
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Artificial Intelligence</Link>
-                <Link href="#services" className="px-6 hover:text-primary transition-colors block">Cloud & Modernization</Link>
+              <div className="absolute top-20 left-0 min-w-[220px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-1 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <Link href="/ai-consulting" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">AI Consulting</Link>
+                <Link href="/machine-learning-development" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">Machine Learning</Link>
+                <Link href="/computer-vision" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">Computer Vision</Link>
+                <Link href="/ai-agents" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">AI Agents</Link>
+                <Link href="/data-science" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">Data Science</Link>
+                <Link href="/mvp-development" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">MVP Development</Link>
+                <Link href="/automation" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">Automation</Link>
+                <Link href="/cloud-engineering" className="px-6 py-2 hover:text-primary hover:bg-white/5 transition-colors block">Cloud Engineering</Link>
               </div>
             </div>
 
-            <Link href="#products" className="hover:text-primary transition-colors">Products</Link>
-            <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
-            <Link href="#portfolio" className="hover:text-primary transition-colors">Projects</Link>
+            <Link href="/insights" className="hover:text-primary transition-colors">Insights</Link>
+            <Link href="/#portfolio" className="hover:text-primary transition-colors">Case Studies</Link>
+            <Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/#contact"
+              className="px-5 py-2.5 bg-transparent text-gray-400 border border-white/10 hover:border-primary hover:text-primary transition-all font-semibold text-xs tracking-widest uppercase"
+            >
+              Get Audit
+            </Link>
             <a 
               href="https://calendly.com/hello-optivra" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-transparent text-primary border border-primary hover:bg-primary hover:text-black transition-all font-semibold text-xs tracking-widest uppercase"
+              className="px-5 py-2.5 bg-primary text-black hover:bg-white transition-all font-bold text-xs tracking-widest uppercase"
             >
-              Book Consultation
+              Book Free Call
             </a>
           </div>
 
