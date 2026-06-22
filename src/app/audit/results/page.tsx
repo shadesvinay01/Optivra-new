@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Download, ShieldCheck, Zap, BarChart3, Clock, DollarSign, BrainCircuit, Target, Workflow, Users, Activity } from "lucide-react";
@@ -20,7 +20,7 @@ import {
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function AuditResultsPage() {
+function AuditResultsContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [data, setData] = useState<any>(null);
@@ -302,5 +302,13 @@ export default function AuditResultsPage() {
         {/* --- PDF WRAPPER END --- */}
       </div>
     </div>
+  );
+}
+
+export default function AuditResultsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><div className="w-16 h-16 border-4 border-white/10 border-t-primary rounded-full animate-spin" /></div>}>
+      <AuditResultsContent />
+    </Suspense>
   );
 }
