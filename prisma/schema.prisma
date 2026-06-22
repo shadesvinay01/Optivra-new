@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Audit {
+  id                String   @id @default(cuid())
+  url               String
+  email             String
+  companyName       String?
+  industry          String?
+  totalScore        Int
+  readinessLevel    String
+  categoryScores    String   // Stored as JSON string
+  justifications    String   // Stored as JSON string
+  recommendations   String   // Stored as JSON string
+  roiForecast       String   // Stored as JSON string
+  createdAt         DateTime @default(now())
+}

@@ -45,10 +45,10 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/#contact"
+              href="/audit"
               className="px-5 py-2.5 bg-transparent text-gray-400 border border-white/10 hover:border-primary hover:text-primary transition-all font-semibold text-xs tracking-widest uppercase"
             >
-              Get Audit
+              Get Free Audit
             </Link>
             <a 
               href="https://calendly.com/hello-optivra" 
