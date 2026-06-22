@@ -38,17 +38,65 @@ export default function Home() {
         {/* Ultra-Cinematic Hero Section */}
         <section className="relative pt-48 pb-24 overflow-hidden flex flex-col items-center justify-center border-b border-white/10" id="home">
           
-          {/* High-Resolution Golden Neural Core Background */}
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/hero-bg.png" 
-              alt="Golden Neural Core AI Structure"
-              fill
-              className="object-cover opacity-60 mix-blend-screen"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#020202] z-10" />
+          {/* Pitch Black Void Background */}
+          <div className="absolute inset-0 bg-[#020202] -z-20" />
+          
+          {/* AI Ecosystem Node Network Background */}
+          <div className="absolute inset-0 z-0 opacity-100">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.6" />
+                  <stop offset="50%" stopColor="#FFDF00" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.6" />
+                </linearGradient>
+              </defs>
+              {/* Dense Neural Lines */}
+              <motion.path d="M 0 100 Q 200 300 500 200 T 1000 300" stroke="url(#lineGrad1)" strokeWidth="2" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 0.8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
+              <motion.path d="M 100 800 Q 400 400 700 600 T 1200 200" stroke="url(#lineGrad1)" strokeWidth="3" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 1, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+              <motion.path d="M 300 0 Q 600 500 900 300 T 1400 700" stroke="url(#lineGrad1)" strokeWidth="2" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 0.7, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
+              <motion.path d="M 800 900 Q 500 200 200 500 T -100 400" stroke="url(#lineGrad1)" strokeWidth="4" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 0.9, 0] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+              <motion.path d="M 500 500 Q 800 800 1100 400 T 1600 600" stroke="url(#lineGrad1)" strokeWidth="2" fill="transparent" animate={{ pathLength: [0, 1, 1], opacity: [0, 0.6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+            </svg>
+            
+            {/* Floating Nodes */}
+            {[
+              { top: "20%", left: "15%", label: "AI Core" },
+              { top: "60%", left: "10%", label: "LLMs" },
+              { top: "30%", left: "80%", label: "Data Pipelines" },
+              { top: "70%", left: "85%", label: "Computer Vision" },
+              { top: "15%", left: "50%", label: "Cloud Infra" },
+              { top: "85%", left: "40%", label: "Automation Flows" },
+              { top: "45%", left: "25%", label: "Neural Nets" },
+              { top: "55%", left: "75%", label: "RAG Systems" },
+            ].map((node, i) => (
+              <motion.div 
+                key={i}
+                className="absolute hidden md:flex items-center gap-2"
+                style={{ top: node.top, left: node.left }}
+                animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3 + i, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_20px_var(--color-primary)]" />
+                <span className="text-xs uppercase tracking-widest text-primary font-bold bg-black/80 px-3 py-1 border border-primary/40 backdrop-blur-md rounded-sm">{node.label}</span>
+              </motion.div>
+            ))}
           </div>
+
+          {/* Central Core Glow & Rings */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/20 rounded-full blur-[150px] -z-10 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[100px] -z-10 pointer-events-none" />
+          
+          <motion.div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-primary/40 rounded-full border-dashed pointer-events-none -z-10 shadow-[0_0_50px_rgba(212,175,55,0.2)]"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-secondary/30 rounded-full pointer-events-none -z-10"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+          />
 
           {/* Floating Gold Orbs (Neural Dust) */}
           {[
@@ -56,11 +104,12 @@ export default function Home() {
             { top: "80%", left: "10%", size: 250, delay: 2 },
             { top: "30%", left: "80%", size: 200, delay: 5 },
             { top: "70%", left: "70%", size: 300, delay: 3 },
-            { top: "50%", left: "50%", size: 100, delay: 1 },
+            { top: "50%", left: "50%", size: 150, delay: 1 },
+            { top: "20%", left: "60%", size: 200, delay: 4 },
           ].map((orb, i) => (
             <motion.div
               key={`orb-${i}`}
-              className="absolute rounded-full bg-primary/20 blur-[60px] -z-10 pointer-events-none"
+              className="absolute rounded-full bg-primary/40 blur-[50px] -z-10 pointer-events-none"
               style={{
                 width: orb.size,
                 height: orb.size,
@@ -68,12 +117,12 @@ export default function Home() {
                 left: orb.left,
               }}
               animate={{
-                x: [0, 50, 0, -50, 0],
-                y: [0, -50, 0, 50, 0],
-                opacity: [0.1, 0.4, 0.1],
-                scale: [1, 1.2, 1],
+                x: [0, 60, 0, -60, 0],
+                y: [0, -60, 0, 60, 0],
+                opacity: [0.2, 0.6, 0.2],
+                scale: [1, 1.3, 1],
               }}
-              transition={{ duration: 15 + i * 2, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
+              transition={{ duration: 12 + i * 2, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
             />
           ))}
 
