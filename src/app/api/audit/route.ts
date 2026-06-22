@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as cheerio from "cheerio";
-import { analyzeWebsiteText } from "@/lib/scoringEngine";
+import { analyzeWebsiteWithAI } from "@/lib/scoringEngine";
 
 export async function POST(req: NextRequest) {
   try {
@@ -45,8 +45,8 @@ export async function POST(req: NextRequest) {
     $("script, style, noscript, iframe").remove();
     const textContent = $("body").text().replace(/\s+/g, " ").trim();
 
-    // 3. Run AI Scoring Engine (Heuristic matching for MVP)
-    const analysisResult = analyzeWebsiteText(targetUrl, html, textContent);
+    // 3. Run AI Scoring Engine (Powered by Google Gemini 2.5)
+    const analysisResult = await analyzeWebsiteWithAI(targetUrl, html, textContent);
 
     // 4. Return success and the data directly
     return NextResponse.json({

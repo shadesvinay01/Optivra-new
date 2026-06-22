@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@google/genai": "^2.9.0",
     "@prisma/client": "5.22.0",
     "cheerio": "^1.2.0",
     "framer-motion": "^12.40.0",
