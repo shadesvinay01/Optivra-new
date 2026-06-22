@@ -38,6 +38,22 @@ export default function Footer() {
               </form>
             </div>
 
+            {/* Careers */}
+            <div className="mb-8 border border-white/10 p-4 bg-[#050505]">
+              <p className="text-[10px] tracking-widest uppercase text-gray-400 font-bold mb-2">
+                Join Our Team
+              </p>
+              <p className="text-xs text-gray-500 mb-3">
+                Interested in joining Optivra? Send us your updated CV or resume.
+              </p>
+              <a
+                href="mailto:hello@optivra.in?subject=Job%20Application%20-%20CV"
+                className="text-primary text-xs hover:text-white transition-colors uppercase tracking-widest font-bold flex items-center gap-2"
+              >
+                Submit Resume →
+              </a>
+            </div>
+
             {/* Contact */}
             <div className="space-y-2 text-sm text-gray-500 font-sans tracking-wide">
               <a
@@ -168,6 +184,11 @@ export default function Footer() {
                 <Link href="/insights" className="hover:text-primary transition-colors">
                   Insights & Research
                 </Link>
+              </li>
+              <li>
+                <a href="mailto:hello@optivra.in?subject=Job%20Application%20-%20CV" className="hover:text-primary transition-colors">
+                  Careers
+                </a>
               </li>
               <li>
                 <a
