@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
 import * as cheerio from "cheerio";
 import { analyzeWebsiteText } from "@/lib/scoringEngine";
-
-const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   try {
@@ -51,25 +48,9 @@ export async function POST(req: NextRequest) {
     // 3. Run AI Scoring Engine (Heuristic matching for MVP)
     const analysisResult = analyzeWebsiteText(targetUrl, html, textContent);
 
-    // 4. Save to Database
-    const auditRecord = await prisma.audit.create({
-      data: {
-        url: targetUrl,
-        email,
-        industry: analysisResult.industry,
-        totalScore: analysisResult.totalScore,
-        readinessLevel: analysisResult.readinessLevel,
-        categoryScores: JSON.stringify(analysisResult.categoryScores),
-        justifications: JSON.stringify(analysisResult.justifications),
-        recommendations: JSON.stringify(analysisResult.recommendations),
-        roiForecast: JSON.stringify(analysisResult.roiForecast),
-      },
-    });
-
-    // 5. Return success and the audit ID to redirect to the results page
+    // 4. Return success and the data directly
     return NextResponse.json({
       success: true,
-      auditId: auditRecord.id,
       data: analysisResult,
     });
   } catch (error: any) {

@@ -21,35 +21,28 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 function AuditResultsContent() {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const reportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!id) {
-      setError("No audit ID provided");
-      setLoading(false);
-      return;
-    }
-
-    const fetchAudit = async () => {
-      try {
-        const res = await fetch(`/api/audit/${id}`);
-        if (!res.ok) throw new Error("Failed to load audit");
-        const json = await res.json();
-        setData(json);
-      } catch (e: any) {
-        setError(e.message);
-      } finally {
+    try {
+      const storedData = sessionStorage.getItem("latestAuditResult");
+      if (!storedData) {
+        setError("No audit data found. Please run a new audit.");
         setLoading(false);
+        return;
       }
-    };
-
-    fetchAudit();
-  }, [id]);
+      
+      const parsedData = JSON.parse(storedData);
+      setData(parsedData);
+    } catch (e: any) {
+      setError("Failed to parse audit results.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   const generatePDF = async () => {
     if (!reportRef.current) return;

@@ -50,8 +50,11 @@ export default function AuditLandingPage() {
         throw new Error(data.error || "Failed to complete audit");
       }
 
+      // Save data locally for the results page to read (bypasses SQLite requirement on Vercel)
+      sessionStorage.setItem("latestAuditResult", JSON.stringify({ ...data.data, url }));
+      
       // Redirect to results page
-      router.push(`/audit/results?id=${data.auditId}`);
+      router.push(`/audit/results`);
     } catch (err: any) {
       clearInterval(interval);
       setError(err.message);
