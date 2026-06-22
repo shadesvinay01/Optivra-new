@@ -45,3 +45,26 @@ body {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB];
   }
 }
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-container {
+    background: white !important;
+    color: black !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .print-container * {
+    color: black !important;
+    border-color: #eee !important;
+  }
+  /* Hide navs, footers, buttons */
+  header, footer, button, .lucide {
+    display: none !important;
+  }
+}

@@ -17,9 +17,6 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-
 function AuditResultsContent() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -44,22 +41,8 @@ function AuditResultsContent() {
     }
   }, []);
 
-  const generatePDF = async () => {
-    if (!reportRef.current) return;
-    try {
-      const canvas = await html2canvas(reportRef.current, { scale: 2, useCORS: true, backgroundColor: "#000000" });
-      const imgData = canvas.toDataURL("image/jpeg", 1.0);
-      const pdf = new jsPDF("p", "pt", "a4");
-      
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      
-      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Optivra_AI_Audit_${data?.companyName || "Report"}.pdf`);
-    } catch (e) {
-      console.error("PDF generation failed", e);
-      alert("Failed to generate PDF. Please try again.");
-    }
+  const generatePDF = () => {
+    window.print();
   };
 
   if (loading) {
