@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
-        <div className="container mx-auto px-6 h-24 flex items-center justify-between">
+        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="#home" className="text-2xl font-sans font-bold tracking-widest text-white uppercase relative z-[60]">
             Optivra<span className="text-primary">.</span>
           </Link>
@@ -23,11 +23,11 @@ export default function Header() {
             <Link href="#team" className="hover:text-primary transition-colors">Team</Link>
             
             {/* Dropdown for Services */}
-            <div className="relative group cursor-pointer h-24 flex items-center">
+            <div className="relative group cursor-pointer h-20 flex items-center">
               <span className="flex items-center gap-1 hover:text-primary transition-colors">
                 Services <ChevronDown className="w-3 h-3" />
               </span>
-              <div className="absolute top-24 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
+              <div className="absolute top-20 left-0 min-w-[200px] bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-4 flex flex-col gap-4 z-50 pointer-events-none group-hover:pointer-events-auto">
                 <Link href="#services" className="px-6 hover:text-primary transition-colors block">Strategy & Consulting</Link>
                 <Link href="#services" className="px-6 hover:text-primary transition-colors block">App Development</Link>
                 <Link href="#services" className="px-6 hover:text-primary transition-colors block">DevOps & Performance</Link>
