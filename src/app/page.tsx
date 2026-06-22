@@ -79,9 +79,47 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Central Core Glow */}
+          {/* Central Core Glow & Rings */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+          
+          <motion.div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/20 rounded-full border-dashed pointer-events-none -z-10"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-secondary/10 rounded-full pointer-events-none -z-10"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
+          />
+
+          {/* Floating Gold Orbs (Neural Dust) */}
+          {[
+            { top: "10%", left: "20%", size: 150, delay: 0 },
+            { top: "80%", left: "10%", size: 250, delay: 2 },
+            { top: "30%", left: "80%", size: 200, delay: 5 },
+            { top: "70%", left: "70%", size: 300, delay: 3 },
+            { top: "50%", left: "50%", size: 100, delay: 1 },
+          ].map((orb, i) => (
+            <motion.div
+              key={`orb-${i}`}
+              className="absolute rounded-full bg-primary/20 blur-[60px] -z-10 pointer-events-none"
+              style={{
+                width: orb.size,
+                height: orb.size,
+                top: orb.top,
+                left: orb.left,
+              }}
+              animate={{
+                x: [0, 50, 0, -50, 0],
+                y: [0, -50, 0, 50, 0],
+                opacity: [0.1, 0.4, 0.1],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{ duration: 15 + i * 2, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
+            />
+          ))}
 
           <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center mt-20">
             
