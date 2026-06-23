@@ -69,6 +69,16 @@ const jsonLd = {
       name: "Optivra",
       url: "https://optivra.in",
       logo: "https://optivra.in/logo.png",
+      founder: [
+        { "@type": "Person", name: "Sarveshwar Mandal", jobTitle: "Chief Executive Officer" },
+        { "@type": "Person", name: "Rohitash Goyal", jobTitle: "Chief Technology Officer" },
+        { "@type": "Person", name: "Mohd. Hidayat", jobTitle: "Chief Marketing Officer" }
+      ],
+      employee: [
+        { "@type": "Person", name: "Sarveshwar Mandal" },
+        { "@type": "Person", name: "Rohitash Goyal" },
+        { "@type": "Person", name: "Mohd. Hidayat" }
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+91-74390-71619",
@@ -105,6 +115,58 @@ const jsonLd = {
         "query-input": "required name=search_term_string",
       },
     },
+    {
+      "@type": "Service",
+      "@id": "https://optivra.in/#service-ai",
+      name: "AI Consulting & Development",
+      provider: { "@id": "https://optivra.in/#organization" },
+      description: "Enterprise AI consulting, custom machine learning models, and autonomous AI agents."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://optivra.in/#service-software",
+      name: "Full-Stack Product Engineering",
+      provider: { "@id": "https://optivra.in/#organization" },
+      description: "End-to-end software development, MVP building, and cloud engineering."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://optivra.in/#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is AI consulting and how can it benefit my business?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "AI consulting involves assessing your current operations, identifying inefficiencies, and designing custom artificial intelligence solutions to automate workflows, reduce costs, and accelerate revenue."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "How much does custom AI development cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The cost of AI development varies based on the complexity, data availability, and required integrations. Simple MVP automation can start at $10k, while full-scale enterprise AI ecosystems with custom LLM fine-tuning can range from $50k to $250k+."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "How long does it take to deploy an AI solution?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Our accelerated engineering pipeline allows us to deploy AI MVPs in 4 to 8 weeks. Enterprise-grade deployments with complex legacy system integrations typically take 3 to 6 months depending on data readiness and compliance requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "What industries do you serve?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We specialize in Healthcare, E-Commerce, Logistics, Financial Services (Fintech), SaaS, and Manufacturing."
+          }
+        }
+      ]
+    }
   ],
 };
 
