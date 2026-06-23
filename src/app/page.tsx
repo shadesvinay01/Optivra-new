@@ -504,6 +504,99 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Our Products */}
+      <section id="products" className="container mx-auto px-6 py-32">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Built In-House</p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">
+            Our <span className="text-primary italic">Products.</span>
+          </h2>
+          <p className="text-gray-400 text-lg font-light leading-relaxed">
+            We don't just build for clients — we build for the world. These are products engineered and launched by the Optivra team.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* ShadowAgent */}
+          <div className="group relative border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-sm">
+                    SA
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-sans font-bold text-white">ShadowAgent</h3>
+                    <p className="text-[10px] uppercase tracking-widest text-primary font-bold">Autonomous AI Agent</p>
+                  </div>
+                </div>
+                <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 border border-green-500/30 text-green-400 bg-green-500/10">
+                  Live
+                </span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                ShadowAgent is a fully autonomous AI agent platform that operates silently in the background — monitoring, analyzing, and executing tasks across your business stack without human intervention. Built for enterprises that want AI to work while they sleep.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {["Autonomous multi-step task execution", "Real-time monitoring & alerting", "Seamless CRM & API integrations", "Enterprise-grade security"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-xs text-gray-500">
+                    <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="mailto:hello@optivra.in?subject=ShadowAgent%20Enquiry"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link"
+              >
+                Request Demo
+                <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+
+          {/* BrutallyHonest */}
+          <div className="group relative border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-sm">
+                    BH
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-sans font-bold text-white">BrutallyHonest</h3>
+                    <p className="text-[10px] uppercase tracking-widest text-primary font-bold">AI Review Platform</p>
+                  </div>
+                </div>
+                <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 border border-yellow-500/30 text-yellow-400 bg-yellow-500/10">
+                  Beta
+                </span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                BrutallyHonest is an AI-powered product review engine that cuts through marketing hype and gives products a Truth Score, Pain Score, and Hype Score — based entirely on real user sentiment. No ads. No bias. Just the truth.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {["AI-generated Truth, Pain & Hype scores", "Real-time sentiment aggregation", "Product leaderboards & rankings", "Community-driven honest reviews"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-xs text-gray-500">
+                    <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="mailto:hello@optivra.in?subject=BrutallyHonest%20Enquiry"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link"
+              >
+                Get Early Access
+                <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Case Studies / Projects */}
       <section id="case-studies" className="bg-[#050505] py-32 border-y border-white/10 relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
