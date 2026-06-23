@@ -512,90 +512,104 @@ export default function Home() {
             Our <span className="text-primary italic">Products.</span>
           </h2>
           <p className="text-gray-400 text-lg font-light leading-relaxed">
-            We don't just build for clients — we build for the world. These are products engineered and launched by the Optivra team.
+            We don&apos;t just build for clients — we build for the world. These are products engineered and launched by the Optivra team.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* ShadowAgent */}
-          <div className="group relative border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-sm">
-                    SA
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              id: "SA", name: "ShadowAgent", type: "Autonomous AI Agent", status: "Live", statusColor: "green",
+              desc: "A fully autonomous AI agent platform that silently monitors, analyzes, and executes tasks across your business stack 24/7 — without human intervention.",
+              features: ["Autonomous multi-step task execution", "Real-time monitoring & alerting", "CRM & API integrations"],
+              cta: "Request Demo", mailto: "ShadowAgent%20Enquiry"
+            },
+            {
+              id: "BH", name: "BrutallyHonest", type: "AI Review Platform", status: "Beta", statusColor: "yellow",
+              desc: "An AI-powered product review engine that cuts through marketing hype — generating Truth Scores, Pain Scores, and Hype Scores based on real user sentiment.",
+              features: ["AI-generated Truth, Pain & Hype scores", "Real-time sentiment aggregation", "Product leaderboards & rankings"],
+              cta: "Get Early Access", mailto: "BrutallyHonest%20Enquiry"
+            },
+            {
+              id: "BG", name: "BhaloGo", type: "Travel Tech Platform", status: "Building", statusColor: "blue",
+              desc: "An AI-powered travel platform built for the Indian market — helping users discover, plan, and book intelligent travel experiences tailored to their preferences.",
+              features: ["AI trip planning engine", "Personalized destination matching", "Local experience marketplace"],
+              cta: "Join Waitlist", mailto: "BhaloGo%20Enquiry"
+            },
+            {
+              id: "EF", name: "EventFlow AI", type: "Event Revenue Engine", status: "Live", statusColor: "green",
+              desc: "An AI-powered LinkedIn-to-Revenue engine for event organizers. Finds 1000+ decision makers, personalizes outreach, qualifies leads, and tracks every rupee of revenue attribution.",
+              features: ["AI prospecting & BANT qualification", "Multi-channel automated outreach", "Revenue attribution dashboard"],
+              cta: "Book Demo", mailto: "EventFlow%20Enquiry"
+            },
+            {
+              id: "UV", name: "Urvoic 2.0", type: "Voice AI Platform", status: "Beta", statusColor: "yellow",
+              desc: "A next-generation voice AI platform that enables businesses to deploy intelligent voice agents for customer support, sales calls, and operational workflows.",
+              features: ["Human-like voice AI agents", "Real-time call analysis", "CRM & helpdesk integration"],
+              cta: "Request Access", mailto: "Urvoic%20Enquiry"
+            },
+            {
+              id: "UJ", name: "Ujaal", type: "EdTech AI Platform", status: "Building", statusColor: "blue",
+              desc: "An AI-powered education platform designed to democratize quality learning in India — delivering personalized curriculum, adaptive assessments, and mentor matching.",
+              features: ["Personalized AI learning paths", "Adaptive assessment engine", "Vernacular language support"],
+              cta: "Join Waitlist", mailto: "Ujaal%20Enquiry"
+            },
+            {
+              id: "SR", name: "SmartResearch AI", type: "Research Automation", status: "Beta", statusColor: "yellow",
+              desc: "An AI-powered deep research engine that automatically synthesizes information from thousands of sources into concise, actionable intelligence reports in minutes.",
+              features: ["Multi-source web research", "Auto-generated research reports", "Citation tracking & export"],
+              cta: "Get Access", mailto: "SmartResearch%20Enquiry"
+            },
+            {
+              id: "DF", name: "DemandForge AI", type: "Demand Generation", status: "Building", statusColor: "blue",
+              desc: "An intelligent B2B demand generation platform that autonomously identifies high-intent buyers, crafts personalized outreach sequences, and fills your pipeline on autopilot.",
+              features: ["Intent signal tracking", "AI-personalized outreach sequences", "Pipeline analytics dashboard"],
+              cta: "Join Waitlist", mailto: "DemandForge%20Enquiry"
+            },
+          ].map((product) => (
+            <div key={product.id} className="group relative border border-white/10 bg-[#050505] p-7 hover:border-primary/50 transition-all duration-500 overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 blur-[70px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-xs flex-shrink-0">
+                      {product.id}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-sans font-bold text-white leading-tight">{product.name}</h3>
+                      <p className="text-[9px] uppercase tracking-widest text-primary font-bold">{product.type}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-sans font-bold text-white">ShadowAgent</h3>
-                    <p className="text-[10px] uppercase tracking-widest text-primary font-bold">Autonomous AI Agent</p>
-                  </div>
+                  <span className={`text-[9px] tracking-widest uppercase font-bold px-2 py-1 border whitespace-nowrap ${
+                    product.statusColor === "green" ? "border-green-500/30 text-green-400 bg-green-500/10" :
+                    product.statusColor === "yellow" ? "border-yellow-500/30 text-yellow-400 bg-yellow-500/10" :
+                    "border-blue-500/30 text-blue-400 bg-blue-500/10"
+                  }`}>
+                    {product.status}
+                  </span>
                 </div>
-                <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 border border-green-500/30 text-green-400 bg-green-500/10">
-                  Live
-                </span>
+                <p className="text-gray-400 text-xs leading-relaxed mb-4 flex-1">{product.desc}</p>
+                <ul className="space-y-1.5 mb-6">
+                  {product.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-[11px] text-gray-500">
+                      <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={`mailto:hello@optivra.in?subject=${product.mailto}`}
+                  className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link mt-auto"
+                >
+                  {product.cta}
+                  <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                </a>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                ShadowAgent is a fully autonomous AI agent platform that operates silently in the background — monitoring, analyzing, and executing tasks across your business stack without human intervention. Built for enterprises that want AI to work while they sleep.
-              </p>
-              <ul className="space-y-2 mb-8">
-                {["Autonomous multi-step task execution", "Real-time monitoring & alerting", "Seamless CRM & API integrations", "Enterprise-grade security"].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-xs text-gray-500">
-                    <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="mailto:hello@optivra.in?subject=ShadowAgent%20Enquiry"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link"
-              >
-                Request Demo
-                <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
-              </a>
             </div>
-          </div>
-
-          {/* BrutallyHonest */}
-          <div className="group relative border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-black text-sm">
-                    BH
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-sans font-bold text-white">BrutallyHonest</h3>
-                    <p className="text-[10px] uppercase tracking-widest text-primary font-bold">AI Review Platform</p>
-                  </div>
-                </div>
-                <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 border border-yellow-500/30 text-yellow-400 bg-yellow-500/10">
-                  Beta
-                </span>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                BrutallyHonest is an AI-powered product review engine that cuts through marketing hype and gives products a Truth Score, Pain Score, and Hype Score — based entirely on real user sentiment. No ads. No bias. Just the truth.
-              </p>
-              <ul className="space-y-2 mb-8">
-                {["AI-generated Truth, Pain & Hype scores", "Real-time sentiment aggregation", "Product leaderboards & rankings", "Community-driven honest reviews"].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-xs text-gray-500">
-                    <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="mailto:hello@optivra.in?subject=BrutallyHonest%20Enquiry"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link"
-              >
-                Get Early Access
-                <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
+
 
       {/* Case Studies / Projects */}
       <section id="case-studies" className="bg-[#050505] py-32 border-y border-white/10 relative">
