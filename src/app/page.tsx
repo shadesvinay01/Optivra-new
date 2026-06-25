@@ -186,10 +186,18 @@ export default function Home() {
               >
                 Get Technical Audit
               </a>
+            </motion.div>
 
+            {/* ROI Calculator CTA - Under the main buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+              className="mt-8 z-10"
+            >
               <a 
                 href="#roi-calculator" 
-                className="px-8 py-4 bg-transparent border-none text-gray-400 font-bold tracking-widest uppercase text-xs sm:text-sm hover:text-primary transition-all duration-300 w-full sm:w-auto text-center rounded-sm flex items-center justify-center gap-2"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-black border border-primary text-primary font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-primary hover:text-black hover:shadow-[4px_4px_0px_#ffffff] transition-all duration-300 rounded-none shadow-[6px_6px_0px_rgba(212,175,55,0.4)] active:shadow-none active:translate-y-[6px] active:translate-x-[6px]"
               >
                 Calculate AI ROI
               </a>
