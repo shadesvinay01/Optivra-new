@@ -170,15 +170,13 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto z-10"
             >
-              <a 
-                href="https://calendly.com/hello-optivra" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link 
+                href="/ai-advisor" 
                 className="relative overflow-hidden bg-primary text-black px-8 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 font-bold tracking-widest uppercase text-xs sm:text-sm group w-full sm:w-auto text-center rounded-sm"
               >
-                Book Free AI Strategy Call
+                Discover AI Opportunities
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
 
               <a 
                 href="#contact" 
