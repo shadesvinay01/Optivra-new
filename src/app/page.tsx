@@ -15,6 +15,7 @@ import Link from "next/link";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import FAQSection from "@/components/ui/FAQSection";
 import TestimonialCarousel from "@/components/ui/TestimonialCarousel";
+import ROICalculator from "@/components/ui/ROICalculator";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -184,6 +185,13 @@ export default function Home() {
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto text-center rounded-sm"
               >
                 Get Technical Audit
+              </a>
+
+              <a 
+                href="#roi-calculator" 
+                className="px-8 py-4 bg-transparent border-none text-gray-400 font-bold tracking-widest uppercase text-xs sm:text-sm hover:text-primary transition-all duration-300 w-full sm:w-auto text-center rounded-sm flex items-center justify-center gap-2"
+              >
+                Calculate AI ROI
               </a>
             </motion.div>
 
@@ -795,6 +803,9 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialCarousel />
+
+      {/* ROI Calculator Section */}
+      <ROICalculator />
 
       {/* FAQ Section */}
       <FAQSection />
