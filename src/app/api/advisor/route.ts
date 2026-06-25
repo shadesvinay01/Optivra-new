@@ -1,4 +1,4 @@
-import { NextResponse } from "next";
+import { NextResponse } from "next/server";
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 
 export async function POST(req: Request) {
