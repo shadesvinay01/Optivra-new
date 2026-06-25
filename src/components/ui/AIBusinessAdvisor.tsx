@@ -147,7 +147,7 @@ export default function AIBusinessAdvisor() {
   // Framer motion variants
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
   };
 
@@ -312,7 +312,7 @@ export default function AIBusinessAdvisor() {
                     strokeDasharray="565"
                     initial={{ strokeDashoffset: 565 }}
                     animate={{ strokeDashoffset: 565 - (565 * aiResult.score) / 100 }}
-                    transition={{ duration: 2, ease: "easeOut" }}
+                    transition={{ duration: 2 }}
                   />
                 </svg>
                 <div className="text-5xl font-black font-mono text-white">
@@ -491,7 +491,7 @@ function QuestionStep({ title, options, onSelect }: { title: string, options: st
     <motion.div 
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
         exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
       }}
       initial="hidden" animate="visible" exit="exit" className="max-w-3xl mx-auto w-full"
