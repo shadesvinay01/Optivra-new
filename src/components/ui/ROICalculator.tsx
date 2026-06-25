@@ -165,7 +165,7 @@ export default function ROICalculator() {
               href="https://calendly.com/hello-optivra" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full bg-primary text-black px-6 py-4 flex items-center justify-center gap-3 hover:bg-white transition-all duration-300 font-bold tracking-widest uppercase text-xs group/btn rounded-sm"
+              className="w-full bg-primary text-black px-6 py-4 flex items-center justify-center gap-3 hover:bg-white hover:shadow-[4px_4px_0px_#ffffff] transition-all duration-300 font-bold tracking-widest uppercase text-xs group/btn rounded-none shadow-[6px_6px_0px_rgba(212,175,55,0.4)] active:shadow-none active:translate-y-[6px] active:translate-x-[6px] border border-transparent hover:border-white"
             >
               Unlock These Savings
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
