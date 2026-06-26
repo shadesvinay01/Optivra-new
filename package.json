@@ -10,8 +10,10 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.0",
     "@google/genai": "^2.9.0",
     "@prisma/client": "5.22.0",
+    "ai": "^7.0.2",
     "cheerio": "^1.2.0",
     "framer-motion": "^12.40.0",
     "html2canvas": "^1.4.1",
