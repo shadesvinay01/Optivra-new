@@ -1,31 +1,84 @@
 "use client";
 
-import { useChat } from '@ai-sdk/react';
 import { Bot, Send, User, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
-export default function InternalHermesAgent() {
-  const { messages, sendMessage, status } = useChat({
-    api: '/api/chat',
-  });
-  
-  const [input, setInput] = useState('');
-  
-  const isLoading = status === 'submitted' || status === 'streaming';
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-    sendMessage({ content: input, role: 'user' });
-    setInput('');
-  };
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
 
+export default function InternalHermesAgent() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    const userMessage: Message = { role: 'user', content: input, id: Date.now().toString() };
+    const newMessages = [...messages, userMessage];
+    
+    setMessages(newMessages);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newMessages })
+      });
+
+      if (!res.body) throw new Error('No response body');
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let assistantContent = '';
+      const assistantId = (Date.now() + 1).toString();
+      
+      setMessages(prev => [...prev, { role: 'assistant', content: '', id: assistantId }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n').filter(line => line.trim() !== '');
+        
+        for (const line of lines) {
+          if (line.replace(/^data: /, '').trim() === '[DONE]') break;
+          if (line.startsWith('data: ')) {
+            try {
+              const data = JSON.parse(line.replace(/^data: /, ''));
+              if (data.choices && data.choices[0].delta && data.choices[0].delta.content) {
+                assistantContent += data.choices[0].delta.content;
+                setMessages(prev => {
+                  const copy = [...prev];
+                  copy[copy.length - 1].content = assistantContent;
+                  return copy;
+                });
+              }
+            } catch (err) {
+              // Ignore incomplete JSON chunks in the stream
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.error("Chat error:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#020202] text-gray-200 font-sans selection:bg-blue-500/30 flex flex-col">
@@ -76,6 +129,9 @@ export default function InternalHermesAgent() {
                 }`}
               >
                 {m.content}
+                {m.role === 'assistant' && isLoading && m.id === messages[messages.length - 1].id && (
+                  <span className="inline-block w-2 h-4 ml-1 bg-blue-500 animate-pulse" />
+                )}
               </div>
 
               {/* User Avatar */}
@@ -114,7 +170,7 @@ export default function InternalHermesAgent() {
             </button>
           </form>
           <p className="text-center text-[10px] text-gray-600 uppercase tracking-widest mt-4">
-            Powered by Vercel AI SDK & Nous Hermes 3 Llama 405B
+            Powered by native React Fetch & Nous Hermes 3 Llama 405B
           </p>
         </div>
       </footer>

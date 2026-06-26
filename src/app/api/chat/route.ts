@@ -1,35 +1,43 @@
-import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import { NextResponse } from 'next/server';
 
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
-
-// Configure OpenRouter provider using the OpenAI-compatible SDK
-const openrouter = createOpenAI({
-  baseURL: 'https://openrouter.ai/api/v1',
-  apiKey: process.env.OPENROUTER_API_KEY,
-  headers: {
-    'HTTP-Referer': 'https://optivra.in',
-    'X-Title': 'Optivra Internal Agent',
-  },
-});
 
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
 
-    const result = await streamText({
-      model: openrouter('nousresearch/hermes-3-llama-3.1-405b:free'),
-      system: `You are Hermes, the internal autonomous AI agent for the Optivra team. 
-      You have access to a vast array of knowledge and act as an expert technical consultant, data analyzer, and strategist. 
-      Keep your responses concise, highly professional, and actionable. 
-      Format your output using Markdown. Do not hallucinate.`,
-      messages,
-      // Note: We can add tools here via the 'tools' object later if needed (e.g. searching the web)
-      // tools: { ... }
+    const payload = {
+      model: 'nousresearch/hermes-3-llama-3.1-405b:free',
+      messages: [
+        { role: 'system', content: 'You are Hermes, the internal autonomous AI agent for the Optivra team. Keep responses concise, highly professional, and format in Markdown.' },
+        ...messages.map((m: any) => ({ role: m.role, content: m.content }))
+      ],
+      stream: true
+    };
+
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://optivra.in',
+        'X-Title': 'Optivra Internal Agent',
+      },
+      body: JSON.stringify(payload)
     });
 
-    return result.toTextStreamResponse();
+    if (!response.ok) {
+      throw new Error(`OpenRouter API error: ${response.status}`);
+    }
+
+    // Pipe the raw SSE stream directly to the client
+    return new Response(response.body, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      }
+    });
   } catch (error) {
     console.error("Agent Error:", error);
     return new Response(JSON.stringify({ error: "Failed to connect to Hermes Agent" }), {
