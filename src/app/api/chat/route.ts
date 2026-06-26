@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       // tools: { ... }
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
   } catch (error) {
     console.error("Agent Error:", error);
     return new Response(JSON.stringify({ error: "Failed to connect to Hermes Agent" }), {
