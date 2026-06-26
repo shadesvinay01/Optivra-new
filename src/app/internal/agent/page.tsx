@@ -75,6 +75,13 @@ export default function InternalHermesAgent() {
       }
     } catch (err) {
       console.error("Chat error:", err);
+      setMessages(prev => {
+        const copy = [...prev];
+        if (copy[copy.length - 1].role === 'assistant' && copy[copy.length - 1].content === '') {
+          copy[copy.length - 1].content = '⚠️ Sorry, I could not connect to the AI. Please check that the OPENROUTER_API_KEY is set correctly in Vercel and redeploy.';
+        }
+        return copy;
+      });
     } finally {
       setIsLoading(false);
     }
