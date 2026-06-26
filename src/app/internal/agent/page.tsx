@@ -24,62 +24,45 @@ export default function InternalHermesAgent() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: 'user', content: input, id: Date.now().toString() };
+    const userMessage: Message = {
+      role: 'user',
+      content: input.trim(),
+      id: Date.now().toString(),
+    };
+
     const newMessages = [...messages, userMessage];
-    
     setMessages(newMessages);
     setInput('');
     setIsLoading(true);
+
+    // Add a placeholder assistant message
+    const assistantId = (Date.now() + 1).toString();
+    setMessages(prev => [...prev, { role: 'assistant', content: '...', id: assistantId }]);
 
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages })
+        body: JSON.stringify({ messages: newMessages }),
       });
 
-      if (!res.body) throw new Error('No response body');
+      const data = await res.json();
+      const reply = data?.reply ?? '❌ Empty response from server.';
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantContent = '';
-      const assistantId = (Date.now() + 1).toString();
-      
-      setMessages(prev => [...prev, { role: 'assistant', content: '', id: assistantId }]);
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n').filter(line => line.trim() !== '');
-        
-        for (const line of lines) {
-          if (line.replace(/^data: /, '').trim() === '[DONE]') break;
-          if (line.startsWith('data: ')) {
-            try {
-              const data = JSON.parse(line.replace(/^data: /, ''));
-              if (data.choices && data.choices[0].delta && data.choices[0].delta.content) {
-                assistantContent += data.choices[0].delta.content;
-                setMessages(prev => {
-                  const copy = [...prev];
-                  copy[copy.length - 1].content = assistantContent;
-                  return copy;
-                });
-              }
-            } catch (err) {
-              // Ignore incomplete JSON chunks in the stream
-            }
-          }
-        }
-      }
-    } catch (err) {
-      console.error("Chat error:", err);
       setMessages(prev => {
         const copy = [...prev];
-        if (copy[copy.length - 1].role === 'assistant' && copy[copy.length - 1].content === '') {
-          copy[copy.length - 1].content = '⚠️ Sorry, I could not connect to the AI. Please check that the OPENROUTER_API_KEY is set correctly in Vercel and redeploy.';
-        }
+        copy[copy.length - 1] = { role: 'assistant', content: reply, id: assistantId };
+        return copy;
+      });
+
+    } catch (err: any) {
+      setMessages(prev => {
+        const copy = [...prev];
+        copy[copy.length - 1] = {
+          role: 'assistant',
+          content: `❌ Network error: ${err?.message ?? 'Could not reach server.'}`,
+          id: assistantId,
+        };
         return copy;
       });
     } finally {
@@ -88,7 +71,7 @@ export default function InternalHermesAgent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020202] text-gray-200 font-sans selection:bg-blue-500/30 flex flex-col">
+    <div className="min-h-screen bg-[#020202] text-gray-200 font-sans flex flex-col">
       {/* Header */}
       <header className="border-b border-white/10 bg-[#050505] py-4 px-6 sticky top-0 z-50 flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -96,7 +79,9 @@ export default function InternalHermesAgent() {
             <Bot className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white tracking-wide">Hermes <span className="text-blue-400">Agent</span></h1>
+            <h1 className="text-lg font-bold text-white tracking-wide">
+              Hermes <span className="text-blue-400">Agent</span>
+            </h1>
             <p className="text-[10px] uppercase tracking-widest text-gray-500">Optivra Internal Tool</p>
           </div>
         </div>
@@ -106,42 +91,39 @@ export default function InternalHermesAgent() {
       </header>
 
       {/* Chat Area */}
-      <main className="flex-1 overflow-y-auto p-6 space-y-8 max-w-4xl mx-auto w-full pb-32">
+      <main className="flex-1 overflow-y-auto p-6 space-y-8 max-w-4xl mx-auto w-full pb-36">
         {messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-center mt-20">
+          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
             <Sparkles className="w-12 h-12 text-blue-500 mb-6 opacity-50" />
             <h2 className="text-3xl font-bold text-white mb-4">Hello, Optivra Team.</h2>
             <p className="text-gray-400 max-w-md mx-auto leading-relaxed">
-              I am Hermes, your internal autonomous AI agent powered by OpenRouter. 
-              Ask me to analyze data, draft strategies, or assist with operations.
+              I&apos;m Hermes, your internal AI agent powered by Llama 3.3 70B via OpenRouter.
+              Ask me anything — strategy, content, operations, code.
             </p>
           </div>
         ) : (
           messages.map((m) => (
             <div key={m.id} className={`flex gap-4 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              
-              {/* Agent Avatar */}
               {m.role !== 'user' && (
                 <div className="w-8 h-8 rounded-sm bg-blue-600/20 border border-blue-500/50 flex flex-shrink-0 items-center justify-center mt-1">
                   <Bot className="w-4 h-4 text-blue-400" />
                 </div>
               )}
-
-              {/* Message Content */}
-              <div 
-                className={`px-5 py-4 max-w-[85%] rounded-sm leading-relaxed whitespace-pre-wrap ${
-                  m.role === 'user' 
-                    ? 'bg-white/10 text-white' 
+              <div
+                className={`px-5 py-4 max-w-[85%] rounded-sm leading-relaxed whitespace-pre-wrap text-sm ${
+                  m.role === 'user'
+                    ? 'bg-white/10 text-white'
                     : 'bg-[#0A0A0A] border border-white/5 text-gray-300'
                 }`}
               >
-                {m.content}
-                {m.role === 'assistant' && isLoading && m.id === messages[messages.length - 1].id && (
-                  <span className="inline-block w-2 h-4 ml-1 bg-blue-500 animate-pulse" />
-                )}
+                {m.content === '...' ? (
+                  <span className="flex gap-1 items-center text-gray-500">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </span>
+                ) : m.content}
               </div>
-
-              {/* User Avatar */}
               {m.role === 'user' && (
                 <div className="w-8 h-8 rounded-sm bg-white/10 border border-white/20 flex flex-shrink-0 items-center justify-center mt-1">
                   <User className="w-4 h-4 text-gray-400" />
@@ -154,8 +136,8 @@ export default function InternalHermesAgent() {
       </main>
 
       {/* Input Area */}
-      <footer className="fixed bottom-0 left-0 w-full bg-gradient-to-t from-[#020202] via-[#020202] to-transparent p-6">
-        <div className="max-w-4xl mx-auto relative">
+      <footer className="fixed bottom-0 left-0 w-full bg-gradient-to-t from-[#020202] via-[#020202]/90 to-transparent p-6">
+        <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="relative flex items-center">
             <input
               value={input}
@@ -164,8 +146,8 @@ export default function InternalHermesAgent() {
               className="w-full bg-[#0A0A0A] border border-white/10 rounded-full py-4 pl-6 pr-14 text-white focus:outline-none focus:border-blue-500/50 transition-colors shadow-2xl"
               disabled={isLoading}
             />
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isLoading || !input.trim()}
               className="absolute right-2 w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
@@ -176,8 +158,8 @@ export default function InternalHermesAgent() {
               )}
             </button>
           </form>
-          <p className="text-center text-[10px] text-gray-600 uppercase tracking-widest mt-4">
-            Powered by native React Fetch & Nous Hermes 3 Llama 405B
+          <p className="text-center text-[10px] text-gray-600 uppercase tracking-widest mt-3">
+            Powered by Llama 3.3 70B via OpenRouter · Free Tier
           </p>
         </div>
       </footer>
