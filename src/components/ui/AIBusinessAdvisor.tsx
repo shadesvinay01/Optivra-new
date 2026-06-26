@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, ArrowRight, CheckCircle2, ChevronRight, Loader2, Sparkles, Building, Briefcase, FileText, Download } from "lucide-react";
+import { Bot, ArrowRight, CheckCircle2, ChevronRight, Loader2, Sparkles, Building, Briefcase, FileText, Download, Clock, BarChart3 } from "lucide-react";
 
 // Types
 type Step = "intro" | "chat_intro" | "q1" | "q2" | "q3" | "q4" | "q5" | "processing" | "result" | "lead_capture" | "success";
