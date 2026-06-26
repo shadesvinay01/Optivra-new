@@ -2,13 +2,24 @@
 
 import { useChat } from '@ai-sdk/react';
 import { Bot, Send, User, Sparkles } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 export default function InternalHermesAgent() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, sendMessage, status } = useChat({
     api: '/api/chat',
   });
+  
+  const [input, setInput] = useState('');
+  
+  const isLoading = status === 'submitted' || status === 'streaming';
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    sendMessage({ content: input, role: 'user' });
+    setInput('');
+  };
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -85,7 +96,7 @@ export default function InternalHermesAgent() {
           <form onSubmit={handleSubmit} className="relative flex items-center">
             <input
               value={input}
-              onChange={handleInputChange}
+              onChange={(e) => setInput(e.target.value)}
               placeholder="Message Hermes..."
               className="w-full bg-[#0A0A0A] border border-white/10 rounded-full py-4 pl-6 pr-14 text-white focus:outline-none focus:border-blue-500/50 transition-colors shadow-2xl"
               disabled={isLoading}
