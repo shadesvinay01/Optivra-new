@@ -1,12 +1,12 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { CheckCircle2, Cpu, Code2, LineChart, ShieldCheck, HeadphonesIcon, Globe, Rocket, TerminalSquare, Search, Lock, Zap, FileText } from 'lucide-react';
 import PricingDownloadButton from '@/components/ui/PricingDownloadButton';
 
 export default function PricingPage() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,7 +16,7 @@ export default function PricingPage() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
