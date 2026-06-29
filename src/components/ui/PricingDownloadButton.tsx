@@ -2,56 +2,86 @@
 
 import React, { useState } from 'react';
 import { Download } from 'lucide-react';
-import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 
 interface PricingDownloadButtonProps {
-  targetId: string;
   filename?: string;
   className?: string;
 }
 
 export default function PricingDownloadButton({
-  targetId,
   filename = 'Optivra_Pricing_List.pdf',
   className = '',
 }: PricingDownloadButtonProps) {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     setIsDownloading(true);
     try {
-      const element = document.getElementById(targetId);
-      if (!element) {
-        console.error(`Element with id ${targetId} not found`);
-        alert("Could not find the pricing section to download.");
-        return;
-      }
+      const doc = new jsPDF();
+      
+      // Title
+      doc.setFontSize(22);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Optivra Pricing Overview", 14, 20);
+      
+      // Subtitle
+      doc.setFontSize(11);
+      doc.setTextColor(100, 100, 100);
+      doc.text("Indicative starting prices to help you estimate project budgets.", 14, 28);
 
-      // Add a temporary class to ensure the element looks good in PDF
-      element.classList.add('pdf-mode');
+      // Table Data
+      const tableColumn = ["Service", "Starting From"];
+      const tableRows = [
+        ["Landing Page", "Rs. 24,999"],
+        ["Business Website", "Rs. 49,999"],
+        ["E-commerce Website", "Rs. 79,999"],
+        ["AI Chatbot", "Rs. 49,999"],
+        ["AI Automation", "Rs. 75,000"],
+        ["Custom Web Application", "Rs. 1,99,999"],
+        ["Mobile App Development", "Rs. 2,49,999"],
+        ["CRM Development", "Rs. 99,999"],
+        ["SaaS MVP Development", "Rs. 4,99,999"],
+        ["ERP / Enterprise AI", "Custom Quote"]
+      ];
 
-      const canvas = await html2canvas(element, {
-        scale: 2, // Higher resolution
-        useCORS: true,
-        logging: true,
-        backgroundColor: '#0a0a0a', // Assuming dark mode background
+      // @ts-ignore - jspdf-autotable adds autoTable to jsPDF instance
+      doc.autoTable({
+        head: [tableColumn],
+        body: tableRows,
+        startY: 35,
+        theme: 'grid',
+        headStyles: { fillColor: [212, 175, 55], textColor: [0, 0, 0], fontStyle: 'bold' },
+        styles: { fontSize: 11, cellPadding: 5 },
+        alternateRowStyles: { fillColor: [250, 250, 250] },
       });
 
-      element.classList.remove('pdf-mode');
-
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
+      // Notes
+      // @ts-ignore
+      const finalY = doc.lastAutoTable.finalY || 130;
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.setFont("helvetica", "bold");
+      doc.text("Commercial Notes:", 14, finalY + 15);
+      
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(80, 80, 80);
+      const notes = [
+        "• Prices shown are starting prices and are intended for budgeting purposes only.",
+        "• Final quotation depends on project scope, features, integrations, timeline and business requirements.",
+        "• GST will be charged separately, if applicable.",
+        "• A detailed proposal is shared after the discovery call and requirement analysis."
+      ];
+      
+      let noteY = finalY + 22;
+      notes.forEach(note => {
+        doc.text(note, 14, noteY);
+        noteY += 6;
       });
 
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(filename);
+      doc.save(filename);
     } catch (error: any) {
       console.error('Error generating PDF:', error);
       alert(`Failed to generate PDF: ${error?.message || "Unknown error"}`);

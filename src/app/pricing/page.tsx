@@ -166,7 +166,7 @@ export default function PricingPage() {
               </div>
               {/* Note: In print mode, we might want to hide this button via CSS */}
               <div className="print:hidden">
-                <PricingDownloadButton targetId="pricing-print-section" filename="Optivra_Pricing.pdf" />
+                <PricingDownloadButton filename="Optivra_Pricing.pdf" />
               </div>
             </div>
 
