@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { jsPDF } from 'jspdf';
 
 interface PricingDownloadButtonProps {
   targetId: string;
@@ -24,6 +24,7 @@ export default function PricingDownloadButton({
       const element = document.getElementById(targetId);
       if (!element) {
         console.error(`Element with id ${targetId} not found`);
+        alert("Could not find the pricing section to download.");
         return;
       }
 
@@ -33,7 +34,7 @@ export default function PricingDownloadButton({
       const canvas = await html2canvas(element, {
         scale: 2, // Higher resolution
         useCORS: true,
-        logging: false,
+        logging: true,
         backgroundColor: '#0a0a0a', // Assuming dark mode background
       });
 
@@ -51,8 +52,9 @@ export default function PricingDownloadButton({
 
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(filename);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error generating PDF:', error);
+      alert(`Failed to generate PDF: ${error?.message || "Unknown error"}`);
     } finally {
       setIsDownloading(false);
     }
