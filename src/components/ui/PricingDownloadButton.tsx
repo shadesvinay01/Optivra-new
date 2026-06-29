@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Download } from 'lucide-react';
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 interface PricingDownloadButtonProps {
   filename?: string;
@@ -46,8 +46,7 @@ export default function PricingDownloadButton({
         ["ERP / Enterprise AI", "Custom Quote"]
       ];
 
-      // @ts-ignore - jspdf-autotable adds autoTable to jsPDF instance
-      doc.autoTable({
+      autoTable(doc, {
         head: [tableColumn],
         body: tableRows,
         startY: 35,
