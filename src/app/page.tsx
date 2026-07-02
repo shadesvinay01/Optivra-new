@@ -480,46 +480,6 @@ export default function Home() {
       </section>
 
 
-      {/* Product Showcase Section */}
-      <section id="products" className="container mx-auto px-6 py-16">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
-          <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-[0.3em]">Our Innovations</p>
-          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Funded AI <span className="text-primary italic">Product Room.</span></h2>
-          <p className="text-gray-400 text-lg font-light">Explore our internally funded AI products and projects. Click to learn more or express your interest.</p>
-        </motion.div>
-        
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {[
-            { title: "AI Analytics Platform", desc: "Intelligent business analytics powered by machine learning for real-time insights.", tag: "AI Powered" },
-            { title: "Smart Automation Suite", desc: "End-to-end workflow automation for enterprises. Reduce manual tasks by 80%.", tag: "Automation" },
-            { title: "Data Visualization Engine", desc: "Transform complex datasets into stunning, interactive visual dashboards.", tag: "Data Science" }
-          ].map((product, i) => (
-            <motion.div variants={fadeInUp} key={i} className="border border-white/10 bg-[#050505] p-8 group hover:border-primary/50 transition-colors flex flex-col justify-between min-h-[250px] relative overflow-hidden">
-              <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-[40px] group-hover:bg-primary/20 transition-colors duration-500" />
-              <div className="relative z-10">
-                <p className="text-primary text-xs font-bold mb-4 uppercase tracking-[0.2em]">{product.tag}</p>
-                <h3 className="text-2xl font-sans font-bold text-white mb-4 group-hover:text-primary transition-colors">{product.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed font-light">{product.desc}</p>
-              </div>
-              <div className="mt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-primary font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-4 group-hover:translate-x-0 cursor-pointer relative z-10">
-                Learn More <ArrowRight className="w-4 h-4" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
       {/* Our Products */}
       <section id="products" className="container mx-auto px-6 py-32">
         <div className="text-center max-w-3xl mx-auto mb-20">
