@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /internal/
+Disallow: /admin/
+
+Sitemap: https://optivra.in/sitemap.xml
