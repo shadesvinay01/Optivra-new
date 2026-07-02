@@ -26,6 +26,15 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    category: "AI Agents",
+    title: "AI Agents vs AI Chatbots: Complete Business Guide (2026)",
+    description:
+      "Learn the difference between AI agents and AI chatbots, their business use cases, benefits, limitations, and how to choose the right solution for your organization.",
+    readTime: "10 min read",
+    slug: "ai-agents-vs-ai-chatbots",
+    featured: true,
+  },
+  {
     category: "Automation",
     title: "What Is AI Automation? A Complete Guide for Businesses (2026)",
     description:

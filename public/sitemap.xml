@@ -35,6 +35,17 @@
 
   <!-- Blog articles -->
   <url>
+    <loc>https://optivra.in/insights/ai-agents-vs-ai-chatbots</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://optivra.in/ai-agents-vs-chatbots-hero.png</image:loc>
+      <image:title>AI Agents vs AI Chatbots: Complete Business Guide (2026)</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://optivra.in/insights/what-is-ai-automation</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
