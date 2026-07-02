@@ -476,7 +476,9 @@ export default function Home() {
             ))}
           </div>
         </div>
+
       </section>
+
 
       {/* Product Showcase Section */}
       <section id="products" className="container mx-auto px-6 py-16">
@@ -644,6 +646,93 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* And Many More Strip */}
+        <div className="mt-16 relative overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling tags row 1 — left */}
+          <div className="flex overflow-hidden mb-3">
+            <div className="flex animate-marquee gap-3 whitespace-nowrap">
+              {[
+                "HealthSync AI", "LegalMind", "FinFlow Pro", "TalentRadar", "SoilSense",
+                "RetailBot", "LogistiQ", "PolicyPulse", "NutriAI", "ClimateOS",
+                "PropIntel", "SaaSify", "CreditIQ", "GovAssist AI", "SkillForge",
+                "DataVault", "SecureNet AI", "CarbonTrace", "MediAssist", "UrbanFlow",
+              ].map((name) => (
+                <span key={name} className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/[0.03] text-gray-500 text-[11px] font-bold uppercase tracking-widest hover:border-primary/30 hover:text-gray-300 transition-colors cursor-default flex-shrink-0">
+                  <span className="w-1 h-1 rounded-full bg-primary/60" />
+                  {name}
+                </span>
+              ))}
+              {[
+                "HealthSync AI", "LegalMind", "FinFlow Pro", "TalentRadar", "SoilSense",
+                "RetailBot", "LogistiQ", "PolicyPulse", "NutriAI", "ClimateOS",
+                "PropIntel", "SaaSify", "CreditIQ", "GovAssist AI", "SkillForge",
+                "DataVault", "SecureNet AI", "CarbonTrace", "MediAssist", "UrbanFlow",
+              ].map((name) => (
+                <span key={`dup-${name}`} className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/[0.03] text-gray-500 text-[11px] font-bold uppercase tracking-widest hover:border-primary/30 hover:text-gray-300 transition-colors cursor-default flex-shrink-0">
+                  <span className="w-1 h-1 rounded-full bg-primary/60" />
+                  {name}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Scrolling tags row 2 — right */}
+          <div className="flex overflow-hidden">
+            <div className="flex animate-marquee-reverse gap-3 whitespace-nowrap">
+              {[
+                "AgriBot", "EduStream", "WealthOS", "TrustID", "InsureFlow",
+                "RecruitAI", "MarketMapper", "CivicAI", "BrandVoice", "OrderMind",
+                "PayShield", "DocFlow AI", "SmartFarm", "CoupleSync", "VideoMind",
+                "SportsPulse", "HireGenius", "CleanTech AI", "GrowthLab", "VoiceBot",
+              ].map((name) => (
+                <span key={name} className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/[0.03] text-gray-500 text-[11px] font-bold uppercase tracking-widest hover:border-primary/30 hover:text-gray-300 transition-colors cursor-default flex-shrink-0">
+                  <span className="w-1 h-1 rounded-full bg-primary/40" />
+                  {name}
+                </span>
+              ))}
+              {[
+                "AgriBot", "EduStream", "WealthOS", "TrustID", "InsureFlow",
+                "RecruitAI", "MarketMapper", "CivicAI", "BrandVoice", "OrderMind",
+                "PayShield", "DocFlow AI", "SmartFarm", "CoupleSync", "VideoMind",
+                "SportsPulse", "HireGenius", "CleanTech AI", "GrowthLab", "VoiceBot",
+              ].map((name) => (
+                <span key={`dup-${name}`} className="inline-flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/[0.03] text-gray-500 text-[11px] font-bold uppercase tracking-widest hover:border-primary/30 hover:text-gray-300 transition-colors cursor-default flex-shrink-0">
+                  <span className="w-1 h-1 rounded-full bg-primary/40" />
+                  {name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats + CTA row */}
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10 bg-white/[0.02] px-8 py-6">
+          <div className="flex flex-wrap items-center gap-8 md:gap-10">
+            {[
+              { value: "30+", label: "Products in Pipeline" },
+              { value: "11", label: "Showcased Above" },
+              { value: "5", label: "Live & Running" },
+              { value: "∞", label: "Ideas Being Built" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center md:text-left">
+                <p className="text-2xl font-black text-white font-sans">{stat.value}</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          <a
+            href="mailto:hello@optivra.in?subject=Product%20Collaboration%20Inquiry"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-black text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors flex-shrink-0"
+          >
+            Collaborate With Us
+            <ArrowRight className="w-3 h-3" />
+          </a>
         </div>
       </section>
 
