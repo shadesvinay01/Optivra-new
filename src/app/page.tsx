@@ -580,6 +580,12 @@ export default function Home() {
               features: ["Intent signal tracking", "AI-personalized outreach sequences", "Pipeline analytics dashboard"],
               cta: "Join Waitlist", mailto: "DemandForge%20Enquiry"
             },
+            {
+              id: "IV", name: "IdeaVentureX", type: "Startup Venture Builder", status: "Live", statusColor: "green",
+              desc: "A startup ideation and venture building platform that helps founders validate business ideas, connect with co-founders, and accelerate from concept to company with AI-powered insights.",
+              features: ["AI-powered idea validation", "Co-founder matching engine", "Startup growth & fundraising roadmap"],
+              cta: "Explore Now", mailto: "IdeaVentureX%20Enquiry"
+            },
           ].map((product) => (
             <div key={product.id} className="group relative border border-white/10 bg-[#050505] p-7 hover:border-primary/50 transition-all duration-500 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 blur-[70px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
