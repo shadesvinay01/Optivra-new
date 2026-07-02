@@ -586,6 +586,21 @@ export default function Home() {
               features: ["AI-powered idea validation", "Co-founder matching engine", "Startup growth & fundraising roadmap"],
               cta: "Explore Now", mailto: "IdeaVentureX%20Enquiry"
             },
+            {
+              id: "VP", name: "Vindex Protocol", type: "Livelihood Insurance Platform", status: "Live", statusColor: "green",
+              desc: "An open-source livelihood insurance and fraud prevention platform that protects your income from AI disruption and market shifts — helping you pivot when traditional insurance won't.",
+              features: ["Income security & family coverage", "Upskilling vouchers for career transition", "Decentralized proof of fraud engine"],
+              cta: "Get Official Quote", mailto: "VindexProtocol%20Enquiry",
+              website: "https://vindexprotocol.com"
+            },
+            {
+              id: "UX", name: "UnicornX Media", type: "Digital Media Platform", status: "Building", statusColor: "blue",
+              desc: "A comprehensive digital media and advertising ecosystem designed to optimize audience monetization, streamline ad placements, and drive high-converting cross-channel campaigns.",
+              features: ["Omnichannel ad monetization", "AI-driven audience targeting", "Real-time campaign analytics"],
+              cta: "Request Demo", mailto: "UnicornXMedia%20Enquiry",
+              website: "https://unicornxmedia.com"
+            },
+
           ].map((product) => (
             <div key={product.id} className="group relative border border-white/10 bg-[#050505] p-7 hover:border-primary/50 transition-all duration-500 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 blur-[70px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
@@ -618,7 +633,9 @@ export default function Home() {
                   ))}
                 </ul>
                 <a
-                  href={`mailto:hello@optivra.in?subject=${product.mailto}`}
+                  href={'website' in product && (product as {website?: string}).website ? (product as {website?: string}).website : `mailto:hello@optivra.in?subject=${product.mailto}`}
+                  target={'website' in product && (product as {website?: string}).website ? "_blank" : undefined}
+                  rel={'website' in product && (product as {website?: string}).website ? "noopener noreferrer" : undefined}
                   className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link mt-auto"
                 >
                   {product.cta}
