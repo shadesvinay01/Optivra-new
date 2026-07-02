@@ -26,6 +26,15 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    category: "Automation",
+    title: "What Is AI Automation? A Complete Guide for Businesses (2026)",
+    description:
+      "Learn what AI automation is, how it works, its business benefits, implementation roadmap, real-world use cases, and how companies can adopt AI successfully in 2026.",
+    readTime: "12 min read",
+    slug: "what-is-ai-automation",
+    featured: true,
+  },
+  {
     category: "AI Agents",
     title: "The Complete Guide to Building Production-Ready AI Agents in 2025",
     description:
@@ -83,6 +92,7 @@ const articles = [
 
 const categories = [
   "All",
+  "AI Automation",
   "AI Agents",
   "AI for Startups",
   "Computer Vision",
