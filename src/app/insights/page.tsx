@@ -26,6 +26,15 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    category: "AI for Startups",
+    title: "AI Automation for Small Businesses: Complete Guide (2026)",
+    description:
+      "Discover how small businesses can use AI automation to reduce costs, improve productivity, automate repetitive work, and scale efficiently in 2026.",
+    readTime: "8 min read",
+    slug: "ai-automation-for-small-businesses",
+    featured: true,
+  },
+  {
     category: "AI Agents",
     title: "AI Agents vs AI Chatbots: Complete Business Guide (2026)",
     description:

@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/insights/ai-automation-for-small-businesses`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/insights/ai-agents-vs-ai-chatbots`,
       lastModified: now,
       changeFrequency: 'weekly',
