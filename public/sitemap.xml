@@ -35,6 +35,17 @@
 
   <!-- Blog articles -->
   <url>
+    <loc>https://optivra.in/insights/ai-workflow-automation</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://optivra.in/ai-workflow-automation-hero.png</image:loc>
+      <image:title>AI Workflow Automation: Complete Business Guide (2026)</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://optivra.in/insights/ai-automation-for-small-businesses</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>

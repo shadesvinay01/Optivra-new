@@ -26,6 +26,15 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    category: "Automation",
+    title: "AI Workflow Automation: Complete Business Guide (2026)",
+    description:
+      "Learn how AI workflow automation helps businesses streamline operations, reduce manual work, improve productivity, and accelerate digital transformation.",
+    readTime: "10 min read",
+    slug: "ai-workflow-automation",
+    featured: true,
+  },
+  {
     category: "AI for Startups",
     title: "AI Automation for Small Businesses: Complete Guide (2026)",
     description:
