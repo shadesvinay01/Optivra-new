@@ -151,7 +151,7 @@ export default function Home() {
               className="text-center w-full max-w-5xl z-10"
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tight leading-[1.1] mb-6 text-white text-balance">
-                Building Intelligent Systems That Drive <span className="text-gradient">Real Business Outcomes.</span>
+                Enterprise AI Consulting & Machine Learning Engineering That Drives <span className="text-gradient">Business Growth.</span>
               </h1>
             </motion.div>
 
@@ -161,7 +161,7 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl text-center font-light leading-relaxed z-10 text-balance"
             >
-              We help startups and enterprises build AI products, automate operations, and scale technology faster.
+              We help startups and enterprises with AI consulting, machine learning, computer vision, and data science to build products and automate operations faster.
             </motion.p>
             
             <motion.div 

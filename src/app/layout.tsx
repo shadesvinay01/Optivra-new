@@ -11,11 +11,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://optivra.in"),
   title: {
-    default: "Optivra | AI Consulting & Product Engineering",
+    default: "Optivra | Enterprise AI Consulting & Product Engineering",
     template: "%s | Optivra",
   },
   description:
-    "Optivra builds enterprise AI systems, machine learning products, and intelligent automation that drive measurable business growth. Book a free AI strategy call today.",
+    "Optivra builds enterprise AI systems, machine learning products, and intelligent automation that drive business growth. Book a free AI strategy call today.",
   keywords: [
     "AI consulting India",
     "Enterprise AI consulting",

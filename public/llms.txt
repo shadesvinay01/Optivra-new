@@ -1,0 +1,28 @@
+# Optivra
+
+Optivra is a technology consultancy based in India that specializes in enterprise AI consulting, custom machine learning models, autonomous AI agents, computer vision, and data science. We build intelligent systems that drive real business outcomes for startups and enterprises globally.
+
+## Services
+- AI Consulting & Strategy
+- Autonomous AI Agent Development
+- Machine Learning Engineering
+- Computer Vision Solutions
+- Generative AI & RAG Systems
+- Full-Stack MVP Development
+- Cloud Engineering
+- CTO as a Service
+- Business Workflow Automation
+
+## Key Products
+- **ShadowAgent**: Autonomous multi-step task execution agent.
+- **BrutallyHonest**: AI-powered product review engine.
+- **BhaloGo**: AI travel tech platform.
+- **EventFlow AI**: LinkedIn-to-revenue event engine.
+- **Urvoic 2.0**: Voice AI platform.
+- **Vindex Protocol**: Livelihood insurance platform.
+
+## Contact
+- **Email**: hello@optivra.in
+- **Website**: https://optivra.in
+- **Address**: India
+- **Phone**: +91-74390-71619
