@@ -5,7 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import ExitIntentModal from "@/components/ui/ExitIntentModal";
-
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
@@ -191,6 +192,8 @@ export default function RootLayout({
         <Footer />
         <WhatsAppWidget />
         <ExitIntentModal />
+        <Analytics />
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
       </body>
     </html>
   );

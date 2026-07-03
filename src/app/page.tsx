@@ -479,6 +479,64 @@ export default function Home() {
 
       </section>
 
+      {/* Lead Magnet Section */}
+      <section className="container mx-auto px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden border border-white/10 bg-[#050505]"
+        >
+          {/* Background Glows */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-16 gap-10">
+            <div className="flex-1 text-center md:text-left">
+              <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] tracking-widest uppercase text-primary font-bold mb-6">
+                Free Download
+              </span>
+              <h2 className="text-3xl md:text-5xl font-sans font-black text-white mb-6 leading-tight">
+                The 2026 Enterprise <br/>
+                <span className="text-gradient">AI Adoption Playbook.</span>
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto md:mx-0">
+                A step-by-step roadmap for CTOs and founders to build scalable AI systems, automate workflows, and dominate the market without wasting capital.
+              </p>
+            </div>
+            
+            <div className="w-full md:w-[400px] bg-black/50 p-6 rounded-2xl border border-white/5 backdrop-blur-md">
+              <h3 className="text-white font-bold mb-4">Where should we send it?</h3>
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const email = (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value;
+                  window.location.href = `mailto:hello@optivra.in?subject=Send%20me%20the%20AI%20Playbook&body=Please%20send%20the%20playbook%20to%3A%20${email}`;
+                }}
+                className="flex flex-col gap-3"
+              >
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="name@company.com" 
+                  required
+                  className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-primary transition-colors rounded-lg"
+                />
+                <button 
+                  type="submit"
+                  className="w-full bg-primary text-black font-bold text-sm tracking-widest uppercase py-4 hover:bg-white transition-colors rounded-lg flex items-center justify-center gap-2"
+                >
+                  Download Now
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+              <p className="text-[10px] text-gray-600 mt-4 text-center">
+                Join 5,000+ tech leaders getting our weekly insights.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
       {/* Our Products */}
       <section id="products" className="container mx-auto px-6 py-32">
