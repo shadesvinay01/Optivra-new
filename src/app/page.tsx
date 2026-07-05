@@ -553,6 +553,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
+              id: "JA", name: "Jugnu AI", type: "AI Lead Engine", status: "Beta", statusColor: "yellow",
+              desc: "India's first AI lead engine built exclusively for real estate brokers. Delivers CIBIL-verified, intent-scored buyers directly to your WhatsApp.",
+              features: ["CIBIL Verified Buyers", "AI Intent Scoring", "WhatsApp AI Agent"],
+              cta: "Explore Jugnu AI", mailto: "JugnuAI%20Enquiry",
+              website: "https://real-frontend-phi.vercel.app"
+            },
+            {
               id: "SA", name: "ShadowAgent", type: "Autonomous AI Agent", status: "Live", statusColor: "green",
               desc: "A fully autonomous AI agent platform that silently monitors, analyzes, and executes tasks across your business stack 24/7 — without human intervention.",
               features: ["Autonomous multi-step task execution", "Real-time monitoring & alerting", "CRM & API integrations"],
