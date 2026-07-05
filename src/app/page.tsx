@@ -556,8 +556,7 @@ export default function Home() {
               id: "JA", name: "Jugnu AI", type: "AI Lead Engine", status: "Beta", statusColor: "yellow",
               desc: "India's first AI lead engine built exclusively for real estate brokers. Delivers CIBIL-verified, intent-scored buyers directly to your WhatsApp.",
               features: ["CIBIL Verified Buyers", "AI Intent Scoring", "WhatsApp AI Agent"],
-              cta: "Explore Jugnu AI", mailto: "JugnuAI%20Enquiry",
-              website: "https://real-frontend-phi.vercel.app"
+              cta: "Get Early Access", mailto: "JugnuAI%20Enquiry"
             },
             {
               id: "SA", name: "ShadowAgent", type: "Autonomous AI Agent", status: "Live", statusColor: "green",
