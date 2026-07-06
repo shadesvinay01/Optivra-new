@@ -35,9 +35,9 @@ function WordCycler() {
 }
 
 const STATS = [
-  { icon: TrendingUp, value: "10x", label: "Faster Operations" },
-  { icon: Users, value: "12+", label: "AI Agent Types" },
-  { icon: CheckCircle2, value: "8k+", label: "Tasks Automated/mo" },
+  { icon: TrendingUp, value: "3x", label: "Lead Conversion" },
+  { icon: Zap, value: "40%", label: "Cost Reduction" },
+  { icon: CheckCircle2, value: "0", label: "Manual Data Entry" },
 ];
 
 export default function HeroSection() {
@@ -141,9 +141,10 @@ export default function HeroSection() {
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-8xl lg:text-[100px] font-black text-white tracking-tighter leading-[0.95]"
+            className="text-5xl md:text-7xl lg:text-[90px] font-black text-white tracking-tighter leading-[0.95]"
           >
-            Your AI
+            Scale Revenue.<br/>
+            Cut Costs.
           </motion.h1>
         </div>
         <div className="overflow-hidden mb-10">
@@ -151,9 +152,9 @@ export default function HeroSection() {
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-8xl lg:text-[100px] font-black tracking-tighter leading-[0.95] text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFDF00] to-[#F3E5AB]"
+            className="text-5xl md:text-7xl lg:text-[90px] font-black tracking-tighter leading-[0.95] text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFDF00] to-[#F3E5AB]"
           >
-            Workforce.
+            Automate Everything.
           </motion.h1>
         </div>
 
@@ -164,9 +165,7 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed font-light"
         >
-          Deploy intelligent AI employees that automate{" "}
-          <strong className="text-white/90 font-medium">sales, support, operations</strong>{" "}
-          and reporting — from one unified platform. No extra headcount required.
+          Optivra AI works 24/7 to qualify leads, handle support, and run operations so you can focus entirely on <strong className="text-white/90 font-medium">growth and strategy</strong>.
         </motion.p>
 
         {/* CTA Buttons */}
