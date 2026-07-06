@@ -23,6 +23,7 @@ interface Agent {
   description: string;
   trigger: string;
   workflow: WorkflowStep[];
+  result: { title: string, desc: string };
 }
 
 const AGENTS: Agent[] = [
@@ -39,7 +40,8 @@ const AGENTS: Agent[] = [
       { text: "Updating CRM pipeline value to $45,000...", duration: 1000 },
       { text: "Drafting personalised email & proposing meeting times...", duration: 1800 },
       { text: "Email sent. Awaiting response.", duration: 500 }
-    ]
+    ],
+    result: { title: "Meeting Proposed", desc: "Sent custom intro to Acme Corp for Thursday 2 PM." }
   },
   {
     id: "support",
@@ -54,7 +56,8 @@ const AGENTS: Agent[] = [
       { text: "Identified solution: 'Upgrade to Enterprise for higher limits.'", duration: 1200 },
       { text: "Generating response and applying temporary limit bump...", duration: 1500 },
       { text: "Ticket resolved. Customer notified.", duration: 500 }
-    ]
+    ],
+    result: { title: "Ticket Resolved", desc: "Response sent and temporary limit increase applied automatically." }
   },
   {
     id: "marketing",
@@ -69,7 +72,8 @@ const AGENTS: Agent[] = [
       { text: "Allocating $10k budget evenly across LinkedIn and Google...", duration: 1200 },
       { text: "Scheduling posts for optimal engagement times...", duration: 1000 },
       { text: "Campaign live. Monitoring ROAS.", duration: 500 }
-    ]
+    ],
+    result: { title: "Campaign Live", desc: "$10k allocated across 5 A/B tests on LinkedIn & Google." }
   },
   {
     id: "hr",
@@ -84,7 +88,8 @@ const AGENTS: Agent[] = [
       { text: "Sending automated coding assessment link...", duration: 1000 },
       { text: "Coordinating calendar availability with hiring managers...", duration: 1800 },
       { text: "Interview scheduled for Tuesday 10 AM.", duration: 500 }
-    ]
+    ],
+    result: { title: "Interview Scheduled", desc: "Candidate booked for Tuesday 10 AM technical screen." }
   },
   {
     id: "finance",
@@ -99,7 +104,8 @@ const AGENTS: Agent[] = [
       { text: "Syncing transaction record with Xero/Quickbooks...", duration: 1000 },
       { text: "Sending invoice to accounts@acmecorp.com...", duration: 1200 },
       { text: "Invoice sent. Setting 7-day payment reminder.", duration: 500 }
-    ]
+    ],
+    result: { title: "Invoice Generated", desc: "$15,000 invoice created, synced to Xero, and emailed to client." }
   },
   {
     id: "operations",
@@ -114,7 +120,8 @@ const AGENTS: Agent[] = [
       { text: "Identifying alternative local suppliers for affected parts...", duration: 2000 },
       { text: "Drafting urgent supplier RFQ...", duration: 1200 },
       { text: "Alert routed to Supply Chain Manager.", duration: 500 }
-    ]
+    ],
+    result: { title: "Alert Routed", desc: "Impact calculated and alternative supplier RFQ sent to Manager." }
   },
   {
     id: "exec",
@@ -129,7 +136,8 @@ const AGENTS: Agent[] = [
       { text: "Checking current calendar for 30-min opening...", duration: 1200 },
       { text: "Rescheduling internal 1:1 to accommodate request...", duration: 1500 },
       { text: "Meeting confirmed and Zoom link added.", duration: 500 }
-    ]
+    ],
+    result: { title: "Calendar Updated", desc: "Internal 1:1 rescheduled. Board prep meeting booked with Zoom link." }
   },
   {
     id: "knowledge",
@@ -144,7 +152,8 @@ const AGENTS: Agent[] = [
       { text: "Synthesizing 2026 parental leave policy details...", duration: 1800 },
       { text: "Formatting step-by-step instructions...", duration: 1000 },
       { text: "Answer delivered via Slack integration.", duration: 500 }
-    ]
+    ],
+    result: { title: "Query Answered", desc: "Policy details successfully synthesized and sent to employee via Slack." }
   },
   {
     id: "proposal",
@@ -159,7 +168,8 @@ const AGENTS: Agent[] = [
       { text: "Generating 12-page custom slide deck...", duration: 2500 },
       { text: "Applying company branding and formatting...", duration: 1500 },
       { text: "Proposal drafted. Ready for review.", duration: 500 }
-    ]
+    ],
+    result: { title: "Proposal Drafted", desc: "12-page customized slide deck generated for Healthcare client." }
   },
   {
     id: "meeting",
@@ -174,7 +184,8 @@ const AGENTS: Agent[] = [
       { text: "Extracting 6 action items and mapping to assignees...", duration: 2000 },
       { text: "Creating Jira/Linear tickets automatically...", duration: 1500 },
       { text: "Summary distributed to all attendees.", duration: 500 }
-    ]
+    ],
+    result: { title: "Tickets Created", desc: "6 action items extracted from call and added to Linear/Jira." }
   },
   {
     id: "voice",
@@ -189,7 +200,8 @@ const AGENTS: Agent[] = [
       { text: "Querying database for order status (#99201)...", duration: 1200 },
       { text: "Synthesizing voice response: 'Your order arrives tomorrow.'", duration: 1500 },
       { text: "Call completed. Summary logged in CRM.", duration: 500 }
-    ]
+    ],
+    result: { title: "Call Handled", desc: "Customer query resolved autonomously. CRM log updated." }
   },
   {
     id: "data",
@@ -204,7 +216,8 @@ const AGENTS: Agent[] = [
       { text: "Calculating cohort churn variance...", duration: 1500 },
       { text: "Generating interactive bar chart...", duration: 1000 },
       { text: "Report generated and embedded in dashboard.", duration: 500 }
-    ]
+    ],
+    result: { title: "Report Generated", desc: "Cohort churn variance calculated and bar chart embedded." }
   }
 ];
 
@@ -414,6 +427,26 @@ export default function InteractiveDemo() {
                             )}
                           </AnimatePresence>
                         ))}
+
+                        {/* Result Output Card */}
+                        <AnimatePresence>
+                          {!isPlaying && currentStepIndex === selectedAgent.workflow.length - 1 && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              transition={{ duration: 0.4, ease: "easeOut" }}
+                              className="mt-2 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-lg p-4 shadow-[0_0_15px_rgba(212,175,55,0.05)]"
+                            >
+                              <div className="flex items-center gap-2 mb-2">
+                                <selectedAgent.icon className="w-4 h-4 text-[#D4AF37]" />
+                                <span className="text-[#D4AF37] font-bold text-xs uppercase tracking-wider">Outcome: {selectedAgent.result.title}</span>
+                              </div>
+                              <p className="text-gray-300 leading-relaxed pl-6 border-l-2 border-[#D4AF37]/30 ml-2">
+                                {selectedAgent.result.desc}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </>
                     )}
                   </div>
