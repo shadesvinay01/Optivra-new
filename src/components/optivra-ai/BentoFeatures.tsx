@@ -5,107 +5,161 @@ import { Database, MessageCircle, PhoneCall, BarChart4, Network, ArrowRight } fr
 
 export default function BentoFeatures() {
   return (
-    <section id="features" className="py-32 px-6 max-w-7xl mx-auto z-10 relative">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4">
-          Everything You Need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB]">Scale.</span>
-        </h2>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Optivra AI replaces disjointed software stacks with a single, unified intelligent operating system.
-        </p>
-      </div>
+    <section id="features" className="relative py-32 px-6 max-w-7xl mx-auto overflow-hidden">
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[280px]">
-        
-        {/* Large Feature 1 */}
+      {/* Grid bg */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      <div className="relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="md:col-span-2 lg:col-span-2 row-span-2 rounded-2xl bg-[#050505] border border-white/[0.06] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/30 transition-all"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="relative z-10 flex flex-col h-full">
-            <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-6 border border-[#D4AF37]/20">
-              <Database className="w-6 h-6" />
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3">AI CRM & Sales Pipeline</h3>
-            <p className="text-gray-400 leading-relaxed font-light max-w-md text-sm">
-              A self-updating CRM. Our AI tracks every conversation, logs every meeting, updates lead scores autonomously, and tells your sales team exactly who to call next.
-            </p>
-            <div className="mt-6 flex-1 w-full bg-black/60 border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 flex items-end p-4">
-                <span className="text-xs font-bold text-[#D4AF37] flex items-center gap-2">
-                  Live Syncing
-                  <motion.span animate={{ opacity: [1,0,1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                </span>
+          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#D4AF37]/70 mb-4">Capabilities</p>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
+            One Platform. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB]">Everything.</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
+            Replace your entire software stack with a single AI-powered operating system.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+
+          {/* Large: CRM */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="md:col-span-4 rounded-3xl relative overflow-hidden group border border-white/[0.06] bg-[#030303] hover:border-[#D4AF37]/20 transition-all duration-500"
+            style={{ minHeight: 340 }}
+          >
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Top border glow */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10 p-8 h-full flex flex-col">
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center">
+                  <Database className="w-6 h-6 text-[#D4AF37]" />
+                </div>
+                <span className="text-xs text-gray-600 font-bold uppercase tracking-widest border border-white/[0.06] px-3 py-1 rounded-full">Core</span>
               </div>
-              <div className="p-4 flex flex-col gap-2">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="h-10 w-full bg-white/[0.04] rounded-lg border border-white/[0.05] flex items-center px-4 justify-between">
-                    <div className="w-28 h-1.5 bg-white/10 rounded-full" />
-                    <div className="w-12 h-1.5 bg-[#D4AF37]/30 rounded-full" />
+              <h3 className="text-2xl font-black text-white mb-3">AI-Powered CRM</h3>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-sm font-light mb-6">
+                A self-updating CRM that tracks every conversation, logs every meeting, scores leads autonomously, and tells your team exactly who to call next — without manual input.
+              </p>
+
+              {/* Mock UI rows */}
+              <div className="mt-auto space-y-2">
+                <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-3">Live Pipeline — Auto-syncing</p>
+                {[
+                  { name: "Acme Corp", score: 94, val: "$48K", stage: "Meeting Booked" },
+                  { name: "NovaTech", score: 81, val: "$32K", stage: "Qualifying" },
+                  { name: "Blueridge", score: 76, val: "$22K", stage: "Outreach Sent" },
+                ].map((row) => (
+                  <div key={row.name} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.05] group-hover:border-[#D4AF37]/10 transition-colors">
+                    <div className="w-6 h-6 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] text-[9px] font-black flex items-center justify-center shrink-0">{row.name[0]}</div>
+                    <span className="text-sm font-semibold text-white flex-1">{row.name}</span>
+                    <span className="text-xs text-[#D4AF37] font-bold px-2 py-0.5 bg-[#D4AF37]/10 rounded-md">{row.score}%</span>
+                    <span className="text-xs text-gray-400">{row.stage}</span>
+                    <span className="text-sm font-black text-white ml-2">{row.val}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Feature 2 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          className="md:col-span-1 lg:col-span-2 rounded-2xl bg-[#050505] border border-white/[0.06] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/30 transition-all"
-        >
-          <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-4 border border-[#D4AF37]/20">
-            <MessageCircle className="w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold text-white mb-2">WhatsApp AI Assistant</h3>
-          <p className="text-sm text-gray-400 leading-relaxed font-light">Deploy AI agents on WhatsApp to answer FAQs, qualify leads, and schedule bookings instantly—24/7.</p>
-        </motion.div>
-
-        {/* Feature 3 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          className="md:col-span-1 rounded-2xl bg-[#050505] border border-white/[0.06] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/30 transition-all"
-        >
-          <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-4 border border-[#D4AF37]/20">
-            <PhoneCall className="w-6 h-6" />
-          </div>
-          <h3 className="text-lg font-bold text-white mb-2">AI Voice Calls</h3>
-          <p className="text-xs text-gray-400 leading-relaxed font-light">Human-like voice AI that makes and receives business phone calls.</p>
-        </motion.div>
-
-        {/* Feature 4 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          className="md:col-span-1 rounded-2xl bg-[#050505] border border-white/[0.06] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/30 transition-all"
-        >
-          <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-4 border border-[#D4AF37]/20">
-            <BarChart4 className="w-6 h-6" />
-          </div>
-          <h3 className="text-lg font-bold text-white mb-2">Predictive Analytics</h3>
-          <p className="text-xs text-gray-400 leading-relaxed font-light">AI models that forecast revenue and predict churn before it happens.</p>
-        </motion.div>
-
-        {/* Full Width Feature */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-          className="md:col-span-3 lg:col-span-4 rounded-2xl bg-[#050505] border border-white/[0.06] p-8 flex flex-col md:flex-row items-center justify-between gap-8 group hover:border-[#D4AF37]/30 transition-all"
-        >
-          <div className="flex-1">
-            <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-4 border border-[#D4AF37]/20">
-              <Network className="w-6 h-6" />
+          {/* WhatsApp */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+            className="md:col-span-2 rounded-3xl border border-white/[0.06] bg-[#030303] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/20 transition-all duration-500"
+            style={{ minHeight: 340 }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center mb-5">
+              <MessageCircle className="w-6 h-6 text-[#D4AF37]" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Multi-Agent Collaboration</h3>
-            <p className="text-gray-400 text-sm max-w-xl leading-relaxed">
-              Our agents don't work in silos. Your AI Sales Agent talks to your AI Finance Agent to instantly generate a custom proposal and invoice—triggered from a single CRM update.
-            </p>
-          </div>
-          <div className="shrink-0">
-            <div className="w-12 h-12 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all">
-              <ArrowRight className="w-5 h-5 group-hover:-rotate-45 transition-transform" />
+            <h3 className="text-xl font-black text-white mb-3">WhatsApp AI</h3>
+            <p className="text-sm text-gray-400 font-light leading-relaxed mb-6">Answer FAQs, qualify leads, and book appointments instantly — 24/7 on WhatsApp.</p>
+            {/* Mini chat */}
+            <div className="mt-auto space-y-2">
+              <div className="bg-white/[0.05] rounded-xl rounded-tl-sm px-3 py-2 text-xs text-gray-300">Hi, what are your pricing plans?</div>
+              <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/15 rounded-xl rounded-tr-sm px-3 py-2 text-xs text-[#D4AF37] self-end ml-8">
+                Great question! We have Starter from $499/mo, Growth from $1,499/mo, and Enterprise (custom). Want a personalised quote?
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Voice */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
+            className="md:col-span-2 rounded-3xl border border-white/[0.06] bg-[#030303] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/20 transition-all duration-500"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center mb-5">
+                <PhoneCall className="w-6 h-6 text-[#D4AF37]" />
+              </div>
+              <h3 className="text-xl font-black text-white mb-3">AI Voice Calls</h3>
+              <p className="text-sm text-gray-400 font-light leading-relaxed">Human-like voice AI that makes outbound calls, handles inbound queries, and qualifies leads by phone.</p>
+            </div>
+          </motion.div>
+
+          {/* Analytics */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+            className="md:col-span-2 rounded-3xl border border-white/[0.06] bg-[#030303] p-8 flex flex-col relative overflow-hidden group hover:border-[#D4AF37]/20 transition-all duration-500"
+          >
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center mb-5">
+                <BarChart4 className="w-6 h-6 text-[#D4AF37]" />
+              </div>
+              <h3 className="text-xl font-black text-white mb-3">Predictive Analytics</h3>
+              <p className="text-sm text-gray-400 font-light leading-relaxed">AI models forecast revenue, predict churn, and surface insights before problems occur.</p>
+              {/* Mini chart */}
+              <div className="mt-5 flex items-end gap-1 h-10">
+                {[40,60,45,80,65,100].map((h,i)=>(
+                  <motion.div key={i} initial={{height:0}} whileInView={{height:`${h}%`}} viewport={{once:true}} transition={{duration:0.5, delay:i*0.08}}
+                    className="flex-1 rounded-t-sm bg-gradient-to-t from-[#D4AF37]/60 to-[#D4AF37]/20" />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Multi-agent — full width */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}
+            className="md:col-span-6 rounded-3xl border border-white/[0.06] bg-[#030303] p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group hover:border-[#D4AF37]/20 transition-all duration-500"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#D4AF37]/40 via-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="flex-1 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center mb-5">
+                <Network className="w-6 h-6 text-[#D4AF37]" />
+              </div>
+              <h3 className="text-2xl font-black text-white mb-3">Multi-Agent Collaboration</h3>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-2xl font-light">
+                Agents work together, not in isolation. Your Sales Agent triggers the Finance Agent to generate an invoice, which triggers the Ops Agent to prepare a contract — all from a single CRM update. Zero manual hand-offs.
+              </p>
+            </div>
+            <div className="shrink-0 relative z-10">
+              <div className="w-14 h-14 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300">
+                <ArrowRight className="w-6 h-6 group-hover:-rotate-45 transition-transform duration-300" />
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
