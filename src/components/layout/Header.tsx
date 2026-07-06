@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -39,6 +39,9 @@ export default function Header() {
             </div>
 
             <Link href="/insights" className="hover:text-primary transition-colors">Insights</Link>
+            <Link href="/optivra-ai" className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-black transition-all rounded-full flex items-center gap-1.5">
+              <Sparkles className="w-3 h-3" /> Optivra AI
+            </Link>
             <Link href="/#products" className="hover:text-primary transition-colors">Products</Link>
             <Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link>
           </nav>
@@ -84,6 +87,9 @@ export default function Header() {
                 <Link href="#services" onClick={toggleMenu} className="hover:text-primary transition-colors">Cloud & Modernization</Link>
               </div>
             </div>
+            <Link href="/optivra-ai" onClick={toggleMenu} className="text-primary flex items-center gap-2">
+              <Sparkles className="w-5 h-5" /> Optivra AI
+            </Link>
             <Link href="#products" onClick={toggleMenu} className="hover:text-primary transition-colors">Products</Link>
             <Link href="#faq" onClick={toggleMenu} className="hover:text-primary transition-colors">FAQ</Link>
             <Link href="#portfolio" onClick={toggleMenu} className="hover:text-primary transition-colors">Projects</Link>
