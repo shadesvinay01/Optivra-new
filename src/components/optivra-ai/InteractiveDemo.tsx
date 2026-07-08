@@ -225,6 +225,7 @@ export default function InteractiveDemo() {
   const [selectedAgentId, setSelectedAgentId] = useState<string>(AGENTS[0].id);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(-1);
+  const [realResult, setRealResult] = useState<string | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
 
   const selectedAgent = AGENTS.find(a => a.id === selectedAgentId)!;
@@ -240,11 +241,33 @@ export default function InteractiveDemo() {
     if (isPlaying || selectedAgent.status === "Building") return;
     setIsPlaying(true);
     setCurrentStepIndex(-1);
+    setRealResult(null);
+
+    // Fire the real backend request if Marketing Agent is selected
+    let backendPromise: Promise<string> | null = null;
+    if (selectedAgent.id === "marketing") {
+      backendPromise = fetch("http://localhost:8000/api/run-marketing-crew", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic: "Optivra AI Services" })
+      })
+      .then(res => res.json())
+      .then(data => data.result || "No result from API.")
+      .catch(err => "Failed to fetch from backend: " + err.message);
+    }
 
     for (let i = 0; i < selectedAgent.workflow.length; i++) {
       await new Promise(r => setTimeout(r, selectedAgent.workflow[i].duration));
       setCurrentStepIndex(i);
     }
+
+    // Wait for the real backend if it was triggered
+    if (backendPromise) {
+      // If the backend takes longer than the fake animation, the UI will wait here (or we could show a loader)
+      const result = await backendPromise;
+      setRealResult(result);
+    }
+
     setIsPlaying(false);
   };
 
@@ -441,9 +464,9 @@ export default function InteractiveDemo() {
                                 <selectedAgent.icon className="w-4 h-4 text-[#D4AF37]" />
                                 <span className="text-[#D4AF37] font-bold text-xs uppercase tracking-wider">Outcome: {selectedAgent.result.title}</span>
                               </div>
-                              <p className="text-gray-300 leading-relaxed pl-6 border-l-2 border-[#D4AF37]/30 ml-2">
-                                {selectedAgent.result.desc}
-                              </p>
+                              <div className="text-gray-300 text-xs leading-relaxed pl-6 border-l-2 border-[#D4AF37]/30 ml-2 whitespace-pre-wrap max-h-[300px] overflow-y-auto custom-scrollbar">
+                                {realResult ? realResult : selectedAgent.result.desc}
+                              </div>
                             </motion.div>
                           )}
                         </AnimatePresence>
