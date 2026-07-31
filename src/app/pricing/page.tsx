@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { CheckCircle2, Cpu, Code2, LineChart, ShieldCheck, HeadphonesIcon, Globe, Rocket, TerminalSquare, Search, Lock, Zap, FileText } from 'lucide-react';
 import PricingDownloadButton from '@/components/ui/PricingDownloadButton';
@@ -99,6 +100,15 @@ export default function PricingPage() {
           <p className="text-xl text-[#D4AF37] max-w-3xl mx-auto">
             Building Intelligent Digital Solutions That Scale Businesses
           </p>
+          <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
+            <Link
+              href="/proposal"
+              className="px-6 py-3 bg-[#D4AF37] text-black font-bold rounded-lg hover:bg-white transition-all shadow-lg text-sm uppercase tracking-wider"
+            >
+              Open Interactive Proposal & Export PDF
+            </Link>
+            <PricingDownloadButton />
+          </div>
         </motion.div>
 
         {/* About Section */}

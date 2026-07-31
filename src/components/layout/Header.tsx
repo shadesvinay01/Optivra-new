@@ -39,6 +39,10 @@ export default function Header() {
             </div>
 
             <Link href="/insights" className="hover:text-primary transition-colors">Insights</Link>
+            <Link href="/docs" className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all rounded-full flex items-center gap-1.5 font-bold">
+              <Sparkles className="w-3 h-3" /> Doc Hub (14 PDFs)
+            </Link>
+            <Link href="/proposal" className="hover:text-primary transition-colors">Proposal</Link>
             <Link href="/optivra-ai" className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-black transition-all rounded-full flex items-center gap-1.5">
               <Sparkles className="w-3 h-3" /> Optivra AI
             </Link>
@@ -47,6 +51,12 @@ export default function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/proposal"
+              className="px-4 py-2 bg-[#D4AF37] text-slate-950 font-bold text-xs tracking-widest uppercase hover:bg-white transition-all rounded-sm shadow-md"
+            >
+              Proposal PDF
+            </Link>
             <Link
               href="/audit"
               className="px-5 py-2.5 bg-transparent text-gray-400 border border-white/10 hover:border-primary hover:text-primary transition-all font-semibold text-xs tracking-widest uppercase"
