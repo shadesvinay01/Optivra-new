@@ -27,6 +27,32 @@ export default function ProposalToolbar({ data, onChangeData, documentRef }: Pro
         useCORS: true,
         logging: false,
         backgroundColor: "#ffffff",
+        onclone: (clonedDoc) => {
+          // Clean up any style tags or link tags with unsupported lab() or oklch() color functions
+          const styleTags = clonedDoc.querySelectorAll("style");
+          styleTags.forEach((st) => {
+            if (st.textContent && (st.textContent.includes("lab(") || st.textContent.includes("oklch("))) {
+              st.textContent = st.textContent
+                .replace(/lab\([^)]+\)/g, "#000000")
+                .replace(/oklch\([^)]+\)/g, "#000000")
+                .replace(/oklab\([^)]+\)/g, "#000000");
+            }
+          });
+
+          // Clean up inline styles on elements
+          const allElements = clonedDoc.querySelectorAll("*");
+          allElements.forEach((el) => {
+            const htmlEl = el as HTMLElement;
+            if (htmlEl.style && htmlEl.style.cssText) {
+              if (htmlEl.style.cssText.includes("lab(") || htmlEl.style.cssText.includes("oklch(")) {
+                htmlEl.style.cssText = htmlEl.style.cssText
+                  .replace(/lab\([^)]+\)/g, "#000000")
+                  .replace(/oklch\([^)]+\)/g, "#000000")
+                  .replace(/oklab\([^)]+\)/g, "#000000");
+              }
+            }
+          });
+        },
       });
 
       const imgData = canvas.toDataURL("image/jpeg", 0.98);
