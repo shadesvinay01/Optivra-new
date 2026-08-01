@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Download, Printer, Search, FileText, Settings, Check, Sparkles, Building2, Briefcase, FileCheck, Shield, FileSpreadsheet, Send, Lock, HelpCircle, Layers, Presentation } from "lucide-react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import { Download, Printer, Search, FileText, Check, Sparkles, Shield, FileSpreadsheet, Send, Lock, HelpCircle, Layers, Presentation, Briefcase, Building2, FileCheck } from "lucide-react";
 
 // Import document modules
 import CompanyProfileDoc from "./modules/CompanyProfileDoc";
@@ -85,75 +83,71 @@ export default function DocHubViewer() {
 
   const activeDocDetails = docList.find((d) => d.id === activeDoc) || docList[0];
 
-  const handleDownloadPDF = async () => {
+  const handleDownloadPDF = () => {
     if (!docContainerRef.current) return;
     setIsExporting(true);
 
     try {
-      const element = docContainerRef.current;
-      const canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        backgroundColor: "#ffffff",
-        onclone: (clonedDoc) => {
-          // Clean up any style tags with unsupported lab() or oklch() color functions
-          const styleTags = clonedDoc.querySelectorAll("style");
-          styleTags.forEach((st) => {
-            if (st.textContent && (st.textContent.includes("lab(") || st.textContent.includes("oklch("))) {
-              st.textContent = st.textContent
-                .replace(/lab\([^)]+\)/g, "#000000")
-                .replace(/oklch\([^)]+\)/g, "#000000")
-                .replace(/oklab\([^)]+\)/g, "#000000");
-            }
-          });
+      const docTitle = `Optivra_${activeDocDetails.title.replace(/[\s\/\(\)]+/g, "_")}`;
+      const content = docContainerRef.current.innerHTML;
 
-          // Clean up inline styles on elements
-          const allElements = clonedDoc.querySelectorAll("*");
-          allElements.forEach((el) => {
-            const htmlEl = el as HTMLElement;
-            if (htmlEl.style && htmlEl.style.cssText) {
-              if (htmlEl.style.cssText.includes("lab(") || htmlEl.style.cssText.includes("oklch(")) {
-                htmlEl.style.cssText = htmlEl.style.cssText
-                  .replace(/lab\([^)]+\)/g, "#000000")
-                  .replace(/oklch\([^)]+\)/g, "#000000")
-                  .replace(/oklab\([^)]+\)/g, "#000000");
-              }
-            }
-          });
-        },
-      });
+      // Collect all stylesheets from the current page
+      const styleSheets = Array.from(document.styleSheets)
+        .map((sheet) => {
+          try {
+            return Array.from(sheet.cssRules)
+              .map((rule) => rule.cssText)
+              .join("\n");
+          } catch {
+            // Cross-origin stylesheets may be inaccessible
+            return "";
+          }
+        })
+        .join("\n");
 
-      const imgData = canvas.toDataURL("image/jpeg", 0.98);
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
-
-      const imgWidth = 210;
-      const pageHeight = 297;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+      const printWindow = window.open("", "_blank", "width=900,height=1200");
+      if (!printWindow) {
+        alert("Please allow popups to download the PDF, then try again.");
+        setIsExporting(false);
+        return;
       }
 
-      const fileName = `Optivra_${activeDocDetails.title.replace(/[\s\/\(\)]+/g, "_")}.pdf`;
-      pdf.save(fileName);
-    } catch (err: any) {
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>${docTitle}</title>
+            <style>
+              ${styleSheets}
+              @media print {
+                @page { size: A4; margin: 10mm; }
+                body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                .no-print { display: none !important; }
+              }
+              body { background: white; margin: 0; padding: 0; }
+            </style>
+          </head>
+          <body>
+            <div style="max-width:820px;margin:0 auto;background:white;padding:24px;">
+              ${content}
+            </div>
+            <script>
+              window.onload = function() {
+                window.print();
+                setTimeout(function() { window.close(); }, 1000);
+              };
+            </script>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+    } catch (err: unknown) {
       console.error("PDF Generation Error:", err);
-      alert("Failed to export PDF: " + (err?.message || "Unknown error"));
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      alert("Failed to export PDF: " + msg);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => setIsExporting(false), 1500);
     }
   };
 

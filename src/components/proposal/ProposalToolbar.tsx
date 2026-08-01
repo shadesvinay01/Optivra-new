@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import { Download, Printer, Settings, Edit3, DollarSign, Check, Eye, ChevronDown } from "lucide-react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import { ProposalData } from "./ProposalDocument";
 
 interface ProposalToolbarProps {
@@ -16,75 +14,70 @@ export default function ProposalToolbar({ data, onChangeData, documentRef }: Pro
   const [isExporting, setIsExporting] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
 
-  const handleDownloadPDF = async () => {
+  const handleDownloadPDF = () => {
     if (!documentRef.current) return;
     setIsExporting(true);
 
     try {
-      const element = documentRef.current;
-      const canvas = await html2canvas(element, {
-        scale: 2, // high DPI
-        useCORS: true,
-        logging: false,
-        backgroundColor: "#ffffff",
-        onclone: (clonedDoc) => {
-          // Clean up any style tags or link tags with unsupported lab() or oklch() color functions
-          const styleTags = clonedDoc.querySelectorAll("style");
-          styleTags.forEach((st) => {
-            if (st.textContent && (st.textContent.includes("lab(") || st.textContent.includes("oklch("))) {
-              st.textContent = st.textContent
-                .replace(/lab\([^)]+\)/g, "#000000")
-                .replace(/oklch\([^)]+\)/g, "#000000")
-                .replace(/oklab\([^)]+\)/g, "#000000");
-            }
-          });
+      const docTitle = `Optivra_Proposal_${(data.clientName || "Client").replace(/\s+/g, "_")}`;
+      const content = documentRef.current.innerHTML;
 
-          // Clean up inline styles on elements
-          const allElements = clonedDoc.querySelectorAll("*");
-          allElements.forEach((el) => {
-            const htmlEl = el as HTMLElement;
-            if (htmlEl.style && htmlEl.style.cssText) {
-              if (htmlEl.style.cssText.includes("lab(") || htmlEl.style.cssText.includes("oklch(")) {
-                htmlEl.style.cssText = htmlEl.style.cssText
-                  .replace(/lab\([^)]+\)/g, "#000000")
-                  .replace(/oklch\([^)]+\)/g, "#000000")
-                  .replace(/oklab\([^)]+\)/g, "#000000");
-              }
-            }
-          });
-        },
-      });
+      // Collect all stylesheets from current page
+      const styleSheets = Array.from(document.styleSheets)
+        .map((sheet) => {
+          try {
+            return Array.from(sheet.cssRules)
+              .map((rule) => rule.cssText)
+              .join("\n");
+          } catch {
+            return "";
+          }
+        })
+        .join("\n");
 
-      const imgData = canvas.toDataURL("image/jpeg", 0.98);
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
-
-      const imgWidth = 210; // A4 width mm
-      const pageHeight = 297; // A4 height mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+      const printWindow = window.open("", "_blank", "width=900,height=1200");
+      if (!printWindow) {
+        alert("Please allow popups to download the PDF, then try again.");
+        setIsExporting(false);
+        return;
       }
 
-      const fileName = `Optivra_Proposal_${data.clientName.replace(/\s+/g, "_") || "Client"}.pdf`;
-      pdf.save(fileName);
-    } catch (err: any) {
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>${docTitle}</title>
+            <style>
+              ${styleSheets}
+              @media print {
+                @page { size: A4; margin: 10mm; }
+                body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                .no-print { display: none !important; }
+              }
+              body { background: white; margin: 0; padding: 0; }
+            </style>
+          </head>
+          <body>
+            <div style="max-width:820px;margin:0 auto;background:white;padding:24px;">
+              ${content}
+            </div>
+            <script>
+              window.onload = function() {
+                window.print();
+                setTimeout(function() { window.close(); }, 1000);
+              };
+            </script>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+    } catch (err: unknown) {
       console.error("PDF Export Error:", err);
-      alert("Failed to export PDF proposal: " + (err?.message || "Unknown error"));
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      alert("Failed to export PDF proposal: " + msg);
     } finally {
-      setIsExporting(false);
+      setTimeout(() => setIsExporting(false), 1500);
     }
   };
 
