@@ -15,7 +15,90 @@ import ClientOnboardingGuideDoc from "./modules/ClientOnboardingGuideDoc";
 import DiscoveryQuestionnaireDoc from "./modules/DiscoveryQuestionnaireDoc";
 import FaqDoc from "./modules/FaqDoc";
 import SalesPitchDeckDoc from "./modules/SalesPitchDeckDoc";
-import ProposalDocument from "../proposal/ProposalDocument";
+import ProposalDocument, { ProposalData } from "../proposal/ProposalDocument";
+import ProposalToolbar from "../proposal/ProposalToolbar";
+
+const initialProposalData: ProposalData = {
+  clientName: "Enterprise Client",
+  clientCompany: "Acme Corporation",
+  projectTitle: "AI & Full-Stack Digital Transformation",
+  proposalId: "OPT-2026-8942",
+  date: "August 1, 2026",
+  validUntil: "August 31, 2026",
+  currency: "USD",
+  discountPercent: 10,
+  taxPercent: 0,
+  investmentAmountUSD: 12500,
+  customNotes: "Includes end-to-end technical documentation, CI/CD pipeline, performance monitoring, and 30-day warranty.",
+  items: [
+    {
+      id: "srv-1",
+      title: "Landing Page & Web Development",
+      category: "Web & Design",
+      description: "Custom ultra-high conversion, cinematic landing page or corporate website built with Next.js, React, TailwindCSS, and Framer Motion.",
+      deliverables: ["Modern Responsive UI/UX", "SEO Optimization & Meta", "CMS Integration", "Analytics & Tracking"],
+      timeline: "1 - 2 Weeks",
+      priceINR: 49999,
+      priceUSD: 699,
+      included: true,
+    },
+    {
+      id: "srv-2",
+      title: "Full-Stack Web & E-Commerce Application",
+      category: "Custom Software",
+      description: "Robust scalable web application or custom e-commerce solution with dynamic product catalog, cart, payments, and admin dashboard.",
+      deliverables: ["React / Next.js Frontend", "Node.js / Python Backend API", "Stripe / Razorpay Integration", "Admin Analytics Dashboard"],
+      timeline: "3 - 4 Weeks",
+      priceINR: 99999,
+      priceUSD: 1399,
+      included: true,
+    },
+    {
+      id: "srv-3",
+      title: "Autonomous AI Chatbots & RAG Agents",
+      category: "AI & LLM",
+      description: "Custom AI assistant trained on enterprise knowledge base (RAG) with natural language capabilities, multi-channel deployment (Web, WhatsApp, Slack).",
+      deliverables: ["Custom Vector Database RAG", "LLM Fine-Tuning & Prompting", "CRM / Helpdesk Sync", "User Conversation Logs"],
+      timeline: "2 - 3 Weeks",
+      priceINR: 75000,
+      priceUSD: 999,
+      included: true,
+    },
+    {
+      id: "srv-4",
+      title: "Enterprise Workflow & Process Automation",
+      category: "Automation",
+      description: "End-to-end workflow automation connecting internal tools, databases, APIs, email alerts, and data processing pipelines.",
+      deliverables: ["Automated Pipeline Architecture", "API Integration Suite", "Exception Handling & Logging", "Team Training & Handoff"],
+      timeline: "2 - 3 Weeks",
+      priceINR: 85000,
+      priceUSD: 1199,
+      included: true,
+    },
+    {
+      id: "srv-5",
+      title: "Mobile Application (iOS & Android)",
+      category: "Mobile",
+      description: "Cross-platform mobile application with fluid native UI, real-time push notifications, offline storage, and cloud sync.",
+      deliverables: ["React Native / Flutter App", "App Store & Play Store Publishing", "Push Notification Gateway", "Offline Data Caching"],
+      timeline: "4 - 6 Weeks",
+      priceINR: 199999,
+      priceUSD: 2699,
+      included: false,
+    },
+    {
+      id: "srv-6",
+      title: "SaaS MVP Development",
+      category: "SaaS & Enterprise",
+      description: "Complete MVP build from ground up including authentication, multi-tenancy, billing subscriptions, API architecture, and database.",
+      deliverables: ["Full SaaS Architecture", "Authentication & RBAC", "Subscription Billing Engine", "Production Deployment"],
+      timeline: "6 - 8 Weeks",
+      priceINR: 349999,
+      priceUSD: 4699,
+      included: false,
+    },
+  ],
+};
 
 export type DocType =
   | "company-profile"
@@ -65,12 +148,18 @@ export default function DocHubViewer() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isExporting, setIsExporting] = useState(false);
 
-  // Live client customization fields
+  // Live client customization fields (for non-proposal docs)
   const [clientName, setClientName] = useState("Enterprise Client");
   const [clientCompany, setClientCompany] = useState("Acme Corporation");
   const [date, setDate] = useState("August 1, 2026");
 
+  // Proposal-specific state (mirrors /proposal page)
+  const [proposalData, setProposalData] = useState<ProposalData>(initialProposalData);
+  const proposalDocRef = useRef<HTMLDivElement | null>(null);
+
   const docContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const isProposalActive = activeDoc === "proposal-template";
 
   const categories = ["All", "Company", "Sales & Catalogs", "Legal Contracts", "Operations"];
 
@@ -179,25 +268,10 @@ export default function DocHubViewer() {
       case "sales-pitch-deck":
         return <SalesPitchDeckDoc />;
       case "proposal-template":
+        // Rendered separately outside the docContainerRef box
+        return null;
       default:
-        return (
-          <ProposalDocument
-            data={{
-              clientName,
-              clientCompany,
-              projectTitle: "AI Transformation & Technology Solutions",
-              proposalId: "OPT-2026-X1",
-              date,
-              validUntil: "30 Days",
-              currency: "USD",
-              discountPercent: 0,
-              taxPercent: 0,
-              investmentAmountUSD: 12500,
-              customNotes: "Full end-to-end delivery guarantee.",
-              items: [],
-            }}
-          />
-        );
+        return null;
     }
   };
 
@@ -307,44 +381,70 @@ export default function DocHubViewer() {
 
       {/* Action Header & Selected Document Viewer Canvas */}
       <div className="space-y-4">
-        {/* Sticky Action Exporter Bar */}
-        <div className="bg-slate-900 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 text-white shadow-xl">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37]">
-              <FileText className="w-5 h-5" />
+        {isProposalActive ? (
+          /* ---- Full /proposal page experience embedded inline ---- */
+          <div className="space-y-4">
+            <div className="bg-slate-900 border border-[#D4AF37]/30 rounded-2xl p-4 flex items-center gap-3 text-white shadow-xl">
+              <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37]">
+                <Send className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-mono block">Proposal Template · Official 10-Pg Brochure</span>
+                <h3 className="text-xl font-extrabold text-white">AI Transformation & Technology Solutions Proposal</h3>
+              </div>
             </div>
-            <div>
-              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-mono block">Active Document</span>
-              <h3 className="text-xl font-extrabold text-white">{activeDocDetails.title}</h3>
+            <ProposalToolbar
+              data={proposalData}
+              onChangeData={setProposalData}
+              documentRef={proposalDocRef}
+            />
+            <div className="flex justify-center overflow-x-auto pb-4">
+              <ProposalDocument ref={proposalDocRef} data={proposalData} />
             </div>
           </div>
+        ) : (
+          /* ---- Generic document viewer ---- */
+          <>
+            {/* Sticky Action Exporter Bar */}
+            <div className="bg-slate-900 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 text-white shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37]">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase tracking-widest text-gray-400 font-mono block">Active Document</span>
+                  <h3 className="text-xl font-extrabold text-white">{activeDocDetails.title}</h3>
+                </div>
+              </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleDownloadPDF}
-              disabled={isExporting}
-              className="flex items-center gap-2 px-6 py-3 bg-[#D4AF37] text-slate-950 font-black text-xs rounded-xl hover:bg-yellow-400 transition-all shadow-lg active:scale-95 disabled:opacity-50 uppercase tracking-wider"
-            >
-              <Download className="w-4 h-4" />
-              {isExporting ? "Generating PDF..." : `Download ${activeDocDetails.title} PDF`}
-            </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleDownloadPDF}
+                  disabled={isExporting}
+                  className="flex items-center gap-2 px-6 py-3 bg-[#D4AF37] text-slate-950 font-black text-xs rounded-xl hover:bg-yellow-400 transition-all shadow-lg active:scale-95 disabled:opacity-50 uppercase tracking-wider"
+                >
+                  <Download className="w-4 h-4" />
+                  {isExporting ? "Generating PDF..." : `Download ${activeDocDetails.title} PDF`}
+                </button>
 
-            <button
-              onClick={() => window.print()}
-              className="flex items-center gap-2 px-4 py-3 bg-white/10 text-white text-xs font-bold rounded-xl hover:bg-white/20 transition-all border border-white/10 uppercase tracking-wider"
-            >
-              <Printer className="w-4 h-4" />
-              Print
-            </button>
-          </div>
-        </div>
+                <button
+                  onClick={() => window.print()}
+                  className="flex items-center gap-2 px-4 py-3 bg-white/10 text-white text-xs font-bold rounded-xl hover:bg-white/20 transition-all border border-white/10 uppercase tracking-wider"
+                >
+                  <Printer className="w-4 h-4" />
+                  Print
+                </button>
+              </div>
+            </div>
 
-        {/* Printable Document Box Container */}
-        <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-2xl border border-gray-200 overflow-x-auto">
-          <div ref={docContainerRef} className="w-full max-w-[820px] mx-auto bg-white p-2">
-            {renderActiveDocument()}
-          </div>
-        </div>
+            {/* Printable Document Box Container */}
+            <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-2xl border border-gray-200 overflow-x-auto">
+              <div ref={docContainerRef} className="w-full max-w-[820px] mx-auto bg-white p-2">
+                {renderActiveDocument()}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
