@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import ExitIntentModal from "@/components/ui/ExitIntentModal";
 import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -189,7 +188,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 mt-20">{children}</main>
         <Footer />
-        <WhatsAppWidget />
         <ExitIntentModal />
         <GoogleAnalytics gaId="G-XXXXXXXXXX" />
       </body>

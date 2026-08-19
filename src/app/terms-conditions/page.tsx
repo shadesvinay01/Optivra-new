@@ -68,7 +68,6 @@ export default function TermsConditions() {
           <p className="text-gray-400 font-light leading-relaxed mb-4">To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:</p>
           <div className="bg-white/5 border border-white/10 p-6 rounded-xl">
             <p className="text-gray-300 font-light leading-relaxed mb-2"><strong className="text-white">Email:</strong> <a href="mailto:hello@optivra.in" className="text-primary hover:text-white transition-colors">hello@optivra.in</a></p>
-            <p className="text-gray-300 font-light leading-relaxed mb-2"><strong className="text-white">Phone:</strong> +91-7439071619, +91-6280179738</p>
             <p className="text-gray-300 font-light leading-relaxed"><strong className="text-white">Address:</strong> Prestige M.G Road, Bangalore, 560001, India</p>
           </div>
         </div>
