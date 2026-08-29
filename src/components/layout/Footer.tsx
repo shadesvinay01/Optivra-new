@@ -174,6 +174,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/press" className="hover:text-primary transition-colors">
+                  Press & Media
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:hello@optivra.in?subject=Job%20Application%20-%20CV" className="hover:text-primary transition-colors">
                   Careers
                 </a>

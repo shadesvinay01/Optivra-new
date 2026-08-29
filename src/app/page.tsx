@@ -278,6 +278,25 @@ export default function Home() {
                 <p className="text-gray-500 text-sm">To become the global benchmark for innovation and intelligence.</p>
               </div>
             </div>
+            
+            {/* In the Media Block */}
+            <div className="border-l border-primary/50 pl-6 hover:border-primary transition-colors bg-white/[0.02] p-4 rounded-r-lg">
+              <div className="flex items-center justify-between mb-1.5">
+                <h3 className="text-white font-bold text-sm">In the Media</h3>
+                <span className="text-[9px] tracking-widest uppercase font-bold text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-sm">Business Mint</span>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed mb-3">
+                Optivra and its founder Sarveshwar Mandal have been featured by Business Mint.
+              </p>
+              <a
+                href="https://businessmint.in/article/sarveshwar-mandal-optivra"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-white font-bold tracking-wider uppercase transition-colors group/media"
+              >
+                Read Coverage &rarr;
+              </a>
+            </div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -760,6 +779,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured In Section */}
+      <section className="container mx-auto px-6 py-16" id="featured-in">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto border border-white/10 bg-[#050505] p-8 md:p-12 rounded-2xl relative overflow-hidden group hover:border-primary/50 transition-all duration-500 shadow-xl"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="flex-1 max-w-2xl">
+              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/30 text-[10px] tracking-[0.3em] font-bold text-primary uppercase mb-4">
+                FEATURED IN
+              </span>
+              <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
+                Featured In Business Mint
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-4">
+                &quot;Discover the story behind Sarveshwar Mandal and Optivra’s journey in AI, technology and innovation.&quot;
+              </p>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-widest">
+                <span>Publication:</span>
+                <span className="text-gray-300 font-bold">Business Mint</span>
+              </div>
+            </div>
+
+            <a
+              href="https://businessmint.in/article/sarveshwar-mandal-optivra"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-sm whitespace-nowrap group/cta shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+            >
+              Read the full article &rarr;
+            </a>
+          </div>
+        </motion.div>
+      </section>
 
       {/* Leadership Section */}
       <section className="container mx-auto px-6 py-16" id="team">
