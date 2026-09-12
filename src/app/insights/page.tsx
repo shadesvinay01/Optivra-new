@@ -26,6 +26,16 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    category: "Press Feature",
+    title: "From Data Science to Autonomous AI: How Sarveshwar Mandal is Building the Next Generation of Intelligent Business Systems",
+    description:
+      "Featured story in The Business Stories detailing how Sarveshwar Mandal & Optivra are driving the enterprise transition toward autonomous AI architectures and intelligent business operating models.",
+    readTime: "Feature Story",
+    externalUrl: "https://thebusinessstories.com/from-data-science-to-autonomous-ai-how-sarveshwar-mandal-is-building-the-next-generation-of-intelligent-business-systems/",
+    slug: "press-the-business-stories-sarveshwar-mandal",
+    featured: true,
+  },
+  {
     category: "Automation",
     title: "AI Workflow Automation: Complete Business Guide (2026)",
     description:
@@ -206,29 +216,35 @@ export default function InsightsPage() {
             Featured Guides
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {featuredArticles.map((article, i) => (
-              <Link
-                key={i}
-                href={`/insights/${article.slug}`}
-                className="group border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 block"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <span className="text-[9px] tracking-[0.3em] uppercase text-primary font-bold bg-primary/10 px-3 py-1 border border-primary/20">
-                    {article.category}
-                  </span>
-                  <span className="text-[10px] text-gray-600">{article.readTime}</span>
-                </div>
-                <h3 className="text-xl font-sans font-bold text-white mb-4 group-hover:text-primary transition-colors leading-snug">
-                  {article.title}
-                </h3>
-                <p className="text-gray-500 text-sm font-light leading-relaxed mb-8">
-                  {article.description}
-                </p>
-                <div className="flex items-center gap-2 text-primary text-xs font-bold tracking-widest uppercase group-hover:gap-4 transition-all">
-                  Read Guide <ArrowRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
+            {featuredArticles.map((article, i) => {
+              const isExternal = !!article.externalUrl;
+              const linkHref = article.externalUrl || `/insights/${article.slug}`;
+              return (
+                <a
+                  key={i}
+                  href={linkHref}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="group border border-white/10 bg-[#050505] p-8 hover:border-primary/50 transition-all duration-500 block"
+                >
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="text-[9px] tracking-[0.3em] uppercase text-primary font-bold bg-primary/10 px-3 py-1 border border-primary/20">
+                      {article.category}
+                    </span>
+                    <span className="text-[10px] text-gray-600">{article.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-sans font-bold text-white mb-4 group-hover:text-primary transition-colors leading-snug">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm font-light leading-relaxed mb-8">
+                    {article.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-primary text-xs font-bold tracking-widest uppercase group-hover:gap-4 transition-all">
+                    {isExternal ? "Read Press Article" : "Read Guide"} <ArrowRight className="w-4 h-4" />
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

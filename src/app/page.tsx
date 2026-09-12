@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, BrainCircuit, BarChart3, Database, Workflow, ShieldCheck, Zap, Globe, Users } from "lucide-react";
+import { ArrowRight, BrainCircuit, BarChart3, Database, Workflow, ShieldCheck, Zap, Globe, Users, ExternalLink } from "lucide-react";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -251,6 +251,67 @@ export default function Home() {
               <div className="text-xs tracking-widest uppercase text-gray-500 font-bold">{stat.label}</div>
             </motion.div>
           ))}
+        </div>
+      </motion.section>
+
+      {/* Featured In / Press Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="container mx-auto px-6 border-b border-white/10 pb-16"
+      >
+        <div className="text-center mb-10">
+          <p className="text-[10px] tracking-widest uppercase text-primary font-bold mb-2">As Seen In The Media</p>
+          <h3 className="text-2xl md:text-3xl font-sans font-bold text-white">Featured In</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <a
+            href="https://thebusinessstories.com/from-data-science-to-autonomous-ai-how-sarveshwar-mandal-is-building-the-next-generation-of-intelligent-business-systems/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group border border-white/10 bg-[#050505] p-6 hover:border-primary/50 transition-all duration-300 rounded-sm flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">The Business Stories</span>
+                <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-primary transition-colors" />
+              </div>
+              <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-2">
+                From Data Science to Autonomous AI: How Sarveshwar Mandal is Building the Next Generation of Intelligent Business Systems
+              </h4>
+              <p className="text-xs text-gray-400 font-light leading-relaxed">
+                Feature story highlighting how Sarveshwar Mandal & Optivra are driving the enterprise shift toward autonomous AI agent architectures.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-500">
+              <span>Read Full Article →</span>
+            </div>
+          </a>
+
+          <a
+            href="https://sarveshwarmandal.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group border border-white/10 bg-[#050505] p-6 hover:border-primary/50 transition-all duration-300 rounded-sm flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">Executive Spotlight</span>
+                <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-primary transition-colors" />
+              </div>
+              <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-2">
+                AI & Autonomous Systems Engineering Leadership
+              </h4>
+              <p className="text-xs text-gray-400 font-light leading-relaxed">
+                Insights and research on machine learning, executive AI strategy, and deploying production-grade AI agent systems.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-500">
+              <span>Explore Founder Profile →</span>
+            </div>
+          </a>
         </div>
       </motion.section>
 
