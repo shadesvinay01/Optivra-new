@@ -877,6 +877,44 @@ export default function Home() {
             </a>
           </div>
         </motion.div>
+
+        {/* Featured In The Business Stories Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-8 border border-white/10 bg-[#050505] p-8 md:p-10 rounded-xl relative overflow-hidden group hover:border-primary/40 transition-colors"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="flex-1 max-w-2xl">
+              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/30 text-[10px] tracking-[0.3em] font-bold text-primary uppercase mb-4">
+                PRESS FEATURE
+              </span>
+              <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
+                Featured In The Business Stories
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-4">
+                &quot;From Data Science to Autonomous AI: How Sarveshwar Mandal is Building the Next Generation of Intelligent Business Systems.&quot;
+              </p>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-widest">
+                <span>Publication:</span>
+                <span className="text-gray-300 font-bold">The Business Stories</span>
+              </div>
+            </div>
+
+            <a
+              href="https://thebusinessstories.com/from-data-science-to-autonomous-ai-how-sarveshwar-mandal-is-building-the-next-generation-of-intelligent-business-systems/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-black font-bold text-xs uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-sm whitespace-nowrap group/cta shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+            >
+              Read full article &rarr;
+            </a>
+          </div>
+        </motion.div>
       </section>
 
       {/* Leadership Section */}
