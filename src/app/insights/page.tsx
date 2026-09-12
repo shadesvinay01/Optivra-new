@@ -27,6 +27,16 @@ export const metadata: Metadata = {
 const articles = [
   {
     category: "Press Feature",
+    title: "Business Mint Editorial Feature: Sarveshwar Mandal & Optivra",
+    description:
+      "Discover the story behind Sarveshwar Mandal and Optivra's journey in AI innovation, machine learning, and building high-impact technology solutions as featured in Business Mint.",
+    readTime: "Feature Story",
+    externalUrl: "https://businessmint.in/article/sarveshwar-mandal-optivra",
+    slug: "press-business-mint-sarveshwar-mandal",
+    featured: true,
+  },
+  {
+    category: "Press Feature",
     title: "From Data Science to Autonomous AI: How Sarveshwar Mandal is Building the Next Generation of Intelligent Business Systems",
     description:
       "Featured story in The Business Stories detailing how Sarveshwar Mandal & Optivra are driving the enterprise transition toward autonomous AI architectures and intelligent business operating models.",
