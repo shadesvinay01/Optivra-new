@@ -3,13 +3,6 @@
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, BrainCircuit, BarChart3, Database, Workflow, ShieldCheck, Zap, Globe, Users, ExternalLink } from "lucide-react";
 
-const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -856,74 +849,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Leadership Section */}
-      <section className="container mx-auto px-6 py-16" id="team">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8"
-        >
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6">Minds Behind <span className="text-gradient italic">The Magic.</span></h2>
-            <p className="text-gray-400 text-lg font-light">Visionary leaders driving innovation, backed by a global network of 20+ remote specialists.</p>
-          </div>
-        </motion.div>
-        
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {[
-            { name: "Sarveshwar Mandal", role: "Chief Executive Officer", desc: "AI & Data Science leader with experience across global tech and finance. Specializes in machine learning, computer vision, and scalable product architecture.", image: "/sarveshwar.png", linkedin: "https://www.linkedin.com/in/sarveshwarm/", website: "https://sarveshwarmandal.com" },
-            { name: "Rohitash Goyal", role: "Chief Technology Officer", desc: "Technology leader with deep expertise in full-stack development, cloud engineering, and modern DevOps ecosystems.", image: "/rohitash.png", linkedin: "https://www.linkedin.com/in/rohitashgoyal28/" },
-            { name: "Mohd. Hidayat", role: "Chief Marketing Officer", desc: "Marketing leader driving strategic storytelling, digital expansion, and scalable growth frameworks. Transforms brands into high-impact platforms.", image: "/hidyat.png", linkedin: "https://www.linkedin.com/in/mohd-hidayat-u-85990954/" }
-          ].map((member, i) => (
-            <motion.div 
-              variants={fadeInUp}
-              key={i} 
-              className="border border-white/10 bg-[#050505] p-10 group hover:border-primary/50 hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Massive Cinematic Portrait */}
-              <div className="w-full aspect-[4/5] max-w-[280px] rounded-lg border border-white/10 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] mb-8 overflow-hidden relative filter grayscale group-hover:grayscale-0 transition-all duration-700 z-10">
-                 <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              
-              <h3 className="text-3xl font-sans font-bold text-white mb-2 relative z-10">{member.name}</h3>
-              <p className="text-primary text-xs tracking-widest uppercase font-bold mb-6 relative z-10">{member.role}</p>
-              <p className="text-gray-500 text-sm font-light mb-8 relative z-10 flex-1">{member.desc}</p>
-              
-              <div className="flex gap-4 relative z-10">
-                <a 
-                  href={member.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition-all duration-300"
-                  aria-label={`LinkedIn profile for ${member.name}`}
-                >
-                  <LinkedinIcon className="w-4 h-4" />
-                </a>
-                {member.website && (
-                  <a 
-                    href={member.website} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition-all duration-300"
-                    aria-label={`Personal website for ${member.name}`}
-                  >
-                    <Globe className="w-4 h-4" />
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+
 
       {/* Testimonials Section */}
       <TestimonialCarousel />

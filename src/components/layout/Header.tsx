@@ -75,7 +75,6 @@ export default function Header() {
           <nav className="flex flex-col gap-8 text-lg font-sans font-bold text-white uppercase tracking-widest">
             <Link href="/#home" onClick={toggleMenu} className="hover:text-primary transition-colors">Home</Link>
             <Link href="/#about" onClick={toggleMenu} className="hover:text-primary transition-colors">About</Link>
-            <Link href="/#team" onClick={toggleMenu} className="hover:text-primary transition-colors">Team</Link>
             <div className="flex flex-col gap-4">
               <span className="text-gray-500">Services</span>
               <div className="flex flex-col gap-4 pl-4 text-sm font-sans text-gray-300 font-light tracking-normal">
