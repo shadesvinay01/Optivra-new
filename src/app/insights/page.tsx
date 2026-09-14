@@ -46,6 +46,16 @@ const articles = [
     featured: true,
   },
   {
+    category: "Press Feature",
+    title: "The Hindustan Wires Feature: From Data Science to Autonomous AI",
+    description:
+      "Featured story in The Hindustan Wires covering Sarveshwar Mandal & Optivra's mission in building next-generation intelligent business systems.",
+    readTime: "Feature Story",
+    externalUrl: "https://thehindustanwires.com/from-data-science-to-autonomous-ai-how-sarveshwar-mandal-is-building-the-next-generation-of-intelligent-business-systems/",
+    slug: "press-the-hindustan-wires-sarveshwar-mandal",
+    featured: true,
+  },
+  {
     category: "Automation",
     title: "AI Workflow Automation: Complete Business Guide (2026)",
     description:
