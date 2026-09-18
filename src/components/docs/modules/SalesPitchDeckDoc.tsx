@@ -7,53 +7,88 @@ export default function SalesPitchDeckDoc() {
   const slides = [
     {
       slide: "01",
-      title: "OPTIVRA SOLUTIONS",
-      subtitle: "Engineering Enterprise Intelligence & Scalable Software",
-      body: "We build high-impact AI agents, custom web/mobile platforms, automated workflows, and cloud architectures for forward-thinking companies.",
-      accent: "EXECUTIVE PITCH DECK"
+      title: "OPTIVRA",
+      subtitle: "AI-First Technology & Product Engineering",
+      body: "Building Intelligent Software for the AI-Driven Business.\nIndia-based, serving clients globally.",
+      accent: "EXECUTIVE PRESENTATION"
     },
     {
       slide: "02",
-      title: "The Enterprise Challenge",
-      subtitle: "Legacy systems & fragmented workflows drain speed and capital",
-      body: "Modern organizations face slow development cycles, high operational costs, and missed opportunities in leveraging enterprise AI & automation.",
-      accent: "THE PROBLEM"
+      title: "The Problem",
+      subtitle: "Navigating AI adoption & software scalability challenges",
+      body: "Startups and growing businesses struggle to bridge advanced AI research with production-grade software engineering, resulting in slow execution, high operational overhead, and unfulfilled AI potential.",
+      accent: "THE CHALLENGE"
     },
     {
       slide: "03",
-      title: "The Optivra Solution",
-      subtitle: "AI-First Engineering + High-Velocity Software Delivery",
-      body: "We deploy dedicated senior engineering pods to design, build, and deploy production-grade software and autonomous AI systems in weeks, not months.",
+      title: "What We Build",
+      subtitle: "Intelligent software, AI systems, automation platforms & SaaS",
+      body: "We combine AI/ML engineering with full-stack product development to turn complex ideas and operational challenges into practical, scalable technology.",
       accent: "OUR PROMISE"
     },
     {
       slide: "04",
-      title: "Core Technology Offerings",
-      subtitle: "End-to-End Capabilities Across the Modern Tech Stack",
-      body: "1. Enterprise AI & RAG Agents\n2. Custom Next.js / React Web Platforms\n3. Cross-Platform Mobile Apps (iOS & Android)\n4. Automated Workflow & ETL Pipelines\n5. Cloud Infrastructure & DevOps (AWS/GCP)",
+      title: "AI & Automation",
+      subtitle: "Autonomous Agents, RAG & Workflow Engineering",
+      body: "• Custom AI Agents & Multi-Agent Operations\n• Enterprise RAG & Knowledge Systems\n• End-to-End Business Workflow Automation\n• Computer Vision & Visual Document OCR Parsing",
       accent: "CAPABILITIES"
     },
     {
       slide: "05",
-      title: "Proven Impact & ROI",
-      subtitle: "Quantifiable results delivered across 50+ projects",
-      body: "• 99.9% Infrastructure Uptime Guarantee\n• Up to 70% reduction in manual operational workflows\n• 4.9/5 Average Client Satisfaction Rating\n• 100% Code Ownership & IP Transfer",
-      accent: "RESULTS"
+      title: "SaaS & Product Engineering",
+      subtitle: "Full-Stack Web, Mobile & Cloud Systems",
+      body: "• SaaS MVP Development (Zero to Launch)\n• High-Performance Next.js & React Applications\n• Cross-Platform Mobile Apps (iOS & Android)\n• Cloud Infrastructure, DevOps & Microservices",
+      accent: "ENGINEERING"
     },
     {
       slide: "06",
-      title: "Let's Build Together",
-      subtitle: "Book Your Discovery Call & Technical Architecture Review",
-      body: "Email: hello@optivra.com • Website: optivra.com • Location: San Francisco / India",
-      accent: "NEXT STEPS"
+      title: "Our Technology Portfolio",
+      subtitle: "Internal Products & Technology Initiatives",
+      body: "• Optivra AI — Enterprise AI & Automation Platform Initiative\n• ShadowAgent — Autonomous Multi-Agent Operational Framework\n• Jugnu AI — Specialized Intelligent Software R&D Prototype",
+      accent: "R&D PORTFOLIO"
+    },
+    {
+      slide: "07",
+      title: "How We Work",
+      subtitle: "Agile, transparent & quality-driven development",
+      body: "1. Discovery & Technical Blueprinting\n2. Interactive UI/UX Prototyping\n3. Agile Sprints & Continuous Releases\n4. QA, Security & Deployment Controls\n5. 30-Day Post-Launch Support",
+      accent: "METHODOLOGY"
+    },
+    {
+      slide: "08",
+      title: "Engagement Models",
+      subtitle: "Flexible structures tailored to project requirements",
+      body: "• Fixed-Price Project — For clearly defined scopes\n• Time & Materials — For evolving requirements ($45–$85/hr)\n• Dedicated Engineering — Embedded full-time engineers ($3,500–$6,500/mo)\n• Monthly Technology Partnership — Ongoing technical support & maintenance",
+      accent: "ENGAGEMENT"
+    },
+    {
+      slide: "09",
+      title: "Indicative Pricing",
+      subtitle: "Competitive international delivery rate cards",
+      body: "• AI Automation Sprint: Starting from $3,500 / £2,900 / €3,300\n• Custom AI Agent Development: Starting from $4,500 / £3,700 / €4,200\n• SaaS MVP Development: Starting from $5,000 / £4,100 / €4,700\n* Final pricing confirmed via Statement of Work.",
+      accent: "COMMERCIALS"
+    },
+    {
+      slide: "10",
+      title: "Why Optivra",
+      subtitle: "AI-First Expertise + Cost-Efficient Engineering Model",
+      body: "• End-to-end product & AI capabilities under one roof\n• India-based delivery model offering high technical quality and efficiency\n• Clear IP governance and transparent commercial terms\n• QA, security review & deployment controls built-in",
+      accent: "THE ADVANTAGE"
+    },
+    {
+      slide: "11",
+      title: "Next Steps",
+      subtitle: "Let's build your next digital product together",
+      body: "Schedule a technical architecture call or request a project proposal.\n\nWebsite: https://www.optivra.in/\nEmail: hello@optivra.in",
+      accent: "GET IN TOUCH"
     }
   ];
 
   return (
-    <div className="space-y-6 text-gray-900 leading-relaxed font-sans">
+    <div className="space-y-6 text-gray-900 leading-relaxed font-sans max-w-[800px] mx-auto bg-white p-2">
       <div className="text-center space-y-1 mb-4">
         <span className="text-xs font-bold bg-[#D4AF37] text-slate-950 px-3 py-1 rounded uppercase tracking-wider">
-          Sales Pitch Deck • PDF Slide Presentation
+          OPTIVRA • International Sales Deck 2026 (11 Slides)
         </span>
       </div>
 
@@ -65,7 +100,7 @@ export default function SalesPitchDeckDoc() {
           >
             <div className="flex justify-between items-center text-xs">
               <span className="text-[#D4AF37] font-bold uppercase tracking-widest">{slide.accent}</span>
-              <span className="font-mono text-gray-500">SLIDE {slide.slide} / 06</span>
+              <span className="font-mono text-gray-500">SLIDE {slide.slide} / 11</span>
             </div>
 
             <h2 className="text-2xl font-extrabold text-white">{slide.title}</h2>
@@ -80,3 +115,4 @@ export default function SalesPitchDeckDoc() {
     </div>
   );
 }
+

@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     // that directly appends rows to a Google Sheet.
     const googleSheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
-    // We flatten the data to send it to the webhook
+    // We flatten the full assessment & generated AI report data to send it to the webhook
     const payload = {
       timestamp: new Date().toISOString(),
       name: data.contact?.name || "Unknown",
@@ -19,30 +19,36 @@ export async function POST(req: Request) {
       industry: data.assessment?.industry || "",
       challenge: data.assessment?.challenge || "",
       size: data.assessment?.size || "",
-      tools: data.assessment?.tools?.join(", ") || "",
+      tools: Array.isArray(data.assessment?.tools) ? data.assessment.tools.join(", ") : (data.assessment?.tools || ""),
       goal: data.assessment?.goal || "",
       aiScore: data.result?.score || 0,
+      summary: data.result?.summary || "",
+      topOpportunities: data.result?.opportunities ? data.result.opportunities.map((o: any) => `${o.title} (Impact: ${o.impact}, ROI: ${o.roi}, ETA: ${o.eta})`).join(" | ") : "",
+      timeSaved: data.result?.roiEstimate?.timeSaved || "",
+      costReduction: data.result?.roiEstimate?.costReduction || "",
+      readiness: data.result?.roiEstimate?.readiness || "",
     };
 
     if (googleSheetsWebhookUrl) {
-      // Send to Google Sheets via Webhook
+      // Send to Google Sheets via Webhook (Google Apps Script redirects 302 to output)
       const response = await fetch(googleSheetsWebhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
+        redirect: "follow",
       });
 
       if (!response.ok) {
         console.error("Failed to send lead to Google Sheets webhook", await response.text());
       }
     } else {
-      // If no webhook is configured, we log the lead to the console
-      console.log("============= NEW LEAD CAPTURED =============");
+      // If no webhook is configured, log the detailed report payload to console
+      console.log("============= NEW LEAD & AI REPORT CAPTURED =============");
       console.log(JSON.stringify(payload, null, 2));
-      console.log("=============================================");
-      console.log("Note: Configure GOOGLE_SHEETS_WEBHOOK_URL in your environment variables to save leads to Google Sheets.");
+      console.log("========================================================");
+      console.log("Note: Configure GOOGLE_SHEETS_WEBHOOK_URL in environment variables to capture all full reports directly into Google Sheets.");
     }
 
     return NextResponse.json({ success: true, message: "Lead captured successfully" });

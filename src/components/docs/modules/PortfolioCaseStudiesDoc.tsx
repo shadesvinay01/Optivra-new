@@ -1,79 +1,70 @@
 "use client";
 
 import React from "react";
-import { Award, CheckCircle2, TrendingUp, Cpu, Globe, ArrowUpRight } from "lucide-react";
+import { Award, CheckCircle2, TrendingUp, Cpu, Globe, ArrowUpRight, ShieldCheck, Code } from "lucide-react";
 
 export default function PortfolioCaseStudiesDoc() {
-  const caseStudies = [
+  const portfolioItems = [
     {
-      title: "HealthTech AI Patient Triage Platform",
-      client: "Global Healthcare Provider (US)",
-      metrics: "98% Accuracy • 50,000+ Monthly Queries • $450K Annual Savings",
-      problem: "High emergency room intake congestion and delayed patient triage responses.",
-      solution: "HIPAA-compliant RAG AI triage assistant with real-time EHR integration.",
-      techStack: "Python, FastAPI, OpenAI GPT-4, Pinecone, Next.js, AWS Medical",
-      timeline: "4 Weeks"
+      title: "Optivra AI",
+      type: "Public Product",
+      overview: "Enterprise AI & Automation Platform initiative enabling conversational document search, workflow automation, and custom model orchestration.",
+      techStack: "Next.js, Python, OpenAI, Vector Search, Cloud Infrastructure",
+      url: "https://www.optivra.in/optivra-ai"
     },
     {
-      title: "FinTech Automated Invoice & OCR Engine",
-      client: "Enterprise Supply Chain FinTech",
-      metrics: "12sec Processing (vs 4hrs) • 99.8% Field Parsing • $1.2M Recovered",
-      problem: "Manual verification of thousands of daily multi-page vendor invoices causing payment delays.",
-      solution: "Computer Vision & YOLOv8 OCR pipeline with automated ERP ledger sync.",
-      techStack: "PyTorch, OpenCV, YOLOv8, FastAPI, PostgreSQL, React",
-      timeline: "5 Weeks"
+      title: "ShadowAgent",
+      type: "Independent R&D Prototype",
+      overview: "Autonomous multi-agent operational framework designed to execute multi-step business tasks and system triggers across disparate APIs.",
+      techStack: "Python, LangGraph, CrewAI, FastAPI, Docker",
+      url: "Independent R&D"
     },
     {
-      title: "E-Commerce Autonomous Multi-Agent Support",
-      client: "Direct-to-Consumer Retail Platform",
-      metrics: "72% Automated Deflection • 2.4x CSAT Score Increase",
-      problem: "Surging customer support volume during peak shopping seasons overwhelming live agents.",
-      solution: "Autonomous multi-agent support network handling order tracking, refunds, and recommendations.",
-      techStack: "LangGraph, CrewAI, WhatsApp Business API, Shopify API, Node.js",
-      timeline: "3 Weeks"
+      title: "Jugnu AI",
+      type: "Independent R&D Prototype",
+      overview: "Specialized intelligent software R&D initiative exploring lightweight contextual reasoning models and visual document parsing pipelines.",
+      techStack: "PyTorch, OpenCV, YOLO, Python, WebSockets",
+      url: "Independent R&D"
+    },
+    {
+      title: "Custom SaaS & Enterprise Workflow Automation",
+      type: "Confidential Technology Initiative",
+      overview: "Multi-tenant SaaS platform architecture with role-based access controls, subscription engine integration, and automated data pipelines.",
+      techStack: "React / Next.js, Node.js, PostgreSQL, Stripe Integration, TailwindCSS",
+      url: "Confidential Client Initiative"
     }
   ];
 
   return (
-    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs">
+    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs max-w-[800px] mx-auto bg-white p-2">
       <div className="bg-slate-950 text-white rounded-2xl p-8 space-y-2 border border-slate-800">
         <span className="px-3 py-1 bg-[#D4AF37] text-slate-950 text-xs font-bold rounded uppercase tracking-widest">
-          Case Studies & Client Impact
+          OPTIVRA • PORTFOLIO & R&D INITIATIVES
         </span>
-        <h1 className="text-3xl font-black">Featured Enterprise Portfolio</h1>
-        <p className="text-gray-300">Real-world production case studies detailing technical architecture, execution, and quantifiable business ROI.</p>
+        <h1 className="text-3xl font-black">Selected Technology & R&D Portfolio</h1>
+        <p className="text-gray-300">Overview of public product initiatives, independent R&D prototypes, and confidential technology engineering projects.</p>
       </div>
 
       <div className="space-y-6">
-        {caseStudies.map((cs, idx) => (
+        {portfolioItems.map((item, idx) => (
           <div key={idx} className="p-6 border border-gray-200 rounded-2xl bg-white space-y-3 shadow-xs">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-gray-200 pb-2">
               <div>
-                <span className="text-[10px] font-bold uppercase text-[#D4AF37] block">Case Study #{idx + 1}</span>
-                <h2 className="text-base font-bold text-slate-900">{cs.title}</h2>
+                <span className="text-[10px] font-bold uppercase text-[#D4AF37] block">Portfolio Item #{idx + 1}</span>
+                <h2 className="text-base font-bold text-slate-900">{item.title}</h2>
               </div>
-              <span className="text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-lg">
-                {cs.metrics}
+              <span className="text-xs font-mono font-bold bg-slate-900 text-white px-3 py-1 rounded-lg">
+                {item.type}
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-              <div className="space-y-1">
-                <span className="font-bold text-slate-900 uppercase text-[10px]">The Challenge</span>
-                <p className="text-gray-600">{cs.problem}</p>
-              </div>
+            <p className="text-gray-600 leading-relaxed">{item.overview}</p>
 
-              <div className="space-y-1">
-                <span className="font-bold text-slate-900 uppercase text-[10px]">The Solution</span>
-                <p className="text-gray-600">{cs.solution}</p>
-              </div>
-            </div>
-
-            <div className="pt-2 flex justify-between items-center text-[11px]">
+            <div className="pt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-[11px] border-t border-gray-100 pt-3">
               <span className="font-mono text-gray-500 bg-gray-50 p-2 rounded border border-gray-200">
-                Stack: {cs.techStack}
+                Tech Stack: {item.techStack}
               </span>
-              <span className="font-bold text-slate-900">Delivery: {cs.timeline}</span>
+              <span className="font-bold text-slate-900">{item.url}</span>
             </div>
           </div>
         ))}
@@ -81,3 +72,4 @@ export default function PortfolioCaseStudiesDoc() {
     </div>
   );
 }
+

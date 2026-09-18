@@ -6,35 +6,35 @@ import { HelpCircle } from "lucide-react";
 export default function FaqDoc() {
   const faqs = [
     {
-      q: "Who owns the code and intellectual property (IP)?",
-      a: "You retain 100% full ownership of all custom source code, repositories, AI models, and design assets upon milestone payments."
+      q: "Who owns the project code and intellectual property (IP)?",
+      a: "Ownership and licensing of project deliverables are governed by the applicable service agreement, statement of work, and payment terms. Client-specific deliverables can be assigned according to the executed agreement, while pre-existing frameworks and general components remain under Optivra's IP."
     },
     {
-      q: "What currency are quotes provided in?",
-      a: "All global proposals and invoices are standardized in USD ($), with flexible payment options via Stripe, wire transfer, or credit."
+      q: "What currencies and engagement rates do you support?",
+      a: "We offer international rate cards in USD ($), GBP (£), and EUR (€). Final commercial quotes depend on project scope and are confirmed via Statement of Work."
     },
     {
-      q: "What warranty or support is included post-launch?",
-      a: "Every project includes a complimentary 30-day bug warranty and post-launch support SLA covering technical maintenance."
+      q: "What warranty or support is provided after launch?",
+      a: "Where included in the applicable proposal or SOW, Optivra provides 30-Day Post-Launch Support for resolving defects attributable to the agreed project scope. New features, scope changes, and third-party issues are quoted separately."
     },
     {
-      q: "How do you handle data privacy and AI model security?",
-      a: "We enforce zero-retention API policies, SOC2 and HIPAA compliance standards, and private vector database hosting to ensure complete data security."
+      q: "How do you handle security, testing, and compliance-readiness?",
+      a: "We apply automated testing, security review, deployment controls, and compliance-readiness practices appropriate to project requirements."
     },
     {
-      q: "How quickly can a dedicated team start?",
-      a: "Senior engineering pods are assigned within 24–48 hours of agreement execution, with kickoff meetings scheduled immediately."
+      q: "Where is Optivra located and how is delivery managed?",
+      a: "Optivra is an India-based AI-first technology and product engineering company serving clients globally through remote engineering and flexible delivery structures."
     }
   ];
 
   return (
-    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs">
+    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs max-w-[800px] mx-auto bg-white p-2">
       <div className="bg-slate-950 text-white rounded-2xl p-8 space-y-2 border border-slate-800">
         <span className="px-3 py-1 bg-[#D4AF37] text-slate-950 text-xs font-bold rounded uppercase tracking-widest">
-          Knowledge Base & FAQ
+          OPTIVRA • KNOWLEDGEBASE & FAQ
         </span>
         <h1 className="text-3xl font-black">Frequently Asked Questions</h1>
-        <p className="text-gray-300">Answers to common client questions regarding engagement models, IP security, billing, and technical delivery.</p>
+        <p className="text-gray-300">Answers regarding engagement models, IP governance, security readiness, and technical delivery.</p>
       </div>
 
       <div className="space-y-4">
@@ -51,3 +51,4 @@ export default function FaqDoc() {
     </div>
   );
 }
+

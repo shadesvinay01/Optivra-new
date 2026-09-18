@@ -8,37 +8,37 @@ export default function DiscoveryQuestionnaireDoc() {
     {
       title: "1. Business Objectives & Project Scope",
       questions: [
-        "What is the primary business goal for this project? (e.g. Reduce manual hours, launch new SaaS product)",
+        "What is the primary business goal for this project? (e.g. Reduce manual workflow hours, launch SaaS MVP)",
         "What is the target completion date or key milestone deadline?",
-        "What is the estimated project budget range in USD?"
+        "What is the estimated project budget range (USD / GBP / EUR)?"
       ]
     },
     {
       title: "2. Technical & Architecture Environment",
       questions: [
         "Do you have an existing code repository, or is this a greenfield (from scratch) build?",
-        "What cloud infrastructure do you currently use? (AWS, GCP, Azure, On-Premise)",
-        "What third-party APIs or internal databases need integration?"
+        "What cloud infrastructure do you currently use? (AWS, GCP, Azure, DigitalOcean)",
+        "What third-party APIs or internal databases require integration?"
       ]
     },
     {
-      title: "3. AI & Automation Requirements",
+      title: "3. AI, Automation & Security Requirements",
       questions: [
         "Do you plan to leverage enterprise RAG, custom LLMs, AI agents, or computer vision?",
         "Where does your training/reference data reside? (PostgreSQL, PDF docs, Notion, Drive)",
-        "Are there specific privacy or compliance standards required? (SOC2, HIPAA, GDPR)"
+        "Are there specific security, data privacy, or compliance-readiness practices required?"
       ]
     }
   ];
 
   return (
-    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs">
+    <div className="space-y-8 text-gray-900 leading-relaxed font-sans text-xs max-w-[800px] mx-auto bg-white p-2">
       <div className="bg-slate-950 text-white rounded-2xl p-8 space-y-2 border border-slate-800">
         <span className="px-3 py-1 bg-[#D4AF37] text-slate-950 text-xs font-bold rounded uppercase tracking-widest">
-          Project Scoping Form
+          OPTIVRA • PROJECT INTAKE FORM
         </span>
         <h1 className="text-3xl font-black">Discovery & Requirements Intake Questionnaire</h1>
-        <p className="text-gray-300">Please complete this questionnaire to help our architecture team prepare your technical proposal.</p>
+        <p className="text-gray-300">Please complete this questionnaire to help our engineering team prepare your project proposal.</p>
       </div>
 
       <div className="space-y-6">
@@ -61,3 +61,4 @@ export default function DiscoveryQuestionnaireDoc() {
     </div>
   );
 }
+

@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Optivra — Capability Statement 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ─── TOKENS ─── */
+:root{
+  --white:      #FFFFFF;
+  --bg:         #F7F8FA;
+  --bg2:        #EEF1F6;
+  --line:       #DDE3EC;
+  --line2:      #C8D0DC;
+  --blue:       #1D4ED8;
+  --blue-mid:   #2563EB;
+  --blue-light: #EFF6FF;
+  --blue-mid2:  #DBEAFE;
+  --navy:       #0F172A;
+  --navy2:      #1E293B;
+  --slate:      #475569;
+  --muted:      #64748B;
+  --muted2:     #94A3B8;
+  --success:    #16A34A;
+  --success-bg: #F0FDF4;
+  --pad:        14mm;
+  --page-w:     210mm;
+  --page-h:     297mm;
+  --radius:     6px;
+  --radius-lg:  10px;
+}
+
+/* ─── BODY & SCREEN WRAP ─── */
+html,body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#E5E9F0;
+  color:var(--navy);
+  -webkit-font-smoothing:antialiased;
+}
+@media screen{
+  body{padding:24px;}
+  .page{
+    box-shadow:0 4px 6px rgba(0,0,0,.06),0 20px 60px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.04);
+    margin:0 auto 24px;
+  }
+}
+
+/* ─── PAGE SHELL ─── */
+.page{
+  width:var(--page-w);
+  min-height:var(--page-h);
+  background:var(--white);
+  position:relative;
+  overflow:hidden;
+}
+
+/* ─── TOP BAND ─── */
+.top-band{
+  height:4px;
+  background:linear-gradient(90deg,#1D4ED8 0%,#3B82F6 60%,#93C5FD 100%);
+}
+
+/* ════════════════════════════════════════
+   PAGE 1 — HEADER
+════════════════════════════════════════ */
+.p-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  padding:8mm var(--pad) 6mm;
+  border-bottom:1px solid var(--line);
+}
+.logo-mark{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo-icon{
+  width:36px;height:36px;
+  background:var(--blue);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.logo-icon svg{width:20px;height:20px;}
+.logo-text-block{}
+.logo-name{
+  font-size:18px;font-weight:800;letter-spacing:-0.5px;
+  color:var(--navy);line-height:1;
+}
+.logo-name span{color:var(--blue);}
+.logo-tagline{
+  font-size:7px;font-weight:500;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--muted);margin-top:3px;
+}
+.header-right{text-align:right;}
+.doc-pill{
+  display:inline-block;
+  font-size:6.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--blue);
+  background:var(--blue-light);
+  border:1px solid var(--blue-mid2);
+  border-radius:4px;
+  padding:3px 9px;
+}
+.doc-date{
+  display:block;margin-top:4px;
+  font-size:7px;color:var(--muted2);
+}
+
+/* ════════════════════════════════════════
+   HERO BLOCK
+════════════════════════════════════════ */
+.hero{
+  padding:8mm var(--pad) 0;
+  display:grid;
+  grid-template-columns:1fr 62mm;
+  gap:8mm;
+  align-items:center;
+}
+.hero-left{}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:7px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--blue);
+  background:var(--blue-light);
+  border:1px solid var(--blue-mid2);
+  border-radius:30px;padding:3px 10px;
+  margin-bottom:5mm;
+}
+.eyebrow-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;
+}
+.hero-headline{
+  font-size:22px;font-weight:800;letter-spacing:-0.8px;
+  line-height:1.18;color:var(--navy);
+}
+.hero-headline .accent{color:var(--blue);}
+.hero-sub{
+  margin-top:5mm;
+  font-size:8px;font-weight:400;color:var(--slate);
+  line-height:1.75;
+}
+.hero-stats{
+  margin-top:5mm;
+  display:flex;gap:5mm;
+}
+.stat-item{padding-right:5mm;border-right:1px solid var(--line);}
+.stat-item:last-child{border-right:none;padding-right:0;}
+.stat-num{
+  font-size:18px;font-weight:800;color:var(--blue);
+  letter-spacing:-1px;line-height:1;
+}
+.stat-label{
+  font-size:6.5px;font-weight:500;color:var(--muted);
+  margin-top:2px;line-height:1.4;
+}
+
+.hero-right{}
+.hero-img-box{
+  width:100%;
+  height:52mm;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--bg);
+  position:relative;
+}
+.hero-img-box img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.hero-img-badge{
+  position:absolute;bottom:7px;left:8px;
+  font-size:6px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--blue);
+  background:rgba(255,255,255,0.92);
+  border:1px solid var(--blue-mid2);
+  border-radius:4px;padding:2px 7px;
+  backdrop-filter:blur(4px);
+}
+
+/* ════════════════════════════════════════
+   SECTION UTILITY
+════════════════════════════════════════ */
+.sec{padding:7mm var(--pad) 0;}
+.sec-header{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:4.5mm;
+}
+.sec-title{
+  font-size:7px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--blue);
+  white-space:nowrap;
+}
+.sec-rule{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,var(--line2) 0%,var(--line) 50%,transparent 100%);
+}
+
+/* ════════════════════════════════════════
+   OVERVIEW BANNER
+════════════════════════════════════════ */
+.overview-banner{
+  margin:5mm var(--pad) 0;
+  background:var(--navy);
+  border-radius:var(--radius-lg);
+  padding:5.5mm 7mm;
+  display:grid;
+  grid-template-columns:1fr 2px 1fr;
+  gap:6mm;
+  align-items:center;
+}
+.ov-divider{background:rgba(255,255,255,0.1);height:100%;}
+.ov-text{
+  font-size:8px;color:rgba(255,255,255,0.75);
+  line-height:1.7;font-weight:400;
+}
+.ov-text strong{color:#fff;font-weight:600;}
+.ov-mission{
+  font-size:10px;font-weight:700;color:#fff;
+  line-height:1.4;letter-spacing:-0.2px;
+}
+.ov-mission span{color:#60A5FA;}
+
+/* ════════════════════════════════════════
+   CAPABILITIES GRID
+════════════════════════════════════════ */
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:3mm;
+}
+.cap-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:4.5mm 4mm;
+  position:relative;
+}
+.cap-card:hover{border-color:var(--blue-mid2);}
+.cap-card-top{
+  display:flex;align-items:center;gap:6px;
+  margin-bottom:3.5mm;
+}
+.cap-ico{
+  width:22px;height:22px;
+  border-radius:5px;
+  background:var(--blue-light);
+  border:1px solid var(--blue-mid2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.cap-ico svg{width:12px;height:12px;}
+.cap-name{
+  font-size:7.5px;font-weight:700;
+  color:var(--navy);letter-spacing:-0.1px;
+}
+.cap-items{list-style:none;}
+.cap-items li{
+  font-size:6.5px;color:var(--slate);
+  line-height:1.85;
+  display:flex;align-items:center;gap:5px;
+}
+.cap-items li::before{
+  content:'';width:3px;height:3px;
+  border-radius:50%;background:var(--blue);
+  flex-shrink:0;opacity:0.6;
+}
+
+/* ════════════════════════════════════════
+   TWO-COL SECTION (Why + Industries)
+════════════════════════════════════════ */
+.two-col{
+  padding:6mm var(--pad) 0;
+  display:grid;
+  grid-template-columns:1fr 86mm;
+  gap:6mm;
+}
+
+/* Why cards */
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2.5mm;
+}
+.why-item{
+  display:flex;align-items:flex-start;gap:6px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:3.5mm 4mm;
+}
+.why-check{
+  width:14px;height:14px;
+  border-radius:4px;
+  background:var(--success-bg);
+  border:1px solid #BBF7D0;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.why-check svg{width:8px;height:8px;}
+.why-item-text strong{
+  display:block;font-size:7px;font-weight:700;
+  color:var(--navy);margin-bottom:1px;
+}
+.why-item-text span{
+  font-size:6.5px;color:var(--muted);line-height:1.5;
+}
+
+/* Industries */
+.industry-right{}
+.chip-cloud{display:flex;flex-wrap:wrap;gap:2mm;}
+.chip{
+  font-size:6.5px;font-weight:500;
+  color:var(--slate);
+  background:var(--bg);
+  border:1px solid var(--line2);
+  border-radius:30px;
+  padding:2.5mm 5mm;
+}
+.chip.blue{
+  color:var(--blue);
+  background:var(--blue-light);
+  border-color:var(--blue-mid2);
+  font-weight:600;
+}
+
+/* ════════════════════════════════════════
+   PAGE 1 FOOTER
+════════════════════════════════════════ */
+.page-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:4mm var(--pad);
+  border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--white);
+}
+.pf-brand{
+  font-size:8px;font-weight:700;color:var(--navy);
+  display:flex;align-items:center;gap:6px;
+}
+.pf-brand-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--blue);
+}
+.pf-center{
+  font-size:6.5px;color:var(--muted2);letter-spacing:0.3px;
+}
+.pf-page{
+  font-size:7px;color:var(--muted);
+  display:flex;align-items:center;gap:5px;
+}
+.pg-circle{
+  width:16px;height:16px;border-radius:50%;
+  border:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:7px;font-weight:700;color:var(--blue);
+}
+
+
+/* ════════════════════════════════════════
+   PAGE 2 FOUNDER
+════════════════════════════════════════ */
+.founder-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:38mm 1fr;
+}
+.founder-photo-col{
+  background:var(--navy);
+  padding:6mm 5mm;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.founder-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,0.1);
+}
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.f-ph-name{
+  margin-top:4mm;
+  font-size:8px;font-weight:700;color:#fff;
+  text-align:center;line-height:1.3;
+}
+.f-ph-title{
+  font-size:6px;color:#60A5FA;
+  font-weight:500;margin-top:2px;
+  text-align:center;letter-spacing:0.3px;
+}
+.f-ph-divider{
+  width:100%;height:1px;background:rgba(255,255,255,0.08);
+  margin:4mm 0;
+}
+.f-ph-stat{text-align:center;margin-bottom:3mm;}
+.f-ph-stat-n{
+  font-size:14px;font-weight:800;color:#60A5FA;
+  letter-spacing:-1px;line-height:1;
+}
+.f-ph-stat-l{font-size:6px;color:rgba(255,255,255,0.5);margin-top:1px;}
+
+.founder-info-col{
+  padding:6mm;
+}
+.founder-name{
+  font-size:18px;font-weight:800;letter-spacing:-0.5px;
+  color:var(--navy);line-height:1;
+}
+.founder-role{
+  font-size:8px;font-weight:500;color:var(--blue);
+  margin-top:2.5mm;letter-spacing:0.2px;
+}
+.founder-bio{
+  margin-top:4mm;
+  font-size:7.5px;color:var(--slate);
+  line-height:1.75;
+}
+.founder-bio p+p{margin-top:2.5mm;}
+.founder-bio strong{color:var(--navy);font-weight:600;}
+
+.mission-quote{
+  margin:4mm 0;
+  padding:4mm 5mm;
+  background:var(--blue-light);
+  border-left:3px solid var(--blue);
+  border-radius:0 var(--radius) var(--radius) 0;
+  font-size:8px;font-style:italic;
+  color:var(--navy);font-weight:500;
+  line-height:1.6;
+}
+
+.expertise-wrap{
+  display:flex;flex-wrap:wrap;gap:2mm;
+  margin-top:3.5mm;
+}
+.badge{
+  font-size:6px;font-weight:600;
+  color:var(--blue);
+  background:var(--blue-light);
+  border:1px solid var(--blue-mid2);
+  border-radius:4px;
+  padding:2px 7px;
+  letter-spacing:0.2px;
+}
+.badge.grey{
+  color:var(--slate);
+  background:var(--bg2);
+  border-color:var(--line2);
+}
+
+/* ════════════════════════════════════════
+   PARTNERSHIP MODELS
+════════════════════════════════════════ */
+.partner-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3mm;
+}
+.partner-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:5mm 4mm;
+  position:relative;
+  overflow:hidden;
+}
+.partner-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),#60A5FA);
+}
+.partner-num{
+  font-size:24px;font-weight:900;
+  color:var(--blue-mid2);
+  letter-spacing:-2px;line-height:1;
+  margin-bottom:3mm;
+}
+.partner-title{
+  font-size:7.5px;font-weight:700;
+  color:var(--navy);margin-bottom:2.5mm;
+  line-height:1.3;letter-spacing:-0.1px;
+}
+.partner-desc{
+  font-size:6.5px;color:var(--slate);line-height:1.7;
+}
+
+/* ════════════════════════════════════════
+   WHY CHOOSE — BIG FEATURE STRIP
+════════════════════════════════════════ */
+.empower-strip{
+  margin:6mm var(--pad) 0;
+  background:var(--navy);
+  border-radius:var(--radius-lg);
+  padding:6mm 7mm;
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:7mm;
+  align-items:center;
+}
+.emp-divider{background:rgba(255,255,255,0.1);}
+.emp-left{}
+.emp-headline{
+  font-size:15px;font-weight:800;color:#fff;
+  letter-spacing:-0.5px;line-height:1.25;
+}
+.emp-headline span{color:#60A5FA;}
+.emp-sub{
+  margin-top:3.5mm;
+  font-size:7.5px;color:rgba(255,255,255,0.65);
+  line-height:1.75;
+}
+.emp-right{}
+.emp-feature{
+  display:flex;align-items:flex-start;gap:6px;
+  margin-bottom:3mm;
+}
+.emp-feature:last-child{margin-bottom:0;}
+.emp-dot{
+  width:14px;height:14px;
+  border-radius:4px;
+  background:rgba(59,130,246,0.15);
+  border:1px solid rgba(59,130,246,0.25);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.emp-dot svg{width:8px;height:8px;}
+.emp-ft-title{
+  font-size:7px;font-weight:700;color:#fff;
+  margin-bottom:1px;
+}
+.emp-ft-sub{font-size:6.5px;color:rgba(255,255,255,0.5);line-height:1.5;}
+
+/* ════════════════════════════════════════
+   CTA BLOCK
+════════════════════════════════════════ */
+.cta-block{
+  margin:5.5mm var(--pad) 0;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:5mm 6mm;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6mm;
+}
+.cta-left-text{}
+.cta-heading{
+  font-size:13px;font-weight:800;color:var(--navy);
+  letter-spacing:-0.4px;
+}
+.cta-chips{
+  display:flex;flex-wrap:wrap;gap:2mm;margin-top:3mm;
+}
+.cta-chip{
+  font-size:6.5px;font-weight:500;color:var(--slate);
+  background:var(--white);border:1px solid var(--line2);
+  border-radius:4px;padding:2px 7px;
+}
+.cta-actions{
+  display:flex;flex-direction:column;align-items:flex-end;gap:2.5mm;
+  flex-shrink:0;
+}
+.cta-btn{
+  display:inline-block;
+  padding:5px 16px;
+  background:var(--blue);
+  border-radius:5px;
+  font-size:7.5px;font-weight:700;
+  color:#fff;letter-spacing:0.2px;
+  white-space:nowrap;
+}
+.cta-email{
+  font-size:7px;color:var(--blue);font-weight:500;
+}
+
+/* ════════════════════════════════════════
+   PAGE 2 FOOTER
+════════════════════════════════════════ */
+.p2-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  border-top:1px solid var(--line);
+  background:var(--white);
+}
+.p2-footer-top{
+  padding:4.5mm var(--pad);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.ft-brand .ft-logo{
+  font-size:13px;font-weight:800;letter-spacing:-0.4px;color:var(--navy);
+}
+.ft-brand .ft-logo span{color:var(--blue);}
+.ft-brand .ft-tag{
+  font-size:6.5px;color:var(--muted2);
+  letter-spacing:2px;text-transform:uppercase;margin-top:2px;
+}
+.ft-contacts{
+  display:flex;gap:6mm;
+}
+.ft-item{}
+.ft-label{
+  font-size:6px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--blue);margin-bottom:2px;
+}
+.ft-value{font-size:7px;color:var(--slate);}
+.ft-qr{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.qr-wrap{
+  width:20mm;height:20mm;
+  background:var(--white);
+  border:1px solid var(--line2);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.qr-wrap svg{width:100%;height:100%;}
+.qr-lbl{font-size:5.5px;color:var(--muted2);letter-spacing:0.3px;}
+
+.p2-footer-bottom{
+  border-top:1px solid var(--line);
+  padding:3mm var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.pfb-left{font-size:6px;color:var(--muted2);display:flex;align-items:center;gap:6px;}
+.conf-tag{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:6px;font-weight:600;color:var(--slate);
+  background:var(--bg2);border:1px solid var(--line2);
+  border-radius:3px;padding:2px 6px;
+}
+.pfb-right{font-size:7px;color:var(--muted);display:flex;align-items:center;gap:5px;}
+
+/* ════════════════════════════════════════
+   PRINT
+════════════════════════════════════════ */
+@media print{
+  @page{size:A4 portrait;margin:0;}
+  html,body{background:#fff;}
+  .page{
+    width:210mm;min-height:297mm;
+    page-break-after:always;
+    box-shadow:none;margin:0;
+  }
+  .page:last-child{page-break-after:avoid;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 1
+═══════════════════════════════════════════════ -->
+<div class="page" id="page1">
+<div class="top-band"></div>
+
+<!-- HEADER -->
+<div class="p-header">
+  <div class="logo-mark">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="white"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.4"/>
+        <circle cx="12" cy="12" r="2" fill="white" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="logo-text-block">
+      <div class="logo-name">OPTIV<span>RA</span></div>
+      <div class="logo-tagline">AI &nbsp;•&nbsp; Data &nbsp;•&nbsp; Software &nbsp;•&nbsp; Automation</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="doc-pill">Capability Statement</span>
+    <span class="doc-date">2025 &nbsp;·&nbsp; Confidential</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      White-Label AI &amp; Technology Partner
+    </div>
+    <h1 class="hero-headline">
+      Building the Technology<br/>
+      Behind <span class="accent">Growing Agencies</span>
+    </h1>
+    <p class="hero-sub">
+      Optivra partners with digital agencies, consulting firms, and technology businesses to deliver enterprise-grade AI solutions, intelligent automation, and custom software — through flexible white-label partnerships that let you scale without scaling your headcount.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Core Technology<br/>Domains</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Partnership<br/>Models</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Industries<br/>Served</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-box">
+      <img src="capability-assets/hero-light.png" alt="AI Technology Visualization"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)'"/>
+      <div class="hero-img-badge">AI Infrastructure Layer</div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW BANNER -->
+<div class="overview-banner">
+  <div class="ov-text">
+    Optivra helps agencies <strong>expand technical capabilities</strong>, accelerate delivery timelines, and build AI-powered products — without the cost and complexity of building large in-house engineering teams. We integrate as your <strong>invisible technology layer</strong>.
+  </div>
+  <div class="ov-divider"></div>
+  <div class="ov-mission">
+    "Becoming the long-term technology partner that enables agencies to <span>scale with confidence.</span>"
+  </div>
+</div>
+
+<!-- CORE CAPABILITIES -->
+<div class="sec">
+  <div class="sec-header">
+    <span class="sec-title">Core Capabilities</span>
+    <span class="sec-rule"></span>
+  </div>
+  <div class="cap-grid">
+
+    <!-- AI -->
+    <div class="cap-card">
+      <div class="cap-card-top">
+        <div class="cap-ico">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="#1D4ED8" stroke-width="1.5"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="cap-name">Artificial Intelligence</div>
+      </div>
+      <ul class="cap-items">
+        <li>AI Agents &amp; Workflows</li>
+        <li>LLM Applications</li>
+        <li>Computer Vision</li>
+        <li>NLP Systems</li>
+        <li>Predictive Analytics</li>
+      </ul>
+    </div>
+
+    <!-- Software -->
+    <div class="cap-card">
+      <div class="cap-card-top">
+        <div class="cap-ico">
+          <svg viewBox="0 0 24 24" fill="none">
+            <polyline points="16 18 22 12 16 6" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="8 6 2 12 8 18" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cap-name">Software Engineering</div>
+      </div>
+      <ul class="cap-items">
+        <li>SaaS Platforms</li>
+        <li>Enterprise Software</li>
+        <li>Web Applications</li>
+        <li>API Integrations</li>
+        <li>CRM / ERP Systems</li>
+      </ul>
+    </div>
+
+    <!-- Mobile -->
+    <div class="cap-card">
+      <div class="cap-card-top">
+        <div class="cap-ico">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="2" width="14" height="20" rx="2" stroke="#1D4ED8" stroke-width="1.5"/>
+            <line x1="9" y1="18" x2="15" y2="18" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="cap-name">Mobile Development</div>
+      </div>
+      <ul class="cap-items">
+        <li>Android Applications</li>
+        <li>iOS Applications</li>
+        <li>Cross-Platform Apps</li>
+        <li>React Native</li>
+        <li>Flutter</li>
+      </ul>
+    </div>
+
+    <!-- Data -->
+    <div class="cap-card">
+      <div class="cap-card-top">
+        <div class="cap-ico">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v18h18" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 16l4-4 4 4 4-6" stroke="#1D4ED8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cap-name">Data &amp; Analytics</div>
+      </div>
+      <ul class="cap-items">
+        <li>Data Science</li>
+        <li>BI Dashboards</li>
+        <li>Machine Learning</li>
+        <li>Data Engineering</li>
+        <li>MLOps</li>
+      </ul>
+    </div>
+
+    <!-- Cloud -->
+    <div class="cap-card">
+      <div class="cap-card-top">
+        <div class="cap-ico">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M17.5 19H9a7 7 0 116.71-9h1.79a4.5 4.5 0 010 9z" stroke="#1D4ED8" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cap-name">Cloud &amp; DevOps</div>
+      </div>
+      <ul class="cap-items">
+        <li>AWS / Azure / GCP</li>
+        <li>Docker &amp; Kubernetes</li>
+        <li>CI/CD Pipelines</li>
+        <li>Infrastructure as Code</li>
+        <li>Deployment Automation</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY + INDUSTRIES -->
+<div class="two-col">
+
+  <!-- Why -->
+  <div>
+    <div class="sec-header" style="margin-bottom:4mm">
+      <span class="sec-title">Why Agencies Choose Optivra</span>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>White-Label Delivery</strong>
+          <span>Full delivery under your brand</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>Dedicated Teams</strong>
+          <span>Engineers embedded in your flow</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>AI On Demand</strong>
+          <span>Specialist talent without hiring</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>End-to-End Delivery</strong>
+          <span>Strategy through deployment</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>NDA-Friendly</strong>
+          <span>Full confidentiality guaranteed</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">
+          <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-item-text">
+          <strong>Long-Term Partner</strong>
+          <span>Strategic, not transactional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Industries -->
+  <div>
+    <div class="sec-header" style="margin-bottom:4mm">
+      <span class="sec-title">Industries We Serve</span>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="chip-cloud">
+      <span class="chip blue">Digital Agencies</span>
+      <span class="chip blue">AI Consulting Firms</span>
+      <span class="chip blue">SaaS Companies</span>
+      <span class="chip">Healthcare</span>
+      <span class="chip">Finance &amp; Fintech</span>
+      <span class="chip">Retail &amp; E-Commerce</span>
+      <span class="chip">Manufacturing</span>
+      <span class="chip">Education</span>
+      <span class="chip">Real Estate</span>
+      <span class="chip blue">Startups</span>
+      <span class="chip">Logistics</span>
+      <span class="chip">Enterprise</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- PAGE 1 FOOTER -->
+<div class="page-footer">
+  <div class="pf-brand">
+    <div class="pf-brand-dot"></div>
+    OPTIVRA
+  </div>
+  <div class="pf-center">AI &nbsp;·&nbsp; Data &nbsp;·&nbsp; Software &nbsp;·&nbsp; Automation &nbsp;&nbsp;|&nbsp;&nbsp; optivra.in &nbsp;·&nbsp; hello@optivra.in</div>
+  <div class="pf-page">
+    <span class="pg-circle">1</span>
+    <span>of 2</span>
+  </div>
+</div>
+
+</div><!-- /page1 -->
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 2
+═══════════════════════════════════════════════ -->
+<div class="page" id="page2">
+<div class="top-band"></div>
+
+<!-- HEADER -->
+<div class="p-header">
+  <div class="logo-mark">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="white"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.4"/>
+        <circle cx="12" cy="12" r="2" fill="white" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="logo-text-block">
+      <div class="logo-name">OPTIV<span>RA</span></div>
+      <div class="logo-tagline">AI &nbsp;•&nbsp; Data &nbsp;•&nbsp; Software &nbsp;•&nbsp; Automation</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="doc-pill">Capability Statement</span>
+    <span class="doc-date">2025 &nbsp;·&nbsp; Confidential</span>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div class="sec" style="padding-top:7mm">
+  <div class="sec-header">
+    <span class="sec-title">Founder &amp; Leadership</span>
+    <span class="sec-rule"></span>
+  </div>
+  <div class="founder-card">
+    <!-- Photo col -->
+    <div class="founder-photo-col">
+      <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#1D4ED8,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;margin-bottom:2mm;box-shadow:0 4px 12px rgba(29,78,216,0.3);">SM</div>
+      <div class="f-ph-name">Sarveshwar Mandal</div>
+      <div class="f-ph-title">Founder &amp; AI Strategy Lead</div>
+      <div class="f-ph-divider"></div>
+      <div class="f-ph-stat">
+        <div class="f-ph-stat-n">10+</div>
+        <div class="f-ph-stat-l">Years in Tech</div>
+      </div>
+      <div class="f-ph-stat">
+        <div class="f-ph-stat-n">AI</div>
+        <div class="f-ph-stat-l">Strategy Lead</div>
+      </div>
+    </div>
+    <!-- Info col -->
+    <div class="founder-info-col">
+      <div class="founder-name">Sarveshwar Mandal</div>
+      <div class="founder-role">Founder &amp; AI Strategy Lead — Optivra</div>
+      <div class="founder-bio">
+        <p>Sarveshwar Mandal is an AI strategist, technology leader, and entrepreneur focused on helping businesses transform operations through <strong>Artificial Intelligence, Data Science, and intelligent software systems</strong>.</p>
+        <p>He has worked across enterprise environments and high-growth startups, leading initiatives in AI, Machine Learning, Computer Vision, intelligent automation, and scalable product engineering — delivering production-ready systems that generate measurable business outcomes.</p>
+        <p>He founded <strong>Optivra</strong> with one clear mission:</p>
+      </div>
+      <div class="mission-quote">
+        "Help businesses move beyond AI experimentation and build production-ready intelligent systems that generate measurable business outcomes."
+      </div>
+      <div class="founder-bio">
+        <p>Today, he collaborates with agencies, startups, and enterprises worldwide to build <strong>AI-powered software, automation systems, enterprise platforms, and scalable digital products</strong>.</p>
+      </div>
+      <div class="expertise-wrap">
+        <span class="badge">Artificial Intelligence</span>
+        <span class="badge">Machine Learning</span>
+        <span class="badge">Generative AI</span>
+        <span class="badge">AI Agents</span>
+        <span class="badge">Computer Vision</span>
+        <span class="badge">NLP</span>
+        <span class="badge grey">Enterprise Software</span>
+        <span class="badge grey">Cloud &amp; MLOps</span>
+        <span class="badge grey">Data Science</span>
+        <span class="badge grey">SaaS</span>
+        <span class="badge grey">Automation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERSHIP MODELS -->
+<div class="sec" style="padding-top:6mm">
+  <div class="sec-header">
+    <span class="sec-title">Partnership Models</span>
+    <span class="sec-rule"></span>
+  </div>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-num">01</div>
+      <div class="partner-title">White-Label Development</div>
+      <div class="partner-desc">Complete project delivery under your agency's brand. Our engineering team handles the full technical execution — invisibly.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-num">02</div>
+      <div class="partner-title">Dedicated Engineering Teams</div>
+      <div class="partner-desc">Scale delivery capacity instantly with experienced AI engineers, software developers, and product specialists.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-num">03</div>
+      <div class="partner-title">Technical Delivery Partner</div>
+      <div class="partner-desc">From architecture to deployment and maintenance — your trusted backend technology partner for every engagement.</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-num">04</div>
+      <div class="partner-title">AI Transformation Partner</div>
+      <div class="partner-desc">Help your clients adopt practical AI solutions without the cost or complexity of building an internal AI team.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPOWER STRIP -->
+<div class="empower-strip">
+  <div class="emp-left">
+    <div class="emp-headline">
+      We don't compete<br/>with agencies.<br/>
+      <span>We empower them.</span>
+    </div>
+    <div class="emp-sub">
+      Optivra integrates seamlessly as an extension of your team — maintaining full confidentiality, enterprise-grade quality, and consistent delivery standards across every engagement.
+    </div>
+  </div>
+  <div class="emp-divider"></div>
+  <div class="emp-right">
+    <div class="emp-feature">
+      <div class="emp-dot">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#60A5FA" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="emp-ft-title">Zero Conflict of Interest</div>
+        <div class="emp-ft-sub">We never approach your clients directly — ever</div>
+      </div>
+    </div>
+    <div class="emp-feature">
+      <div class="emp-dot">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#60A5FA" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="emp-ft-title">Full Confidentiality</div>
+        <div class="emp-ft-sub">NDA signed before every engagement begins</div>
+      </div>
+    </div>
+    <div class="emp-feature">
+      <div class="emp-dot">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="emp-ft-title">Enterprise-Grade Standards</div>
+        <div class="emp-ft-sub">Fortune 500-level engineering on every project</div>
+      </div>
+    </div>
+    <div class="emp-feature">
+      <div class="emp-dot">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#60A5FA" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="emp-ft-title">Long-Term Strategic Value</div>
+        <div class="emp-ft-sub">Built for growth, not one-off transactions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="cta-left-text">
+    <div class="cta-heading">Let's Build Together</div>
+    <div class="cta-chips">
+      <span class="cta-chip">Artificial Intelligence</span>
+      <span class="cta-chip">Automation</span>
+      <span class="cta-chip">Software Engineering</span>
+      <span class="cta-chip">Enterprise Applications</span>
+      <span class="cta-chip">Mobile Apps</span>
+      <span class="cta-chip">Cloud Solutions</span>
+      <span class="cta-chip">Data &amp; Analytics</span>
+    </div>
+  </div>
+  <div class="cta-actions">
+    <div class="cta-btn">Start a Conversation →</div>
+    <div class="cta-email">hello@optivra.in</div>
+  </div>
+</div>
+
+<!-- PAGE 2 FOOTER -->
+<div class="p2-footer">
+  <div class="p2-footer-top">
+    <div class="ft-brand">
+      <div class="ft-logo">OPTIV<span>RA</span></div>
+      <div class="ft-tag">AI &nbsp;·&nbsp; Software &nbsp;·&nbsp; Automation</div>
+    </div>
+    <div class="ft-contacts">
+      <div class="ft-item">
+        <div class="ft-label">Website</div>
+        <div class="ft-value">optivra.in</div>
+      </div>
+      <div class="ft-item">
+        <div class="ft-label">Email</div>
+        <div class="ft-value">hello@optivra.in</div>
+      </div>
+      <div class="ft-item">
+        <div class="ft-label">Portfolio</div>
+        <div class="ft-value">sarveshwarmandal.com</div>
+      </div>
+      <div class="ft-item">
+        <div class="ft-label">LinkedIn</div>
+        <div class="ft-value">linkedin.com/company/optivra</div>
+      </div>
+    </div>
+  </div>
+  <div class="p2-footer-bottom">
+    <div class="pfb-left">
+      © 2025 Optivra &nbsp;·&nbsp; All rights reserved
+      <span class="conf-tag">🔒 Confidential &amp; Proprietary</span>
+    </div>
+    <div class="pfb-right">
+      <span class="pg-circle">2</span>
+      <span>of 2</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page2 -->
+</body>
+</html>

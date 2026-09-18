@@ -7,17 +7,17 @@ import { Sparkles, FileText, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 const initialProposalData: ProposalData = {
-  clientName: "Enterprise Client",
-  clientCompany: "Acme Corporation",
+  clientName: "Valued Client",
+  clientCompany: "Client Organization",
   projectTitle: "AI & Full-Stack Digital Transformation",
   proposalId: "OPT-2026-8942",
-  date: "August 1, 2026",
-  validUntil: "August 31, 2026",
+  date: "September 18, 2026",
+  validUntil: "October 18, 2026",
   currency: "USD",
   discountPercent: 10,
   taxPercent: 0,
   investmentAmountUSD: 12500,
-  customNotes: "Includes end-to-end technical documentation, CI/CD pipeline, performance monitoring, and 30-day warranty.",
+  customNotes: "Includes technical documentation, CI/CD pipeline setup, and 30-day post-launch support.",
   items: [
     {
       id: "srv-1",

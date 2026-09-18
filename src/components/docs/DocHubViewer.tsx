@@ -19,23 +19,23 @@ import ProposalDocument, { ProposalData } from "../proposal/ProposalDocument";
 import ProposalToolbar from "../proposal/ProposalToolbar";
 
 const initialProposalData: ProposalData = {
-  clientName: "Enterprise Client",
-  clientCompany: "Acme Corporation",
+  clientName: "Valued Client",
+  clientCompany: "Client Organization",
   projectTitle: "AI & Full-Stack Digital Transformation",
   proposalId: "OPT-2026-8942",
-  date: "August 1, 2026",
-  validUntil: "August 31, 2026",
+  date: "September 18, 2026",
+  validUntil: "October 18, 2026",
   currency: "USD",
   discountPercent: 10,
   taxPercent: 0,
   investmentAmountUSD: 12500,
-  customNotes: "Includes end-to-end technical documentation, CI/CD pipeline, performance monitoring, and 30-day warranty.",
+  customNotes: "Includes technical documentation, CI/CD pipeline setup, and 30-day post-launch support.",
   items: [
     {
       id: "srv-1",
       title: "Landing Page & Web Development",
       category: "Web & Design",
-      description: "Custom ultra-high conversion, cinematic landing page or corporate website built with Next.js, React, TailwindCSS, and Framer Motion.",
+      description: "Custom ultra-high conversion landing page or corporate website built with Next.js, React, TailwindCSS, and Framer Motion.",
       deliverables: ["Modern Responsive UI/UX", "SEO Optimization & Meta", "CMS Integration", "Analytics & Tracking"],
       timeline: "1 - 2 Weeks",
       priceINR: 49999,
@@ -124,17 +124,17 @@ interface DocDefinition {
 }
 
 const docList: DocDefinition[] = [
-  { id: "company-profile", title: "Company Profile", badge: "15-20 Pages", category: "Company", iconName: "Building2" },
-  { id: "services-catalog", title: "Services Catalog", badge: "20-30 Pages", category: "Company", iconName: "Briefcase" },
+  { id: "company-profile", title: "Company Profile", badge: "Official Profile 2026", category: "Company", iconName: "Building2" },
+  { id: "services-catalog", title: "Services Catalog", badge: "USD / GBP / EUR Catalog", category: "Company", iconName: "Briefcase" },
   { id: "capability-statement", title: "Capability Statement", badge: "2 Pages", category: "Company", iconName: "FileCheck" },
-  { id: "portfolio-case-studies", title: "Portfolio & Case Studies", badge: "Case Studies", category: "Company", iconName: "Sparkles" },
+  { id: "portfolio-case-studies", title: "Portfolio & R&D", badge: "Selected Portfolio", category: "Company", iconName: "Sparkles" },
   
-  { id: "proposal-template", title: "Proposal Template", badge: "Official 10-Pg Brochure", category: "Sales & Catalogs", iconName: "Send" },
-  { id: "pricing-sheet", title: "Pricing Sheet", badge: "USD Rate Card", category: "Sales & Catalogs", iconName: "FileSpreadsheet" },
-  { id: "sales-pitch-deck", title: "Sales Pitch Deck", badge: "6 PDF Slides", category: "Sales & Catalogs", iconName: "Presentation" },
+  { id: "proposal-template", title: "Proposal Template", badge: "Official Interactive SOW", category: "Sales & Catalogs", iconName: "Send" },
+  { id: "pricing-sheet", title: "Pricing Sheet", badge: "International Rate Card", category: "Sales & Catalogs", iconName: "FileSpreadsheet" },
+  { id: "sales-pitch-deck", title: "Sales Pitch Deck", badge: "11 PDF Slides", category: "Sales & Catalogs", iconName: "Presentation" },
 
   { id: "nda", title: "NDA (Non-Disclosure)", badge: "Legal Agreement", category: "Legal Contracts", iconName: "Lock" },
-  { id: "msa", title: "Master Service Agreement (MSA)", badge: "Enterprise Contract", category: "Legal Contracts", iconName: "Shield" },
+  { id: "msa", title: "Master Service Agreement (MSA)", badge: "Service Contract", category: "Legal Contracts", iconName: "Shield" },
   { id: "sow", title: "Statement of Work (SOW)", badge: "Scope Contract", category: "Legal Contracts", iconName: "FileText" },
 
   { id: "onboarding-guide", title: "Client Onboarding Guide", badge: "Playbook", category: "Operations", iconName: "Layers" },
@@ -149,9 +149,9 @@ export default function DocHubViewer() {
   const [isExporting, setIsExporting] = useState(false);
 
   // Live client customization fields (for non-proposal docs)
-  const [clientName, setClientName] = useState("Enterprise Client");
-  const [clientCompany, setClientCompany] = useState("Acme Corporation");
-  const [date, setDate] = useState("August 1, 2026");
+  const [clientName, setClientName] = useState("Valued Client");
+  const [clientCompany, setClientCompany] = useState("Client Organization");
+  const [date, setDate] = useState("September 18, 2026");
 
   // Proposal-specific state (mirrors /proposal page)
   const [proposalData, setProposalData] = useState<ProposalData>(initialProposalData);
