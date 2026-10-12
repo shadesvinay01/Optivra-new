@@ -40,7 +40,46 @@ export default function PressPage() {
             Selected Coverage
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Entrepreneurs of Assam Feature Card */}
+            <article className="group relative border border-white/10 bg-[#050505] p-8 md:p-10 rounded-xl hover:border-primary/50 transition-all duration-500 flex flex-col justify-between overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[70px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 bg-primary/10 border border-primary/30 text-primary rounded-sm">
+                    Entrepreneurs of Assam
+                  </span>
+                  <span className="text-xs text-gray-500 font-light">
+                    Founder Spotlight
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-sans font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                  Meet Sarveshwar Mandal: Founder of Optivra
+                </h3>
+
+                <p className="text-gray-400 text-sm font-light leading-relaxed mb-8">
+                  Featured story by Entrepreneurs of Assam exploring Sarveshwar Mandal’s journey building Optivra, advancing AI products, and engineering high-impact intelligent software solutions.
+                </p>
+              </div>
+
+              <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                <a
+                  href="https://www.linkedin.com/pulse/meet-sarveshwar-mandal-founder-optivra-building-vl9af/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-white transition-colors group/link"
+                >
+                  Read Article
+                  <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                </a>
+                <span className="text-[10px] uppercase tracking-wider text-gray-600">
+                  External Link
+                </span>
+              </div>
+            </article>
+
             {/* Business Mint Feature Card */}
             <article className="group relative border border-white/10 bg-[#050505] p-8 md:p-10 rounded-xl hover:border-primary/50 transition-all duration-500 flex flex-col justify-between overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-[70px] rounded-full group-hover:bg-primary/10 transition-colors pointer-events-none" />

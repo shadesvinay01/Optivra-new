@@ -27,6 +27,16 @@ export const metadata: Metadata = {
 const articles = [
   {
     category: "Press Feature",
+    title: "Entrepreneurs of Assam Feature: Meet Sarveshwar Mandal, Founder of Optivra",
+    description:
+      "Exclusive profile on Sarveshwar Mandal, founder of Optivra, spotlighting his vision for AI innovation, intelligent software engineering, and entrepreneurial leadership from Assam.",
+    readTime: "Feature Story",
+    externalUrl: "https://www.linkedin.com/pulse/meet-sarveshwar-mandal-founder-optivra-building-vl9af/",
+    slug: "press-entrepreneurs-of-assam-sarveshwar-mandal",
+    featured: true,
+  },
+  {
+    category: "Press Feature",
     title: "Business Mint Editorial Feature: Sarveshwar Mandal & Optivra",
     description:
       "Discover the story behind Sarveshwar Mandal and Optivra's journey in AI innovation, machine learning, and building high-impact technology solutions as featured in Business Mint.",
